@@ -272,6 +272,7 @@ ul{
 @media (max-width: 1024px) {
   .main-wrapper { flex-direction: column; }
   .guide-section, .guide-section.collapsed {
+        width:100vw
         position: static;
         margin: 0 auto;
   }
