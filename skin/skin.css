@@ -271,7 +271,8 @@ ul{
 /* 6. 모바일 대응 */
 @media (max-width: 1024px) {
 
-  .main-wrapper { flex-direction: column;
+  .main-wrapper { 
+flex-direction: column;
 width:100%;
  }
   .guide-section, .guide-section.collapsed {
@@ -281,5 +282,9 @@ width:100%;
   }
 .input-section{
 width:100%;
+}
+
+.input-row{
+flex-wrap:wrap;
 }
 }
