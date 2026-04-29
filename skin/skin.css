@@ -1,10 +1,10 @@
 /* style.css */
 html{
-    width:100vw;
+    width:100%;
 }
 
 body {
-    width:100vw;
+    width:100%;
     background-color: #f0f4f8;
     font-family: 'Pretendard', sans-serif;
     margin: 0;
@@ -13,7 +13,7 @@ body {
 }
 
 .container {
-    width: 100vw;
+    width: 100%;
     margin: 0 auto;
 }
 
