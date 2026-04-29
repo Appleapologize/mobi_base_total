@@ -274,12 +274,11 @@ ul{
 flex-direction: column;
  }
   .guide-section, .guide-section.collapsed {
-        width:100%;
+        
         position: static;
         margin: 0 auto;
   }
 .input-section{
-width:100%;
 flex: 2; 
     min-width: 0;
 }
