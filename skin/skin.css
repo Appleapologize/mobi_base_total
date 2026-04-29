@@ -287,14 +287,13 @@ flex: 2;
 }
 
 .input-row {
-    /*display: flex; /* 가로로 배치 */
-    flex-wrap: nowrap; /* 절대 다음 줄로 넘기지 않음 */
+    display: flex; /* 가로로 배치 */
     gap: 5px; /* 간격을 좁게 조절 */
     width: 100%;
   }
 
   .item-select {
-    flex: 2; 
+    flex: 1; 
     min-width: 0; /* flex 박스 안에서 줄어들 수 있게 허용 */
   }
   .amount-input {
