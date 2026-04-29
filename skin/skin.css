@@ -282,9 +282,21 @@ width:100%;
   }
 .input-section{
 width:100%;
+flex: 2; 
+    min-width: 0;
 }
 
-.input-row{
-flex-wrap:wrap;
-}
+.input-row {
+    display: flex; /* 가로로 배치 */
+    flex-wrap: nowrap; /* 절대 다음 줄로 넘기지 않음 */
+    gap: 5px; /* 간격을 좁게 조절 */
+    width: 100%;
+  }
+
+  
+
+  .amount-input {
+    flex: 1; /* 수량 입력칸을 좁게 (약 30%) */
+    min-width: 0;
+  }
 }
