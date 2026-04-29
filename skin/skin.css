@@ -116,6 +116,7 @@ th, td {
 
 th {
     background: #f8f9fa;
+white-space: nowrap
     font-size: 0.9rem;
 }
 
