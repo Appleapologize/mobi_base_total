@@ -293,8 +293,10 @@ flex: 2;
     width: 100%;
   }
 
-  
-
+  .item-select {
+    flex: 2; 
+    min-width: 0; /* flex 박스 안에서 줄어들 수 있게 허용 */
+  }
   .amount-input {
     flex: 1; /* 수량 입력칸을 좁게 (약 30%) */
     min-width: 0;
