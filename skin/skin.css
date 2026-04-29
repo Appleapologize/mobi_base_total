@@ -1,0 +1,273 @@
+/* style.css */
+body {
+    background-color: #f0f4f8;
+    font-family: 'Pretendard', sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+#head-title{
+    text-align: center;
+    color:rgb(255, 255, 255);
+    text-shadow: 
+    0 1px 0 #ccc, 
+    0 2px 0 #c9c9c9, 
+    0 3px 0 #bbb, 
+    0 4px 0 #b9b9b9, 
+    0 5px 0 #aaa, 
+    0 6px 1px rgba(0,0,0,.1), 
+    0 0 5px rgba(0,0,0,.1), 
+    0 1px 3px rgba(0,0,0,.3), 
+    0 3px 5px rgba(0,0,0,.2), 
+    0 5px 10px rgba(0,0,0,.25), 
+    0 10px 10px rgba(0,0,0,.2), 
+    0 20px 20px rgba(0,0,0,.15);
+}
+
+h2, h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: #444;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* 입력 영역 */
+.input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.item-select, .amount-input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    flex: 1;
+}
+
+.btn-add {
+    background: #666;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.btn-calc {
+    width: 100%;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.notice {
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+}
+
+/* 결과 테이블 영역 */
+.result-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background: #f8f9fa;
+    font-size: 0.9rem;
+}
+
+.table-input {
+    width: 80%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.highlight {
+    border: 2px solid #4a90e2;
+}
+
+#current-stock th, #current-stock td {
+    padding: 7.5px 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+
+/* 부모 요소인 input-row를 기준으로 위치를 잡습니다 */
+.input-row {
+    position: relative; /* 자식인 목록창이 이 안에서 위치를 잡게 함 */
+    display: flex;
+    gap: 10px;
+}
+
+/* 하얀 목록창을 공중에 띄우기 */
+.custom-autocomplete-list {
+    position: absolute; /* 위치를 공중에 띄움 */
+    top: 100%; /* 입력창 바로 밑 지점 */
+    left: 0;
+    width: 250px; /* 입력창 너비에 맞춰 조절 (필요시 수정) */
+    background-color: white !important;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15); /* 그림자를 줘서 떠있는 느낌 강조 */
+    z-index: 9999; /* 모든 요소보다 위에 뜨게 설정 */
+    max-height: 200px;
+    overflow-y: auto;
+    display: none; /* 평소엔 숨김 */
+    margin-top: 5px;
+}
+
+/* 목록 내부 아이템 */
+.autocomplete-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.autocomplete-item:hover {
+    background-color: #f0f7ff;
+}
+
+.input-row {
+    margin-bottom: 10px; /* 줄 사이 간격 */
+}
+
+.btn-remove {
+    background: #ff5e5e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 0 15px;
+}
+
+
+/* 전체 레이아웃 정렬 */
+.main-wrapper {
+  display: flex;
+  gap: 20px;
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 0 20px;
+  align-items: flex-start; /* 자식 요소들이 각자 높이에 맞게 정렬 */
+}
+
+/* 2. 설명서 카드 (기본: 펼쳐진 상태) */
+.guide-section {
+  width: 300px; /* 고정 너비 */
+  min-width: 300px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: all 0.3s ease-in-out;
+  position: sticky;
+  top: 20px;
+  z-index: 100;
+}
+
+/* 3. 접힌 상태 (collapsed) */
+.guide-section.collapsed {
+  width: 100px; /* 좁게 조정 */
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+}
+
+/* 접혔을 때 내부 내용 숨기기 */
+.guide-section.collapsed .guide-content{
+  display: none;
+  
+}
+
+/* 4. 토글 버튼 및 화살표 */
+.toggle-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* 접혔을 때는 밑줄 제거 및 중앙 정렬 */
+.guide-section.collapsed .toggle-btn {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* 화살표 아이콘 (CSS로 구현) */
+.arrow {
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #666;
+  border-right: 2px solid #666;
+  transform: rotate(-45deg); /* 기본: 위쪽 화살표 (∧) */
+  transition: transform 0.3s ease;
+}
+
+/* 접혔을 때는 아래쪽으로 회전 (∨) */
+.guide-section.collapsed .arrow {
+  transform: rotate(135deg);
+}
+
+ul{
+  padding:10px 15px;
+      width: 100%;
+}
+/* 5. 메인 컨테이너 */
+.container {
+  flex: 1; /* 설명서를 제외한 나머지 공간 다 차지 */
+  min-width: 0; /* 플렉스 박스 깨짐 방지 */
+}
+
+/* 6. 모바일 대응 */
+@media (max-width: 1024px) {
+  .main-wrapper { flex-direction: column; }
+  .guide-section, .guide-section.collapsed {
+        position: static;
+        margin: 0 auto;
+  }
+}
