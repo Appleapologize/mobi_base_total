@@ -1,5 +1,10 @@
 /* style.css */
+html{
+    width:100vw;
+}
+
 body {
+    width:100vw;
     background-color: #f0f4f8;
     font-family: 'Pretendard', sans-serif;
     margin: 0;
