@@ -1,20 +1,25 @@
-/* style.css */
-html{
-    width:100%;
+
+* {
+    box-sizing: border-box;
 }
 
-body {
-    width:100%;
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* 가로 스크롤 방지 */
     background-color: #f0f4f8;
     font-family: 'Pretendard', sans-serif;
-    margin: 0;
-    padding: 20px;
     color: #333;
+}
+
+/* 모바일/데스크탑 공통 패딩 조절 */
+body {
+    padding: 15px; 
 }
 
 .container {
     width: 100%;
-    margin: 0 auto;
 }
 
 .card {
@@ -23,24 +28,16 @@ body {
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     margin-bottom: 20px;
+    width: 100%; /* 부모 너비를 넘지 않음 */
 }
 
-#head-title{
+/* 제목 스타일 */
+#head-title {
     text-align: center;
-    color:rgb(255, 255, 255);
-    text-shadow: 
-    0 1px 0 #ccc, 
-    0 2px 0 #c9c9c9, 
-    0 3px 0 #bbb, 
-    0 4px 0 #b9b9b9, 
-    0 5px 0 #aaa, 
-    0 6px 1px rgba(0,0,0,.1), 
-    0 0 5px rgba(0,0,0,.1), 
-    0 1px 3px rgba(0,0,0,.3), 
-    0 3px 5px rgba(0,0,0,.2), 
-    0 5px 10px rgba(0,0,0,.25), 
-    0 10px 10px rgba(0,0,0,.2), 
-    0 20px 20px rgba(0,0,0,.15);
+    color: #fff;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 h2, h3 {
@@ -51,27 +48,33 @@ h2, h3 {
     padding-bottom: 10px;
 }
 
-/* 입력 영역 */
+/* 입력 영역 - 한 줄 유지 핵심 */
 .input-row {
     display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
+    gap: 8px;
+    margin-bottom: 10px;
+    width: 100%;
+    position: relative;
 }
 
+.item-select { flex: 2; min-width: 0; }
+.amount-input { flex: 1; min-width: 0; }
+
 .item-select, .amount-input {
-    padding: 10px;
+    padding: 12px 8px;
     border: 1px solid #ddd;
-    border-radius: 6px;
-    flex: 1;
+    border-radius: 8px;
+    font-size: 14px;
 }
 
 .btn-add {
     background: #666;
     color: white;
     border: none;
-    border-radius: 6px;
-    padding: 0 15px;
+    border-radius: 8px;
+    padding: 0 12px;
     cursor: pointer;
+    flex-shrink: 0; /* 버튼 크기 고정 */
 }
 
 .btn-calc {
@@ -79,225 +82,86 @@ h2, h3 {
     background: #4a90e2;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 15px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
+    margin-top: 5px;
 }
 
-.notice {
-    font-size: 0.85rem;
-    color: #666;
-    text-align: center;
+/* 자동완성 목록 창 */
+.custom-autocomplete-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%; /* 입력창 전체 너비에 맞춤 */
+    background-color: white !important;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    z-index: 9999;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
 }
 
-/* 결과 테이블 영역 */
+/* 결과 섹션 */
 .result-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 15px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
 }
 
 th, td {
-    padding: 10px;
+    padding: 10px 5px;
     text-align: left;
     border-bottom: 1px solid #eee;
 }
 
-th {
-    background: #f8f9fa;
-    font-size: 0.9rem;
-}
-
-.table-input {
-    width: 80%;
-    padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.highlight {
-    border: 2px solid #4a90e2;
-}
-
-#current-stock th, #current-stock td {
-    padding: 7.5px 10px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-}
-
-
-/* 부모 요소인 input-row를 기준으로 위치를 잡습니다 */
-.input-row {
-    position: relative; /* 자식인 목록창이 이 안에서 위치를 잡게 함 */
-    display: flex;
-    gap: 10px;
-}
-
-/* 하얀 목록창을 공중에 띄우기 */
-.custom-autocomplete-list {
-    position: absolute; /* 위치를 공중에 띄움 */
-    top: 100%; /* 입력창 바로 밑 지점 */
-    left: 0;
-    width: 250px; /* 입력창 너비에 맞춰 조절 (필요시 수정) */
-    background-color: white !important;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.15); /* 그림자를 줘서 떠있는 느낌 강조 */
-    z-index: 9999; /* 모든 요소보다 위에 뜨게 설정 */
-    max-height: 200px;
-    overflow-y: auto;
-    display: none; /* 평소엔 숨김 */
-    margin-top: 5px;
-}
-
-/* 목록 내부 아이템 */
-.autocomplete-item {
-    padding: 10px 15px;
-    cursor: pointer;
-    border-bottom: 1px solid #f9f9f9;
-}
-
-.autocomplete-item:hover {
-    background-color: #f0f7ff;
-}
-
-.input-row {
-    margin-bottom: 10px; /* 줄 사이 간격 */
-}
-
-.btn-remove {
-    background: #ff5e5e;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    padding: 0 15px;
-}
-
-
-/* 전체 레이아웃 정렬 */
+/* 전체 레이아웃 (데스크탑) */
 .main-wrapper {
   display: flex;
   gap: 20px;
-  max-width: 1400px;
-  margin: 20px auto;
-  padding: 0 20px;
-  align-items: flex-start; /* 자식 요소들이 각자 높이에 맞게 정렬 */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* 2. 설명서 카드 (기본: 펼쳐진 상태) */
 .guide-section {
-  width: 300px; /* 고정 너비 */
+  width: 300px;
   min-width: 300px;
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  transition: all 0.3s ease-in-out;
   position: sticky;
   top: 20px;
-  z-index: 100;
 }
 
-/* 3. 접힌 상태 (collapsed) */
-.guide-section.collapsed {
-  width: 100px; /* 좁게 조정 */
-  padding: 20px;
-  cursor: pointer;
-  display: flex;
-}
-
-/* 접혔을 때 내부 내용 숨기기 */
-.guide-section.collapsed .guide-content{
-  display: none;
-  
-}
-
-/* 4. 토글 버튼 및 화살표 */
-.toggle-btn {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #333;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
-}
-
-/* 접혔을 때는 밑줄 제거 및 중앙 정렬 */
-.guide-section.collapsed .toggle-btn {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-/* 화살표 아이콘 (CSS로 구현) */
-.arrow {
-  width: 8px;
-  height: 8px;
-  border-top: 2px solid #666;
-  border-right: 2px solid #666;
-  transform: rotate(-45deg); /* 기본: 위쪽 화살표 (∧) */
-  transition: transform 0.3s ease;
-}
-
-/* 접혔을 때는 아래쪽으로 회전 (∨) */
-.guide-section.collapsed .arrow {
-  transform: rotate(135deg);
-}
-
-ul{
-  padding:10px 15px;
-      width: 100%;
-}
-/* 5. 메인 컨테이너 */
-.container {
-  flex: 1; /* 설명서를 제외한 나머지 공간 다 차지 */
-  min-width: 0; /* 플렉스 박스 깨짐 방지 */
-}
-
-/* 6. 모바일 대응 */
+/* 📱 모바일 대응 수정 */
 @media (max-width: 1024px) {
+  body {
+    padding: 10px; /* 화면 좌우 여백 확보 */
+  }
 
   .main-wrapper { 
-flex-direction: column;
-width:100%;
- }
-  .guide-section, .guide-section.collapsed {
-        width:100%;
-        position: static;
-        margin: 0 auto;
-  }
-.input-section{
-width:100%;
-flex: 2; 
-    min-width: 0;
-}
-
-.input-row {
-    display: flex; /* 가로로 배치 */
-    gap: 5px; /* 간격을 좁게 조절 */
+    flex-direction: column;
     width: 100%;
+    gap: 15px;
   }
 
-  .item-select {
-    flex: 1; 
-    min-width: 0; /* flex 박스 안에서 줄어들 수 있게 허용 */
+  .guide-section, .guide-section.collapsed {
+    width: 100% !important;
+    min-width: 100%;
+    position: static;
   }
-  .amount-input {
-    flex: 1; /* 수량 입력칸을 좁게 (약 30%) */
-    min-width: 0;
+
+  .card {
+    padding: 15px; /* 모바일에서 내부 여백 살짝 줄임 */
+  }
+
+  /* 이 부분이 핵심: 하단 카드들과 가로폭을 일치시킵니다 */
+  .input-section {
+    width: 100% !important;
   }
 }
