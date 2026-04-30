@@ -9,7 +9,10 @@
 	--color-blue:#4a90e2;
 }
 
-* { box-sizing: border-box; }
+* {
+	box-sizing: border-box; 
+	word-break: keep-all;
+  }
 
 html, body{
     width:var(--width-100);
