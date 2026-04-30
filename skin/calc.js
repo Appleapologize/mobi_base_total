@@ -162,9 +162,12 @@ function updateAllTables() {
 
     sortedKeys.forEach((key, index) => {
         const totalQty = Math.ceil(dict[key]);
-        totalBody.innerHTML += `<tr><td>${key}</td><td style="text-align: right;">${totalQty.toLocaleString()}</td></tr>`;
-        stockBody.innerHTML += `<tr><td>${key}</td><td style="text-align: right;"><input type="number" class="table-input" id="have-${index}" value="0" oninput="calculateFinal()"></td></tr>`;
-        finalBody.innerHTML += `<tr><td>${key}</td><td style="text-align: right;" id="need-${index}">${totalQty.toLocaleString()}</td></tr>`;
+        //필요한 총 원자재
+        totalBody.innerHTML += `<tr><td>${key}</td><td class="table-amount">${totalQty.toLocaleString()}</td></tr>`;
+        // 현재 보유 원자재
+        stockBody.innerHTML += `<tr><td>${key}</td><td class="table-amount"><input type="number" class="table-input" id="have-${index}" value="0" oninput="calculateFinal()"></td></tr>`;
+        // 추가 수급 원자재  
+        finalBody.innerHTML += `<tr><td>${key}</td><td class="table-amount" id="need-${index}">${totalQty.toLocaleString()}</td></tr>`;
     });
 }
 
