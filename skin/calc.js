@@ -162,9 +162,9 @@ function updateAllTables() {
 
     sortedKeys.forEach((key, index) => {
         const totalQty = Math.ceil(dict[key]);
-        totalBody.innerHTML += `<tr><td>${key}</td><td>${totalQty.toLocaleString()}</td></tr>`;
-        stockBody.innerHTML += `<tr><td>${key}</td><td><input type="number" class="table-input" id="have-${index}" value="0" oninput="calculateFinal()"></td></tr>`;
-        finalBody.innerHTML += `<tr><td>${key}</td><td id="need-${index}">${totalQty.toLocaleString()}</td></tr>`;
+        totalBody.innerHTML += `<tr><td>${key}</td><td style="text-align: right;">${totalQty.toLocaleString()}</td></tr>`;
+        stockBody.innerHTML += `<tr><td>${key}</td><td style="text-align: right;"><input type="number" class="table-input" id="have-${index}" value="0" oninput="calculateFinal()"></td></tr>`;
+        finalBody.innerHTML += `<tr><td>${key}</td><td style="text-align: right;" id="need-${index}">${totalQty.toLocaleString()}</td></tr>`;
     });
 }
 
