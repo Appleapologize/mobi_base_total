@@ -204,7 +204,6 @@ th {
 
 /* 3. 접힌 상태 (collapsed) */
 .guide-section.collapsed {
-  width: 300px; /* 좁게 조정 */
   padding: 20px;
   cursor: pointer;
   display: flex;
