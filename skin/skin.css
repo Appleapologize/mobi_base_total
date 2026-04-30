@@ -99,6 +99,7 @@ table {
 }
 
 th, td {
+	width: 50%;;
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #eee;
@@ -112,9 +113,9 @@ th {
 }
 
 .table-input {
-    width: 55%;
+    width: 80%;
     padding: 5px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--line-color);
     border-radius: 4px;
 }
 
@@ -143,7 +144,7 @@ th {
     left: 0;
     width: 250px; /* 입력창 너비에 맞춰 조절*/
     background-color: var(--background-white-color) !important;
-    border: 1px solid #ddd;
+    border: 1px solid var(--line-color);
     border-radius: 8px;
     box-shadow: 0 8px 15px rgba(0,0,0,0.15); /* 그림자를 줘서 떠있는 느낌 강조 */
     z-index: 9999; /* 모든 요소보다 위에 뜨게 설정 */
