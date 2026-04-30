@@ -109,6 +109,7 @@ th {
     padding: 5px;
     border: 1px solid var(--line-color);
     border-radius: 4px;
+	text-align: right;
 }
 
 /*추가로 수급하는 원자재 양 */
