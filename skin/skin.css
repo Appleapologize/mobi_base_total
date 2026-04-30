@@ -112,6 +112,9 @@ th {
 	text-align: right;
 }
 
+.table-amount{
+	text-align:right;
+}
 /*추가로 수급하는 원자재 양 */
 .highlight {
     border: 2px solid var(--color-blue);
