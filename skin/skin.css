@@ -1,30 +1,37 @@
 /* style.css */
+:root {
+	--background-white-color: #fff;  
+    --arrow-color:#666;
+    --box-shadow-color:rgba(0,0,0,0.05);
+    --line-color:#eee;
+    --text-size:1.2rem;
+    --width-100:100%;
+}
+
 
 * { box-sizing: border-box; }
 
-html{
-    width:100%;
+html, body{
+    width:var(--width-100);
 }
 
 body {
-    width:100%;
     background-color: #f0f4f8;
     font-family: 'Pretendard', sans-serif;
     margin: 0;
     padding: 20px;
-    color: #333;
 }
 
 .container {
-    width: 100%;
+    width: var(--width-100);
     margin: 0 auto;
 }
 
 .card {
-    background: #fff;
+    background: var(--background-white-color);
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 6px var(--box-shadow-color);
     margin-bottom: 20px;
 }
 
@@ -32,26 +39,15 @@ body {
     text-align: center;
     color:rgb(255, 255, 255);
     text-shadow: 
-    0 1px 0 #ccc, 
-    0 2px 0 #c9c9c9, 
-    0 3px 0 #bbb, 
-    0 4px 0 #b9b9b9, 
-    0 5px 0 #aaa, 
-    0 6px 1px rgba(0,0,0,.1), 
-    0 0 5px rgba(0,0,0,.1), 
-    0 1px 3px rgba(0,0,0,.3), 
-    0 3px 5px rgba(0,0,0,.2), 
-    0 5px 10px rgba(0,0,0,.25), 
-    0 10px 10px rgba(0,0,0,.2), 
-    0 20px 20px rgba(0,0,0,.15);
+        2px 2px 2px #ccc, 
+        -1px -1px 2px #bbb
 }
 
 h2, h3 {
     margin-top: 0;
-    font-size: 1.1rem;
-    color: #444;
-    border-bottom: 2px solid #eee;
+    border-bottom: 2px solid var(--line-color);
     padding-bottom: 10px;
+    text-align:center;
 }
 
 /* 입력 영역 */
@@ -78,21 +74,15 @@ h2, h3 {
 }
 
 .btn-calc {
-    width: 100%;
+    width: var(--width-100);
     background: #4a90e2;
     color: white;
     border: none;
     border-radius: 8px;
     padding: 15px;
-    font-size: 1.2rem;
+    font-size: var(--text-size);
     font-weight: bold;
     cursor: pointer;
-}
-
-.notice {
-    font-size: 0.85rem;
-    color: #666;
-    text-align: center;
 }
 
 /* 결과 테이블 영역 */
@@ -103,7 +93,7 @@ h2, h3 {
 }
 
 table {
-    width: 100%;
+    width: var(--width-100);
     border-collapse: collapse;
     margin-top: 10px;
 }
@@ -112,17 +102,17 @@ th, td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #eee;
-white-space: nowrap;
+    white-space: nowrap;
 }
 
 th {
     background: #f8f9fa;
-white-space: nowrap;
+    white-space: nowrap;
     font-size: 0.9rem;
 }
 
 .table-input {
-    width: 80%;
+    width: 55%;
     padding: 5px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -135,7 +125,7 @@ white-space: nowrap;
 #current-stock th, #current-stock td {
     padding: 7.5px 10px;
     text-align: left;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--line-color);
 }
 
 
@@ -151,8 +141,8 @@ white-space: nowrap;
     position: absolute; /* 위치를 공중에 띄움 */
     top: 100%; /* 입력창 바로 밑 지점 */
     left: 0;
-    width: 250px; /* 입력창 너비에 맞춰 조절 (필요시 수정) */
-    background-color: white !important;
+    width: 250px; /* 입력창 너비에 맞춰 조절*/
+    background-color: var(--background-white-color) !important;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 8px 15px rgba(0,0,0,0.15); /* 그림자를 줘서 떠있는 느낌 강조 */
@@ -200,9 +190,8 @@ white-space: nowrap;
 
 /* 2. 설명서 카드 (기본: 펼쳐진 상태) */
 .guide-section {
-  width: 300px; /* 고정 너비 */
-  min-width: 300px;
-  background: white;
+  width: 300px;
+  background: var(--background-white-color);
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.05);
@@ -228,18 +217,18 @@ white-space: nowrap;
 
 /* 4. 토글 버튼 및 화살표 */
 .toggle-btn {
-  width: 100%;
+  width: var(--width-100);
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: var(--text-size);
   font-weight: bold;
   color: #333;
   padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--line-color);
 }
 
 /* 접혔을 때는 밑줄 제거 및 중앙 정렬 */
@@ -252,8 +241,8 @@ white-space: nowrap;
 .arrow {
   width: 8px;
   height: 8px;
-  border-top: 2px solid #666;
-  border-right: 2px solid #666;
+  border-top: 2px solid var(--arrow-color);
+  border-right: 2px solid var(--arrow-color);
   transform: rotate(-45deg); /* 기본: 위쪽 화살표 (∧) */
   transition: transform 0.3s ease;
 }
@@ -265,7 +254,7 @@ white-space: nowrap;
 
 ul{
   padding:10px 15px;
-      width: 100%;
+  width: var(--width-100);
 }
 /* 5. 메인 컨테이너 */
 .container {
@@ -278,15 +267,15 @@ ul{
 
   .main-wrapper { 
 flex-direction: column;
-width:100%;
+width:var(--width-100);
  }
   .guide-section, .guide-section.collapsed {
-        width:100%;
+        width:var(--width-100);
         position: static;
         margin: 0 auto;
   }
 .input-section{
-width:100%;
+width:var(--width-100);
 flex: 2; 
     min-width: 0;
 }
@@ -294,7 +283,7 @@ flex: 2;
 .input-row {
     display: flex; /* 가로로 배치 */
     gap: 5px; /* 간격을 좁게 조절 */
-    width: 100%;
+    width: var(--width-100);
   }
 
   .item-select {
