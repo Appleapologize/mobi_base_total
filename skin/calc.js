@@ -1,7 +1,7 @@
 let recipeData = []; 
 let dict = {}; 
 
-// 1. 사용자님이 지정한 주소 절대 고정 (수정 금지)
+// 1. 지정된 구글 스프레드 시트
 async function loadSheetData() {
     const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5aKPoEd4EegNLKMnC4B5PBXGmDyIgwoOAKlwr4vsflm3ZL3B9etAfKywqZAlUF3gbYRad38Q2hbHi/pub?output=csv";
     try {
