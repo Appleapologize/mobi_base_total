@@ -197,7 +197,7 @@ th {
 
 
 /* 설명서 (기본: 펼쳐진 상태) */
-aside{
+aside {
 	width:var(--width-100);
 }
 
