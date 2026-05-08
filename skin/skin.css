@@ -263,6 +263,40 @@ ul{
   width: var(--width-100);
 }
 
+/*사이드 링크*/
+.link-button-area{
+	display:flex;
+}
+.link-button-area div{
+	width: 50%;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.link-button-area div a{
+	text-decoration: none;
+	color: black; 	
+}
+
+.link-button-area .mabi_official{
+    background: #ffa340;
+	font-
+}
+
+.link-button-area .mabi_official a{
+	color: white; 		
+}
+
+.link-button-area .mobi_life{
+    background: #35449c;
+}
+
+.link-button-area .mobi_life a{
+	color: white; 		
+}
+
 /* 계산 되는 영역 */
 .container {
   flex: 1; /* 설명서를 제외한 나머지 공간 다 차지 */
