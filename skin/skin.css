@@ -264,12 +264,10 @@ ul{
 }
 
 /*사이드 링크*/
-.link-button-area{
-	display:flex;
-}
 .link-button-area div{
 	width: 50%;
     padding: 20px;
+	margin-bottom:10px;
     border-radius: 12px;
     text-align: center;
     font-size: 1.2rem;
