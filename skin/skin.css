@@ -197,6 +197,10 @@ th {
 
 
 /* 설명서 (기본: 펼쳐진 상태) */
+aside{
+	width:var(--width-100);
+}
+
 .guide-section {
   width: 300px;
   background: var(--background-white-color);
