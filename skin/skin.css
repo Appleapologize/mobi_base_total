@@ -197,10 +197,6 @@ th {
 
 
 /* 설명서 (기본: 펼쳐진 상태) */
-aside {
-	width:var(--width-100);
-}
-
 .guide-section {
   width: 300px;
   background: var(--background-white-color);
@@ -287,7 +283,10 @@ ul{
 	flex-direction: column;
 	width:var(--width-100);
  }
-	
+
+aside {
+	width:var(--width-100);
+}	
 .guide-section, .guide-section.collapsed {
 	width: var(--width-100);	
 	position: static;
