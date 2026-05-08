@@ -289,9 +289,7 @@ ul{
  }
 	
 .guide-section, .guide-section.collapsed {
-	width:var(--width-100);
 	position: static;
-	margin: 0 auto;
   }
 	
 .input-section{
