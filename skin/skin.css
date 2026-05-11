@@ -195,6 +195,12 @@ th {
     padding: 0 15px;
 }
 
+/*왼쪽 영역(데스크탑 기준)*/
+aside{
+	position: sticky;
+    top: 20px;
+    z-index: 100;
+}
 
 /* 설명서 (기본: 펼쳐진 상태) */
 .guide-section {
@@ -204,9 +210,6 @@ th {
   padding: 20px;
   box-shadow: 0 4px 6px var(--box-shadow-color);
   transition: all 0.3s ease-in-out;
-  position: sticky;
-  top: 20px;
-  z-index: 100;
 }
 
 /* 설명서 접힌 상태 (collapsed) */
