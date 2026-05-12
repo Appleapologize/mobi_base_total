@@ -348,7 +348,7 @@ aside {
 	width:var(--width-100);
 }	
 
-	.link-button-area-con{
+	.link-button-con{
 		display:flex;
 		JUSTIFY-CONTENT: CENTER;		
 		width: AUTO;		
