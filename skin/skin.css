@@ -342,19 +342,23 @@ aside {
   }
 	.link-button-area{
 		margin:0;
-		JUSTIFY-CONTENT: CENTER;
-	}
-	.link-button-area-con{
-		display:flex;
+		
 	}
 .link-button-area div{
-	width: AUTO;
-    padding: 15px;
-	margin: 0 5PX 0px;
-    border-radius: 12px;
-    text-align: center;
-    font-size: 1rem;
+	width:var(--width-100);
 }	
+
+	.link-button-area-con{
+		display:flex;
+		JUSTIFY-CONTENT: CENTER;		
+		width: AUTO;		
+	    padding: 15px;
+		margin: 0 5PX 0px;
+	    border-radius: 12px;
+	    text-align: center;
+	    font-size: 1rem;		
+	}	
+	
 .input-section{
 	width:var(--width-100);
 	flex: 2; 
