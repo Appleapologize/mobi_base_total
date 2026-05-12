@@ -7,6 +7,8 @@
     --text-size:1.2rem;
     --width-100:100%;
 	--color-blue:#4a90e2;
+	--mabi-icon-width-height:65px;
+	--mabi-icon-color:#231815;
 }
 
 * {
@@ -286,9 +288,10 @@ ul{
 }
 
 .link-button-area .mabi_official #mabinogi{
-	width:65; 
-	height:65;
+	width:var(--mabi-icon-width-height); 
+	height:var(--mabi-icon-width-height);
     vertical-align: middle;
+	color: var(--mabi-icon-color);
 }
 
 .link-button-area .mabi_official a{
