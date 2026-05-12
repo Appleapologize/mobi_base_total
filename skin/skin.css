@@ -287,13 +287,16 @@ ul{
     background: #ffa340;
 }
 
+.link-button-area .icon{
+	padding:5px;
+	margin-bottom:0;
+}
+
 .link-button-area .mabi_official #mabinogi{
 	width:var(--mabi-icon-width-height); 
 	height:var(--mabi-icon-width-height);
     vertical-align: middle;
 	color: var(--mabi-icon-color);
-	padding:5px;
-	margin-bottom:0;
 }
 
 .link-button-area .mabi_official a{
