@@ -326,10 +326,12 @@ ul{
 }
 
 .mabi_official:hover{
-	
+	background:#ff8740;
+	font-size:1.5rem;
 }
 .mobi_life:hover{
-	
+	background:#5ca9c7;
+	font-size:1.5rem;	
 }
 /* 계산 되는 영역 */
 .container {
