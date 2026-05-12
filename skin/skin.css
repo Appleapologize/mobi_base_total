@@ -339,11 +339,13 @@ aside {
 .guide-section, .guide-section.collapsed {
 	width: var(--width-100);	
 	position: static;
-	display:flex;
   }
 	.link-button-area{
 		margin:0;
 		JUSTIFY-CONTENT: CENTER;
+	}
+	.link-button-area-con{
+		display:flex;
 	}
 .link-button-area div{
 	width: AUTO;
