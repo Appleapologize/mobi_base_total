@@ -345,9 +345,9 @@ aside {
 		margin:0;
 	}
 .link-button-area div{
-	width: 50%;
+	width: AUTO;
     padding: 10px;
-	margin-bottom:10px;
+	margin: 0 5PX 0px;
     border-radius: 12px;
     text-align: center;
     font-size: 1rem;
