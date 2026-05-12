@@ -278,7 +278,7 @@ aside{
 }
 
 ul{
-  padding:10px 15px;
+ padding: 10px 0px 10PX 15PX;
   width: var(--width-100);
 }
 
