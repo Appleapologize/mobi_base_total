@@ -283,6 +283,13 @@ ul{
 }
 
 /*업데이트*/
+.notice{
+	max-width:300px;
+	margin-top: 20px;
+	padding-top: 20px; 
+	border-top: 1px solid var(--line-color);
+}
+
 .notice-table{
 	padding:0;
 	margin:0;
@@ -291,7 +298,7 @@ ul{
 	width:auto;
 }
 .notice-table td{
-	width:30%;
+	width:5%;
 }
 
 
@@ -377,12 +384,6 @@ transition: transform 0.3s ease-in-out;
 }
 
 
-.notice{
-	max-width:300px;
-	margin-top: 20px;
-	padding-top: 20px; 
-	border-top: 1px solid var(--line-color);
-}
 
 
 
