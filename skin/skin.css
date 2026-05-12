@@ -269,10 +269,16 @@ ul{
 }
 
 /*사이드 링크*/
-.link-button-area div{
-	width: var(--width-100);
+.link-button-area{
+width: var(--width-100);
     padding: 20px;
 	margin-bottom:10px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.2rem;	
+}
+.link-button-area div{
+	width: var(--width-100);
     border-radius: 12px;
     text-align: center;
     font-size: 1.2rem;
