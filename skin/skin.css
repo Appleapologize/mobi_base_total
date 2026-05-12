@@ -33,7 +33,7 @@ body {
   gap: 20px;
   max-width: 1400px;
   margin: 20px auto;
-  padding: 0 20px;
+  padding: 0 40px;
   align-items: flex-start; /* 자식 요소들이 각자 높이에 맞게 정렬 */
 }
 
