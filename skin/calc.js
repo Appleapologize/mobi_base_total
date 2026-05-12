@@ -111,9 +111,8 @@ document.addEventListener('click', function(e) {
 
 
 
-// 5. 자동완성 기능 (초성 검색 및 개선된 검색 로직)
 
-// 한글 초성 추출 함수
+// 5. 자동완성 기능
 function getChoseong(str) {
     const cho = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"];
     let result = "";
@@ -131,31 +130,36 @@ function initAutocompleteForRow(rowElement) {
 
     input.addEventListener('input', function() {
         const val = this.value.trim().toLowerCase();
-        const valCho = getChoseong(val); // 입력값의 초성
-        
         list.innerHTML = ''; 
         if (!val) { list.style.display = 'none'; return; }
 
-        // 중복 제거된 아이템 리스트 추출
-        const items = [...new Set(recipeData.slice(1).map(row => row[1]))].filter(Boolean);
+        // 아이템 이름만 추출
+        const allItems = [...new Set(recipeData.slice(1).map(row => row[1]))].filter(Boolean);
 
-        const filtered = items.filter(name => {
+        // 입력값이 초성만으로 구성되었는지 확인
+        const isCho = /^[ㄱ-ㅎ]+$/.test(val);
+
+        const filtered = allItems.filter(name => {
             const nameLow = name.toLowerCase();
-            const nameCho = getChoseong(nameLow); // 대상 아이템의 초성
             
-            // 1. 일반 포함 검색 ("철" -> "철광석")
-            // 2. 초성 검색 ("ㅊㄱ" -> "철광석")
-            return nameLow.includes(val) || nameCho.includes(valCho);
+            if (isCho) {
+                // 초성만 쳤을 때: "ㄱㄱ" -> "금괴"의 초성인 "ㄱㄱ"와 비교
+                return getChoseong(nameLow).includes(val);
+            } else {
+                // 글자를 완성했을 때: "금괴" -> "금괴"가 이름에 들어있는지만 확인
+                return nameLow.includes(val);
+            }
         }).sort((a, b) => {
-            // 검색어와 더 일치하는 순서대로 정렬 (가나다순)
-            return a.indexOf(val) - b.indexOf(val) || a.localeCompare(b);
+            const indexA = a.indexOf(val);
+            const indexB = b.indexOf(val);
+            if (indexA !== indexB) return indexA - indexB;
+            return a.localeCompare(b);
         });
 
         if (filtered.length > 0) {
             filtered.forEach(name => {
                 const div = document.createElement('div');
                 div.className = 'autocomplete-item';
-                // 검색된 부분 강조 (선택 사항)
                 div.innerText = name;
                 div.onclick = function() {
                     input.value = name;
