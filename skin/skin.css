@@ -343,6 +343,7 @@ aside {
   }
 	.link-button-area{
 		margin:0;
+		JUSTIFY-CONTENT: CENTER;
 	}
 .link-button-area div{
 	width: AUTO;
