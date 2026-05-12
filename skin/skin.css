@@ -404,6 +404,14 @@ footer p.bold{
 	font-weight: bolder;
 }
 
+/*타블렛 가로*/
+@media (max-width: 1300px) {
+  
+  .result-section .card.highlight {
+    grid-column: 1 / -1; /* grid의 첫 번째 줄부터 마지막 줄까지 차지 */
+   }
+}
+
 /* 6. 모바일 대응 */
 @media (max-width: 1024px) {
 
