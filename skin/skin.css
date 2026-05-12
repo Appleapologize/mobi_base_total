@@ -298,7 +298,7 @@ ul{
 	width:auto;
 }
 .notice-table td{
-	width:5%;
+	width:30%;
 }
 
 
@@ -465,4 +465,8 @@ justify-content: center;
 .notice{
 	max-width:var(--width-100);
 }
+
+.result-section .card.highlight {
+    grid-column: 1 / -1; /* grid의 첫 번째 줄부터 마지막 줄까지 차지 */
+   }
 }
