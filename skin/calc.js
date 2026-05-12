@@ -111,23 +111,51 @@ document.addEventListener('click', function(e) {
 
 
 
-// 5. 자동완성 기능
+// 5. 자동완성 기능 (초성 검색 및 개선된 검색 로직)
+
+// 한글 초성 추출 함수
+function getChoseong(str) {
+    const cho = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"];
+    let result = "";
+    for(let i=0; i<str.length; i++) {
+        let code = str.charCodeAt(i) - 44032;
+        if(code > -1 && code < 11172) result += cho[Math.floor(code / 588)];
+        else result += str.charAt(i);
+    }
+    return result;
+}
+
 function initAutocompleteForRow(rowElement) {
     const input = rowElement.querySelector('.item-select');
     const list = rowElement.querySelector('.custom-autocomplete-list');
 
     input.addEventListener('input', function() {
-        const val = this.value.trim();
+        const val = this.value.trim().toLowerCase();
+        const valCho = getChoseong(val); // 입력값의 초성
+        
         list.innerHTML = ''; 
         if (!val) { list.style.display = 'none'; return; }
 
-        const items = [...new Set(recipeData.slice(1).map(row => row[1]))]
-            .filter(name => name && name.includes(val)).sort();
+        // 중복 제거된 아이템 리스트 추출
+        const items = [...new Set(recipeData.slice(1).map(row => row[1]))].filter(Boolean);
 
-        if (items.length > 0) {
-            items.forEach(name => {
+        const filtered = items.filter(name => {
+            const nameLow = name.toLowerCase();
+            const nameCho = getChoseong(nameLow); // 대상 아이템의 초성
+            
+            // 1. 일반 포함 검색 ("철" -> "철광석")
+            // 2. 초성 검색 ("ㅊㄱ" -> "철광석")
+            return nameLow.includes(val) || nameCho.includes(valCho);
+        }).sort((a, b) => {
+            // 검색어와 더 일치하는 순서대로 정렬 (가나다순)
+            return a.indexOf(val) - b.indexOf(val) || a.localeCompare(b);
+        });
+
+        if (filtered.length > 0) {
+            filtered.forEach(name => {
                 const div = document.createElement('div');
                 div.className = 'autocomplete-item';
+                // 검색된 부분 강조 (선택 사항)
                 div.innerText = name;
                 div.onclick = function() {
                     input.value = name;
@@ -145,6 +173,7 @@ function initAutocompleteForRow(rowElement) {
         if (!rowElement.contains(e.target)) list.style.display = 'none';
     });
 }
+
 
 // 6. 결과 표시
 function updateAllTables() {
