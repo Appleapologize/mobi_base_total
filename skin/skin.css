@@ -407,6 +407,14 @@ footer{
     background: #bae6fd;
     width: 100%;
     text-align: center;
+    padding: 20px;
+    background: #bae6fd;
+    width: 100%;
+    text-align: center;
+    position: sticky;
+    bottom: 0;
+    z-index: 100;  
+ 
 }
 
 footer p.bold{
