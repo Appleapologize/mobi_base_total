@@ -340,6 +340,11 @@ ul{
 
 
 /*footer*/
+footer *{
+	margin:0;
+	padding:0;
+}
+
 footer{
 	padding: 20px;
     background: #bae6fd;
