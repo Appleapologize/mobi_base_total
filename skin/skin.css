@@ -339,10 +339,19 @@ aside {
 .guide-section, .guide-section.collapsed {
 	width: var(--width-100);	
 	position: static;
+	display:flex;
   }
 	.link-button-area{
 		margin:0;
 	}
+.link-button-area div{
+	width: 50%;
+    padding: 10px;
+	margin-bottom:10px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1rem;
+}	
 .input-section{
 	width:var(--width-100);
 	flex: 2; 
