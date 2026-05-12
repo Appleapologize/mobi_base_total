@@ -350,6 +350,10 @@ footer{
     bottom: 0;	
 }
 
+footer p{
+	font-weight: bolder;
+}
+
 /* 6. 모바일 대응 */
 @media (max-width: 1024px) {
 
