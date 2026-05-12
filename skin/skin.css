@@ -286,14 +286,12 @@ ul{
 
 /*바로가기 사이트 별 버튼 구역*/
 	.link-button-con div{
+	    padding: 20px;
 		margin-bottom:10px;		
-		JUSTIFY-CONTENT: CENTER;		
+		JUSTIFY-CONTENT: CENTER;
+    border-radius: 12px;		
 	}
 
-.link-button-area a{
-	padding: 20px;
-    border-radius: 12px;
-}
 
 .link-button-area div a{
 	text-decoration: none;
