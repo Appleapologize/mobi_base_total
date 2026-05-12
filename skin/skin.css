@@ -344,6 +344,7 @@ ul{
 	background:#d75128;
 }
 .mabi_official a:hover{
+	display: inline-block;
 		transform: scale(1.1);
 	transition: transform 0.3s ease-in-out;
 }
@@ -352,6 +353,7 @@ ul{
 }
 
 .mobi_life a:hover{
+	display: inline-block;
 	transform: scale(1.1);
 transition: transform 0.3s ease-in-out;	
 }
