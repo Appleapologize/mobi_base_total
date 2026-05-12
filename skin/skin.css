@@ -174,6 +174,12 @@ th {
     padding: 0 15px;
     cursor: pointer;
 }
+
+.btn-add:hover{
+background: #3c3939;	
+}
+
+
 /*계산하기 버튼*/
 .btn-calc {
     width: var(--width-100);
@@ -187,6 +193,10 @@ th {
     cursor: pointer;
 }
 
+.btn-calc:hover{
+	background:#174b88;
+}
+
 /*삭제 버튼*/
 .btn-remove {
     background: #ff5e5e;
@@ -195,6 +205,10 @@ th {
     border-radius: 6px;
     cursor: pointer;
     padding: 0 15px;
+}
+
+.btn-remove:hover{
+	background:#9e1515;	
 }
 
 /*왼쪽 영역(데스크탑 기준)*/
