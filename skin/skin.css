@@ -283,7 +283,12 @@ ul{
 
 .link-button-area .mabi_official{
     background: #ffa340;
-	font-
+}
+
+.link-button-area .mabi_official #mabinogi{
+	width:65; 
+	height:65;
+    vertical-align: middle;
 }
 
 .link-button-area .mabi_official a{
