@@ -350,7 +350,7 @@ footer{
     bottom: 0;	
 }
 
-footer p{
+footer p.bold{
 	font-weight: bolder;
 }
 
