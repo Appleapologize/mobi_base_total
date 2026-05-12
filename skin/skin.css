@@ -292,6 +292,8 @@ ul{
 	height:var(--mabi-icon-width-height);
     vertical-align: middle;
 	color: var(--mabi-icon-color);
+	padding:5px;
+	margin-bottom:0;
 }
 
 .link-button-area .mabi_official a{
