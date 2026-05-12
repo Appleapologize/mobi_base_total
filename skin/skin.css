@@ -284,12 +284,16 @@ ul{
     font-size: 1.2rem;
 }
 
-
+/*바로가기 사이트 별 버튼 구역*/
 	.link-button-con div{
-	    padding: 20px;
 		margin-bottom:10px;		
 		JUSTIFY-CONTENT: CENTER;		
 	}
+
+.link-button-area a{
+	padding: 20px;
+    border-radius: 12px;
+}
 
 .link-button-area div a{
 	text-decoration: none;
@@ -324,6 +328,12 @@ ul{
 	color: white; 		
 }
 
+.mabi_official:hover{
+	
+}
+.mobi_life:hover{
+	
+}
 /* 계산 되는 영역 */
 .container {
   flex: 1; /* 설명서를 제외한 나머지 공간 다 차지 */
