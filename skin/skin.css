@@ -365,6 +365,7 @@ transition: transform 0.3s ease-in-out;
 
 
 .notice{
+	max-width:300px;
 	margin-top: 20px;
 	padding-top: 20px; 
 	border-top: 1px solid var(--line-color);
@@ -447,5 +448,7 @@ justify-content: center;
 	flex: 1;
     min-width: 0;
   }
-
+.notice{
+	max-width:var(--width-100);
+}
 }
