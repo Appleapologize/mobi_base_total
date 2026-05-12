@@ -321,6 +321,7 @@ ul{
 
 aside {
 	width:var(--width-100);
+	position:unset;
 }	
 .guide-section, .guide-section.collapsed {
 	width: var(--width-100);	
