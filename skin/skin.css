@@ -351,7 +351,7 @@ aside {
 	.link-button-con{
 		display:flex;
 		JUSTIFY-CONTENT: CENTER;		
-		width: AUTO;		
+		width: AUTO !important;		
 	    padding: 15px !important;
 		margin: 0 5PX 0px !important; 
 	    border-radius: 12px;
