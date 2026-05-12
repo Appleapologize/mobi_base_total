@@ -350,13 +350,15 @@ aside {
 
 	.link-button-con{
 		display:flex;
-		JUSTIFY-CONTENT: CENTER;		
-		width: AUTO !important;		
+	}	
+
+	.link-button-con div{
 	    padding: 15px !important;
-		margin: 0 5PX 0px !important; 
+		margin: 0 5PX 0px !important; 		
+		JUSTIFY-CONTENT: CENTER;		
 	    border-radius: 12px;
 	    text-align: center;
-	    font-size: 1rem	!important;
+	    font-size: 1rem	!important;		
 	}	
 	
 .input-section{
