@@ -359,6 +359,7 @@ aside {
 	}
 .link-button-area div{
 	width:var(--width-100);
+justify-content: center;	
 }	
 
 	.link-button-con{
@@ -368,8 +369,7 @@ aside {
 	.link-button-con div{
 	    padding: 15px !important;
 		margin: 0 5PX 0px !important; 		
-		JUSTIFY-CONTENT: CENTER;		
-	    border-radius: 12px;
+		border-radius: 12px;
 	    text-align: center;
 	    font-size: 1rem	!important;		
 	}	
