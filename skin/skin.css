@@ -404,7 +404,6 @@ footer *{
 
 footer{
 	padding: 20px;
-    background: #bae6fd;
     width: 100%;
     text-align: center;
     padding: 20px;
@@ -414,6 +413,13 @@ footer{
     position: sticky;
     bottom: 0;
     z-index: 100;  
+    background: #bae6fd;
+	/*유리 질감
+ background: rgba(186, 230, 253, 0.4); 
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); 
+        border-top: 1px solid rgba(255, 255, 255, 0.3);  */	
  
 }
 
