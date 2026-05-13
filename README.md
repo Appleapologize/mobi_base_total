@@ -15,6 +15,7 @@
   > [!CAUTION]
   > 너무 잦은 새로고침은 아이피 차단의 원인이 됩니다.
 
+ ## <a href="https://github.com/Appleapologize/mobi_base_total/releases">업데이트</a>
 
   
 <!--
