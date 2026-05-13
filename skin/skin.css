@@ -273,6 +273,12 @@ aside{
   padding-bottom: 10px;
   border-bottom: 1px solid var(--line-color);
 }
+.guide-content {
+  width: 100%;
+  transform-origin: top;  
+  /* 열리는 순간 아래 keyframes 애니메이션을 0.25초 동안 실행 */
+  animation: slideDown 0.25s ease-out forwards; 
+}
 
 /* 설명서 화살표 아이콘 (CSS로 구현) */
 .arrow {
@@ -287,6 +293,17 @@ aside{
 /* 설명서 접혔을 때는 아래쪽으로 회전 (∨) */
 .guide-section.collapsed .arrow {
   transform: rotate(135deg);
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: scaleY(0); /* 세로 크기 0에서 시작 */
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1); /* 원래 크기로 스르륵 확장 */
+  }
 }
 
 ul{
