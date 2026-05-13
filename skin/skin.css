@@ -13,6 +13,7 @@
 	--btn-border-radius-s:6px;
 	--btn-border-radius-m:8px;
 	--btn-border-radius-l:12px;
+	--li-marker:"➤  ";/*띄어쓰기도 그대로 들어감 주의*/
 }
 
 * {
@@ -276,8 +277,20 @@ aside{
 .guide-content {
   width: 100%;
   transform-origin: top;  
-  /* 열리는 순간 아래 keyframes 애니메이션을 0.25초 동안 실행 */
+  /* 열리는 순간 keyframes 애니메이션을 0.25초 동안 실행 */
   animation: slideDown 0.25s ease-out forwards; 
+}
+
+ul{
+padding: 20px;
+padding-right:0px;
+width: var(--width-100);
+}
+
+.guide-content ul li {
+  list-style-type: var(--li-marker);
+  list-style-position: outside;
+  margin-bottom: 8px;
 }
 
 /* 설명서 화살표 아이콘 (CSS로 구현) */
@@ -304,11 +317,6 @@ aside{
     opacity: 1;
     transform: scaleY(1); /* 원래 크기로 스르륵 확장 */
   }
-}
-
-ul{
- padding: 10px 0px 10PX 15PX;
-  width: var(--width-100);
 }
 
 /*업데이트*/
