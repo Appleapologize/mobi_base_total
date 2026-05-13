@@ -9,6 +9,10 @@
 	--color-blue:#4a90e2;
 	--mabi-icon-width-height:30px;
 	--mabi-icon-color:#fff;
+	--btn-border-radius-xs:4px;
+	--btn-border-radius-s:6px;
+	--btn-border-radius-m:8px;
+	--btn-border-radius-l:12px;
 }
 
 * {
@@ -23,7 +27,7 @@ html, body{
 body {
     background-color: #f0f4f8;
     font-family: 'Pretendard', sans-serif;
-    margin: 0;
+    margin: 0px;
     padding: 0px;
 }
 
@@ -49,7 +53,7 @@ a{
 /*개별 영역*/
 .card {
     background: var(--background-white-color);
-    border-radius: 12px;
+    border-radius: var(--btn-border-radius-l);
     padding: 20px;
     box-shadow: 0 4px 6px var(--box-shadow-color);
     margin-bottom: 20px;
@@ -81,7 +85,7 @@ h2, h3 {
 .item-select, .amount-input {
     padding: 10px;
     border: 1px solid var(--line-color);
-    border-radius: 6px;
+    border-radius: var(--btn-border-radius-s);
     flex: 1;
 }
 
@@ -114,13 +118,15 @@ th {
     width: 80%;
     padding: 5px;
     border: 1px solid var(--line-color);
-    border-radius: 4px;
+    border-radius: var(--btn-border-radius-xs);
 	text-align: right;
 }
 
 .table-amount{
 	text-align:right;
 }
+
+
 /*추가로 수급하는 원자재 양 */
 .highlight {
     border: 2px solid var(--color-blue);
@@ -141,6 +147,7 @@ th {
 	margin-bottom: 10px; /* 줄 사이 간격 */
 }
 
+
 /* 하단 목록창을 공중에 띄우기 */
 .custom-autocomplete-list {
     position: absolute; /* 공중에 띄움 */
@@ -149,7 +156,7 @@ th {
    width: 45%; /* 입력창 너비에 맞춰 조절됨*/
     background-color: var(--background-white-color) !important;
     border: 1px solid var(--line-color);
-    border-radius: 8px;
+    border-radius: var(--btn-border-radius-m);
     box-shadow: 0 8px 15px rgba(0,0,0,0.15); /* 그림자*/
     z-index: 9999; /* 모든 요소보다 위에 뜨게 설정 */
     max-height: 200px;
@@ -157,6 +164,7 @@ th {
     display: none; /* 평소엔 숨김 */
     margin-top: 5px;
 }
+
 
 /* 목록 내부 아이템 */
 .autocomplete-item {
@@ -174,7 +182,7 @@ th {
     background: #666;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: var(--btn-border-radius-s);
     padding: 0 15px;
     cursor: pointer;
 }
@@ -190,7 +198,7 @@ background: #3c3939;
     background: var(--color-blue);
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: var(--btn-border-radius-m);
     padding: 15px;
     font-size: var(--text-size);
     font-weight: bold;
@@ -206,7 +214,7 @@ background: #3c3939;
     background: #ff5e5e;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: var(--btn-border-radius-s);
     cursor: pointer;
     padding: 0 15px;
 }
@@ -226,7 +234,7 @@ aside{
 .guide-section {
   width: 300px;
   background: var(--background-white-color);
-  border-radius: 12px;
+  border-radius: var(--btn-border-radius-l);
   padding: 20px;
   box-shadow: 0 4px 6px var(--box-shadow-color);
   transition: all 0.3s ease-in-out;
@@ -313,18 +321,27 @@ ul{
   color:#ababab;
 }
 
+p.notice-link{
+	text-align:center;
+	background:rgb(103, 58, 183);
+}
+
+p.notice-link a{
+color:white;	
+}
+
 
 /*사이드 링크*/
 .link-button-area{
     padding: 20px;
 	margin-bottom:10px;
-    border-radius: 12px;
+    border-radius: var(--btn-border-radius-l);
     text-align: center;
     font-size: 1.2rem;	
 }
 .link-button-area div{
 	width: var(--width-100);
-    border-radius: 12px;
+    border-radius: var(--btn-border-radius-l);
     text-align: center;
     font-size: 1.2rem;
 }
@@ -470,7 +487,7 @@ justify-content: center;
 		width:auto;
 	    padding: 15px !important;
 		margin: 0 5PX 0px !important; 		
-		border-radius: 12px;
+		border-radius: var(--btn-border-radius-l);
 	    text-align: center;
 	    font-size: 1rem	!important;		
 	}	
