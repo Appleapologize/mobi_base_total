@@ -15,7 +15,9 @@
   > [!CAUTION]
   > 너무 잦은 새로고침은 아이피 차단의 원인이 됩니다.
 
- ## <a href="https://github.com/Appleapologize/mobi_base_total/releases">업데이트</a>
+ ## <a href="https://github.com/Appleapologize/mobi_base_total/releases">업데이트 목록</a>
+ - 26.04.30 : 제작 레시피 업데이트 완료
+ - 26.05.12 : 초성 검색 기능 추가
 
   
 <!--
