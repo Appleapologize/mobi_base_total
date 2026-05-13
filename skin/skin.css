@@ -282,7 +282,6 @@ aside{
   cursor: pointer;
   font-size: var(--text-size);
   font-weight: bold;
-  color: #333;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--line-color);
 }
