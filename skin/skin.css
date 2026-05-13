@@ -37,6 +37,10 @@ body {
   align-items: flex-start; /* 자식 요소들이 각자 높이에 맞게 정렬 */
 }
 
+a{
+	text-decoration:none;
+}
+
 .container {
     width: var(--width-100);
     margin: 0 auto;
