@@ -13,8 +13,8 @@ async function loadSheetData() {
         });
         
         console.log("레시피 로드 완료:", recipeData.length, "행");
-        const firstRow = document.querySelector('.input-row');
-        if (firstRow) initAutocompleteForRow(firstRow);
+        const initialRows = document.querySelectorAll('.input-row');
+        initialRows.forEach(row => initAutocompleteForRow(row));
     } catch (e) {
         console.error("데이터 로드 에러:", e);
     }
