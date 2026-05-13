@@ -75,6 +75,18 @@ h2, h3 {
     text-align:center;
 }
 
+h3.flex-center-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding-right: 11px;
+}
+
+.flex-center-title .icon {
+  display: inline-flex;
+  align-items: center;
+}
 
 /* 텍스트 입력 영역 */
 .input-row {
