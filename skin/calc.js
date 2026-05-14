@@ -323,4 +323,3 @@ function copyTableToText() {
         alert("복사에 실패했습니다. 브라우저의 클립보드 권한을 확인해 주세요.");
     });
 }
-
