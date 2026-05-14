@@ -293,6 +293,9 @@ function copyTableToImage() {
     });
 }
 
+// ==========================================
+// 9. 결과 테이블 텍스트 복사 기능
+// ==========================================
 function copyTableToText() {
     const finalBody = document.getElementById("final-need");
     if (!finalBody || finalBody.innerText.trim() === "" || finalBody.innerText.includes("데이터 매칭 실패")) {
@@ -320,3 +323,4 @@ function copyTableToText() {
         alert("복사에 실패했습니다. 브라우저의 클립보드 권한을 확인해 주세요.");
     });
 }
+
