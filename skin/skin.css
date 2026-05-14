@@ -1,19 +1,56 @@
 /* style.css */
 :root {
-	--background-white-color: #fff;  
-    --arrow-color:#666;
-    --box-shadow-color:rgba(0,0,0,0.05);
-    --line-color:#eee;
     --text-size:1.2rem;
     --width-100:100%;
-	--color-blue:#4a90e2;
 	--mabi-icon-width-height:30px;
-	--mabi-icon-color:#fff;
 	--btn-border-radius-xs:4px;
 	--btn-border-radius-s:6px;
 	--btn-border-radius-m:8px;
 	--btn-border-radius-l:12px;
 	--li-marker:"➤  ";/*띄어쓰기도 그대로 들어감 주의*/
+
+/* -------- -------- -------- -------- 전체 색상 설정 -------- -------- -------- -------- */
+    --background-color:#f0f4f8;
+    --title-color:#fff; /*제목 글자 색상*/
+	--title-shadow-color:#ccc;
+    --card-background-color: #fff;  
+    --autocomplete-list-shadow-color: rgba(0,0,0,0.15);
+    --th-back-color:#f8f9fa;
+    --arrow-color:#666;
+    --box-shadow-color:rgba(0,0,0,0.05); /*card 그림자 색상*/
+    --line-color:#eee; /*하단 라인 색상*/
+	
+	/*계산하기 버튼 색상*/
+    --calc-btn-back-color:#4a90e2;
+    --calc-btn-hover-back-color:#174b88;
+    --calc-btn-font-color:white;
+
+	/*추가 버튼 색상*/
+    --add-btn-back-color:#666;
+    --add-btn-hover-back-color:#3c3939;
+    --add-btn-font-color:white;
+
+	/*삭제 버튼 색상*/
+    --remove-btn-back-color:#ff5e5e;
+    --remove-btn-hover-back-color:#9e1515;
+    --remove-btn-font-color:white;
+
+	/*레시피 추가 요청 및 의견 제출 버튼 색상*/
+    --notice-btn-back-color:rgb(103, 58, 183);
+    --notice-btn-hover-back-color:rgb(234 91 194);
+    --notice-btn-font-color:white;
+
+	/*마비노기 모바일 공식 사이트 바로가기 버튼 색상*/
+    --mabi-back-color:#ffa340;
+    --mabi-hover-back-color:#d75128;
+    --mabi-font-color:white;
+    --mabi-icon-color:#fff;
+
+	/*모비라이프 바로가기 버튼 색상*/	
+    --mobilife-back-color:#35449c;
+    --mobilife-hover-back-color:#d75128;
+    --mobilife-font-color:white;
+    --mobilife-icon-color:#fff;
 }
 
 * {
@@ -26,7 +63,7 @@ html, body{
 }
 
 body {
-    background-color: #f0f4f8;
+    background-color: var(--background-colo);
     font-family: 'Pretendard', sans-serif;
     margin: 0px;
     padding: 0px;
@@ -46,26 +83,21 @@ a{
 	text-decoration:none;
 }
 
-.container {
-    width: var(--width-100);
-    margin: 0 auto;
+#head-title{
+    text-align: center;
+    color:var(--title-color);
+    text-shadow: 
+        2px 2px 2px var(--title-shadow-color), 
+        -1px -1px 2px var(--title-shadow-color);
 }
 
-/*개별 영역*/
+/*---------개별 카드 영역----------*/
 .card {
-    background: var(--background-white-color);
+    background: var(--card-background-color);
     border-radius: var(--btn-border-radius-l);
     padding: 20px;
     box-shadow: 0 4px 6px var(--box-shadow-color);
     margin-bottom: 20px;
-}
-
-#head-title{
-    text-align: center;
-    color:rgb(255, 255, 255);
-    text-shadow: 
-        2px 2px 2px #ccc, 
-        -1px -1px 2px #bbb
 }
 
 h2, h3 {
@@ -75,6 +107,7 @@ h2, h3 {
     text-align:center;
 }
 
+/*토글 제외한 사이드 카드 구역*/
 h3.flex-center-title{
     display: flex;
     justify-content: space-between;
@@ -88,13 +121,24 @@ h3.flex-center-title{
   align-items: center;
 }
 
-/* 텍스트 입력 영역 */
+
+/*------------------계산기 영역-----------------*/
+
+.container {
+    width: var(--width-100);
+    margin: 0 auto;
+	flex: 1; /* 설명서를 제외한 나머지 공간 다 차지 */
+    min-width: 0; /* 박스 깨짐 방지 */
+}
+
+/*----아이템 적는 영역----*/
 .input-row {
     display: flex;
     gap: 10px;
     margin-bottom: 15px;
 }
 
+/*아이템 이름 검색 및 수량 작성 영역*/
 .item-select, .amount-input {
     padding: 10px;
     border: 1px solid var(--line-color);
@@ -102,7 +146,7 @@ h3.flex-center-title{
     flex: 1;
 }
 
-/* 총 수량 영역 */
+/*----필요한 수량, 보관중인 수량, 수급할 양 나오는 영역----*/
 .result-section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -123,10 +167,11 @@ th, td {
 }
 
 th {
-    background: #f8f9fa;
+    background: var(--th-back-color);
     font-size: 0.9rem;
 }
 
+/*보관중인 재료 수량 칸*/
 .table-input {
     width: 80%;
     padding: 5px;
@@ -134,17 +179,18 @@ th {
     border-radius: var(--btn-border-radius-xs);
 	text-align: right;
 }
-
+/*모든 칸의 수량 칸*/
 .table-amount{
 	text-align:right;
 }
 
 
-/*추가로 수급하는 원자재 양 */
+/*수급할 재료 칸 */
 .highlight {
-    border: 2px solid var(--color-blue);
+    border: 2px solid var(--calc-btn-back-color);
 }
 
+/*보관중인 재료 하단의 표*/
 #current-stock th, #current-stock td {
     padding: 7.5px 10px;
     text-align: left;
@@ -152,7 +198,7 @@ th {
 }
 
 
-/* input-row를 기준으로 위치를 잡게 한다.*/
+/* input-row를 기준으로 위치를 잡게*/
 .input-row {
     position: relative; /* 밑에 나타나는 목록창이 이 안에서 위치함 */
     display: flex;
@@ -161,16 +207,16 @@ th {
 }
 
 
-/* 하단 목록창을 공중에 띄우기 */
+/* 검색시 나오는 목록창*/
 .custom-autocomplete-list {
     position: absolute; /* 공중에 띄움 */
     top: 100%; /* 입력창 바로 밑 지점 */
     left: 0;
-   width: 45%; /* 입력창 너비에 맞춰 조절됨*/
-    background-color: var(--background-white-color) !important;
+  	width: 45%; /* 입력창 너비에 맞춰 조절됨*/
+    background-color: var(--card-background-color) !important;
     border: 1px solid var(--line-color);
     border-radius: var(--btn-border-radius-m);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.15); /* 그림자*/
+    box-shadow: 0 8px 15px var(--autocomplete-list-shadow-color:); /* 그림자*/
     z-index: 9999; /* 모든 요소보다 위에 뜨게 설정 */
     max-height: 200px;
     overflow-y: auto;
@@ -183,17 +229,17 @@ th {
 .autocomplete-item {
     padding: 10px 15px;
     cursor: pointer;
-    border-bottom: 1px solid #f9f9f9;
+    border-bottom: 1px solid var(--line-color);
 }
 
 .autocomplete-item:hover {
-    background-color: #f0f7ff;
+    background-color: var(--background-color);
 }
 
 /*추가 버튼*/
 .btn-add {
-    background: #666;
-    color: white;
+    background: var(--add-btn-back-color);
+    color: var(--add-btn-font-color);
     border: none;
     border-radius: var(--btn-border-radius-s);
     padding: 0 15px;
@@ -201,15 +247,15 @@ th {
 }
 
 .btn-add:hover{
-background: #3c3939;	
+background: var( --add-btn-hover-back-color);	
 }
 
 
 /*계산하기 버튼*/
 .btn-calc {
     width: var(--width-100);
-    background: var(--color-blue);
-    color: white;
+    background: var(--calc-btn-back-color);
+    color: var(--calc-btn-font-color:);
     border: none;
     border-radius: var(--btn-border-radius-m);
     padding: 15px;
@@ -219,13 +265,13 @@ background: #3c3939;
 }
 
 .btn-calc:hover{
-	background:#174b88;
+	background:var(--calc-btn-hover-back-color);
 }
 
 /*삭제 버튼*/
 .btn-remove {
-    background: #ff5e5e;
-    color: white;
+    background: var(--remove-btn-back-color);
+    color: var(--remove-btn-font-color);
     border: none;
     border-radius: var(--btn-border-radius-s);
     cursor: pointer;
@@ -233,20 +279,20 @@ background: #3c3939;
 }
 
 .btn-remove:hover{
-	background:#9e1515;	
+	background:var(--remove-btn-hover-back-color);	
 }
 
-/*왼쪽 영역(데스크탑 기준)*/
+/*--------------왼쪽 영역(데스크탑 기준)---------------*/
 aside{
 	position: sticky;
     top: 20px;
     z-index: 100;
 }
 
-/* 설명서 (기본: 펼쳐진 상태) */
+/*-----설명서 (기본: 펼쳐진 상태)----*/
 .guide-section {
   width: 300px;
-  background: var(--background-white-color);
+  background: var(--card-background-color);
   border-radius: var(--btn-border-radius-l);
   padding: 20px;
   box-shadow: 0 4px 6px var(--box-shadow-color);
@@ -330,7 +376,7 @@ width: var(--width-100);
   }
 }
 
-/*업데이트*/
+/*----업데이트----*/
 .notice{
 	max-width:300px;
 	margin-top: 20px;
@@ -359,7 +405,7 @@ width: var(--width-100);
 
 p.notice-link{
     text-align: center;
-    background: rgb(103, 58, 183);
+    background: var(--notice-btn-back-color);
     padding: 10px 15px;
     margin: 10px auto;
     width: fit-content;
@@ -367,12 +413,12 @@ p.notice-link{
 }
 
 p.notice-link a{
-color:white;	
+color:var(--notice-btn-font-color);	
 display: inline-block;	
 }
 
 p.notice-link:hover{
-	background:rgb(234 91 194);
+	background:var(--notice-btn-hover-back-color);
 }
 
 p.notice-link a:hover{
@@ -382,7 +428,7 @@ transition: transform 0.3s ease-in-out;
 }
 
 
-/*사이드 링크*/
+/*----바로가기 링크----*/
 .link-button-area{
     padding: 20px;
 	margin-bottom:10px;
@@ -410,13 +456,17 @@ transition: transform 0.3s ease-in-out;
 }
 
 .link-button-area .mabi_official{
-    background: #ffa340;
+    background:var(--mabi-back-color) ;
   	display: inline-block;
 }
 
 .link-button-area .icon{
 	padding:5px;
 	margin-bottom:0;
+}
+
+.mabi_official:hover{
+	background:var(--mabi-hover-back-color);
 }
 
 .link-button-area .mabi_official #mabinogi{
@@ -427,46 +477,31 @@ transition: transform 0.3s ease-in-out;
 }
 
 .link-button-area .mabi_official a{
-	color: white; 		
+	color: var(--mabi-font-color); 		
 }
 
 .link-button-area .mobi_life{
-    background: #35449c;
+    background: var(--mobilife-back-color);
   	display: inline-block;	
 }
 
 .link-button-area .mobi_life a{
-	color: white; 		
+	color: var(--mobilife-font-color); 		
 }
 
-.mabi_official:hover{
-	background:#d75128;
-}
-.mabi_official a:hover{
-	display: inline-block;
-		transform: scale(1.1);
-	transition: transform 0.3s ease-in-out;
-}
 .mobi_life:hover{
-	background:#5ca9c7;
+	background:var(--mobilife-hover-back-color);
 }
 
-.mobi_life a:hover{
+.mobi_life a:hover, .mabi_official a:hover{
 	display: inline-block;
 	transform: scale(1.1);
 transition: transform 0.3s ease-in-out;	
 }
-/* 계산 되는 영역 */
-.container {
-  flex: 1; /* 설명서를 제외한 나머지 공간 다 차지 */
-  min-width: 0; /* 박스 깨짐 방지 */
-}
 
 
 
-
-
-/*footer*/
+/*-------------footer----------*/
 footer *{
 	margin:0;
 	padding:0;
