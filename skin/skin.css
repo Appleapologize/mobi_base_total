@@ -407,7 +407,7 @@ width: var(--width-100);
 .notice-link a{
   color:var(--notice-link-font);
 }
-.notice-link a:hover{
+div.notice-link a:hover{
   color:var(--notice-link-hover-font);
 }
 
