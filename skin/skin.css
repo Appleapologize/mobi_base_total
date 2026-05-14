@@ -164,6 +164,116 @@ a{
         2px 2px 2px var(--title-shadow-color), 
         -1px -1px 2px var(--title-shadow-color);
 }
+/*---------다크모드 버튼----------*/
+.theme-button-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 1400px;
+    margin: 20px auto 0 auto;
+    padding: 0 40px;
+    width: var(--width-100);
+}
+
+/* 동그라미 버튼 기본 스타일 */
+.theme-icon-button {
+    position: absolute;      /* 부모(.head)를 기준으로 절대 위치 설정 */
+    right: 40px;             /* .head의 패딩 값에 맞춰 우측 끝에 배치 */
+    flex-shrink: 0;            
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--line-color);
+    background-color: var(--background-card);
+    color: var(--text-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 4px 6px var(--box-shadow-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s 
+
+}
+
+.theme-icon-button:active {
+    transform: scale(0.95);
+}
+
+/* 애니메이션*/
+.feather-sun-moon {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-sun-body {
+    transition: r 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sun-beams {
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+.mask-circle {
+    transition: cx 0.5s cubic-bezier(0.4, 0, 0.2, 1), cy 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ------------------------------------------
+   [상태 1] 라이트 모드 (기본 또는 html[data-theme="light"])
+   ------------------------------------------ */
+[data-theme="light"] .theme-icon-button,
+:root:not([data-theme="dark"]) .theme-icon-button {
+    color: #ff9e00; /* 태양색 */
+}
+
+[data-theme="light"] .feather-sun-moon {
+    transform: rotate(0deg);
+}
+
+[data-theme="light"] .sun-beams {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+[data-theme="light"] .main-sun-body {
+    r: 5; /* 태양 크기 */
+}
+
+/* 마스크 서클을 우측 상단 밖으로 치워두어 완전한 원형 유지 */
+[data-theme="light"] .mask-circle {
+    cx: 24;
+    cy: 4;
+}
+
+/* ------------------------------------------
+   [상태 2] 다크 모드 (html[data-theme="dark"])
+   ------------------------------------------ */
+[data-theme="dark"] .theme-icon-button {
+    color: #f1f5f9; /* 달 색상 */
+}
+
+/* 달로 변할 때 전체적으로 살짝 회전interaction */
+[data-theme="dark"] .feather-sun-moon {
+    transform: rotate(40deg);
+}
+
+/* 1. 태양 광선들은 회전하면서 투명하게 흡수됨 */
+[data-theme="dark"] .sun-beams {
+    opacity: 0;
+    transform: rotate(-45deg);
+}
+
+/* 2. 중앙 원 크기가 달의 바디 규격만큼 살짝 커짐 */
+[data-theme="dark"] .main-sun-body {
+    r: 9;
+}
+
+/* 3. 우측 상단에 있던 투명 마스크가 안쪽으로 들어와 원을 파먹어 '초승달'로 만듦 */
+[data-theme="dark"] .mask-circle {
+    cx: 16;
+    cy: 8;
+}
+
 
 /*---------개별 카드 영역----------*/
 .card {
@@ -686,4 +796,19 @@ justify-content: center;
 .result-section .card.highlight {
     grid-column: 1 / -1; /* grid의 첫 번째 줄부터 마지막 줄까지 차지 */
    }
+
+
+      .head {
+        padding: 0 20px;
+        justify-content: center; /* 모바일에서도 나란히 중앙 정렬 유지 */
+    }
+    .theme-button-wrapper {
+        padding: 0 15px;
+        margin-top: 10px;
+    }
+  
+      .theme-icon-button {
+position: relative;
+        right: 0;
+    }	
 }
