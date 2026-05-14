@@ -16,7 +16,33 @@
    <script src="./skin/calc.js" defer></script>
 </head>
 <body>
-        <h1 id="head-title">마비노기 모바일 원재료 수량 계산기</h1>
+<div class="head">
+    <h1 id="head-title">마비노기 모바일 원재료 수량 계산기</h1>
+<!-- 단일 원형 버튼 안에서 다크모드 아이콘 -->
+    <button id="theme-toggle-btn" class="theme-icon-button" aria-label="테마 변경">
+        <svg xmlns="w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-sun-moon">
+            <!-- 달로 변할 때 파먹는 그림자 마스크 정의 -->
+            <mask id="moon-mask">
+                <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                <circle class="mask-circle" cx="24" cy="4" r="9" fill="black" />
+            </mask>
+            <!-- 메인 중앙 원 (태양 바디 -> 초승달 바디) -->
+            <circle class="main-sun-body" cx="12" cy="12" r="5" fill="currentColor" mask="url(#moon-mask)" />
+            <!-- 태양 광선 8개 라인 -->
+            <g class="sun-beams" stroke="currentColor">
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </g>
+        </svg>
+    </button>
+</div>
+    
 <div class="main-wrapper">  
   <aside>
       <div class="guide-section card collapsed" id="guideSidebar">
