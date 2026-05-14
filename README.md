@@ -20,6 +20,7 @@
  ## <a href="https://github.com/Appleapologize/mobi_base_total/releases">업데이트 목록</a>
  - 26.04.30 : 제작 레시피 업데이트 완료
  - 26.05.12 : 초성 검색 기능 추가
+ - 26.05.14 : 다크모드, 결과를 텍스트 및 이미지 저장 기능 추가
 
   
 <!--
