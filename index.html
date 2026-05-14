@@ -13,6 +13,7 @@
 </script>
     <link rel="stylesheet" href="./skin/skin.css">
     <title>마비노기 모바일 원재료 수량 계산기</title>
+  <script src="cloudflare.com"></script>
    <script src="./skin/calc.js" defer></script>
 </head>
 <body>
@@ -203,8 +204,13 @@
                 </table>
             </div>
         </section>
+   <div class="btn-copy">
+        <button class="copy-text-btn" onclick="copyTableToText()">📋 텍스트 복사</button>
+        <button class="copy-img-btn" onclick="copyTableToImage()">📸 이미지 복사</button>
+    </div>          
     </div>
-   </div>  
+   </div>    
+ 
     
     <footer>
         <p class="bold">이 사이트에 사용된 일부 컨텐츠의 저작권은 (주)넥슨코리아에 있습니다</p>
