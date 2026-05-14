@@ -820,7 +820,7 @@ justify-content: center;
     }
   
       .theme-icon-button {
-position: relative;
-        right: 0;
+		position: relative;
+        right: -10px;
     }	
 }
