@@ -601,11 +601,11 @@ width: var(--width-100);
   width:var(--width-100);
   text-align:center;
 }
-.notice-link a{
+div.notice-link a{
   color:var(--notice-link-font);
 }
 div.notice-link a:hover{
-  color: white;
+  color: var(--notice-link-hover-font);
 }
 
 p.notice-link{
@@ -618,7 +618,7 @@ p.notice-link{
 }
 
 p.notice-link a{
-color:var(--notice-btn-font-color);	
+color:white;
 display: inline-block;	
 }
 
@@ -629,7 +629,8 @@ p.notice-link:hover{
 p.notice-link a:hover{
 	display: inline-block;
 	transform: scale(1.1);
-transition: transform 0.3s ease-in-out;	
+transition: transform 0.3s ease-in-out;
+	color:white;
 }
 
 
