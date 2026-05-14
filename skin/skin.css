@@ -64,9 +64,63 @@
 	--footer-back-color-glass: rgba(186, 230, 253, 0.4);
 	--footer-border-color-glass:rgba(255, 255, 255, 0.3);
 }
-/* -------- -------- -------- -------- 다크 모드 색상 설정 -------- -------- -------- -------- */
+	/* -------- -------- -------- -------- 다크 모드 색상 설정 -------- -------- -------- -------- */
 [data-theme="dark"] {
+    --background-color: #0f172a;       
+    --title-color: #f8fafc;                       
+    --title-shadow-color: #334155;                
+    --card-background-color: #1e293b;             
+    --autocomplete-list-shadow-color: rgba(0,0,0,0.5); 
+    --th-back-color: #334155;                    
+    --arrow-color: #94a3b8;                       
+    --box-shadow-color: rgba(0, 0, 0, 0.3);        
+    --line-color: #334155;                       
+	
+    /* 계산하기 버튼 색상 (다크 모드에 맞춰 채도 조절) */
+    --calc-btn-back-color: #3b82f6;               
+    --calc-btn-hover-back-color: #1d4ed8;         
+    --calc-btn-font-color: #ffffff;
+
+    /* 추가 버튼 색상 */
+    --add-btn-back-color: #475569;                
+    --add-btn-hover-back-color: #334155;          
+    --add-btn-font-color: #ffffff;
+
+    /* 삭제 버튼 색상 (눈이 아프지 않은 톤 다운된 레드) */
+    --remove-btn-back-color: #ef4444;             
+    --remove-btn-hover-back-color: #b91c1c;       
+    --remove-btn-font-color: #ffffff;
+
+    /* --업데이트 란 색상-- */
+    /* 자세히 보기 글자 색상 */
+    --notice-link-font: #94a3b8;                 
+    --notice-link-hover-font: #cbd5e1;	
+	
+    /* 레시피 추가 요청 및 의견 제출 버튼 색상 */
+    --notice-btn-back-color: #7c3aed;             
+    --notice-btn-hover-back-color: #db2777;      
+    --notice-btn-font-color: #ffffff;
+
+    /* 마비노기 모바일 공식 사이트 바로가기 버튼 색상 */
+    --mabi-back-color: #f97316;              
+    --mabi-hover-back-color: #ea580c;             
+    --mabi-font-color: #ffffff;
+    --mabi-icon-color: #ffffff;
+
+    /* 모비라이프 바로가기 버튼 색상 */	
+    --mobilife-back-color: #4f46e5;           
+    --mobilife-hover-back-color: #ea580c;        
+    --mobilife-font-color: #ffffff;
+    --mobilife-icon-color: #ffffff;
+
+    /* -----footer 색상----- */
+    --footer-back-color: #0f172a;                 
+
+    /* footer 배경 유리 질감 */
+    --footer-back-color-glass: rgba(30, 41, 59, 0.7); 
+    --footer-border-color-glass: rgba(255, 255, 255, 0.1);
 }
+
 
 
 * {
