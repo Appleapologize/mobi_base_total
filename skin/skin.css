@@ -195,7 +195,7 @@ a{
     height: 44px;
     border-radius: 50%;
     border: 1px solid var(--line-color);
-    background-color: var(--background-card);
+    background-color: var(--card-background-color);
     color: var(--text-color);
     cursor: pointer;
     display: flex;
