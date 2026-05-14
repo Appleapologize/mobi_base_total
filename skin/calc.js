@@ -215,6 +215,27 @@ function calculateFinal() {
     });
 }
 
+// ==========================================
+// 7. 원형 단일 버튼 다크 모드 버튼
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    const themeToggleBtn = document.getElementById("theme-toggle-btn");
+    if (!themeToggleBtn) return;
+
+    // 저장소 확인 후 초기 속성 주입
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+
+    // 버튼 클릭 이벤트 처리
+    themeToggleBtn.addEventListener("click", () => {
+        const currentTheme = document.documentElement.getAttribute("data-theme");
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+    });
+});
+
 window.onload = loadSheetData;
 
 function toggleGuide() {
