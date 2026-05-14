@@ -63,7 +63,7 @@ html, body{
 }
 
 body {
-    background-color: var(--background-colo);
+    background-color: var(--background-color);
     font-family: 'Pretendard', sans-serif;
     margin: 0px;
     padding: 0px;
@@ -255,7 +255,7 @@ background: var( --add-btn-hover-back-color);
 .btn-calc {
     width: var(--width-100);
     background: var(--calc-btn-back-color);
-    color: var(--calc-btn-font-color:);
+    color: var(--calc-btn-font-color);
     border: none;
     border-radius: var(--btn-border-radius-m);
     padding: 15px;
