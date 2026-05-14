@@ -57,8 +57,12 @@
     --mobilife-font-color:white;
     --mobilife-icon-color:#fff;
 
-	/*footer 색상*/
+	/*-----footer 색상-----*/
 	--footer-back-color:#bae6fd;
+
+	/*footer 배경 유리 질감*/
+	--footer-back-color-glass: rgba(186, 230, 253, 0.4);
+	--footer-border-color-glass:rgba(255, 255, 255, 0.3);
 }
 /* -------- -------- -------- -------- 다크 모드 색상 설정 -------- -------- -------- -------- */
 [data-theme="dark"] {
@@ -531,11 +535,11 @@ footer{
     z-index: 100;  
     background: var(--footer-back-color);
 	/*유리 질감
- background: rgba(186, 230, 253, 0.4); 
+ background: var(--footer-back-color-glass); 
 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); 
-        border-top: 1px solid rgba(255, 255, 255, 0.3);  */	
+        border-top: 1px solid var(--footer-border-color-glass);  */	
  
 }
 
