@@ -605,7 +605,7 @@ width: var(--width-100);
   color:var(--notice-link-font);
 }
 div.notice-link a:hover{
-  color:var(--notice-link-font);
+  color: white;
 }
 
 p.notice-link{
