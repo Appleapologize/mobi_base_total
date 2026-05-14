@@ -215,9 +215,7 @@ function calculateFinal() {
     });
 }
 
-// ==========================================
-// 7. 원형 단일 버튼 다크 모드 버튼
-// ==========================================
+// 7. 다크 모드 버튼
 document.addEventListener("DOMContentLoaded", () => {
     const themeToggleBtn = document.getElementById("theme-toggle-btn");
     if (!themeToggleBtn) return;
