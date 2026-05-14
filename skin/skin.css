@@ -38,6 +38,7 @@
 	/*--업데이트 란 색상--*/
 	/*자세히 보기 글자 색상*/
 	--notice-link-font:rgba(171,171,171,1);
+	--notice-link-hover-font:rgba(128,128,128,1);	
 	
 	/*레시피 추가 요청 및 의견 제출 버튼 색상*/
     --notice-btn-back-color:rgb(103, 58, 183);
@@ -405,6 +406,9 @@ width: var(--width-100);
 }
 .notice-link a{
   color:var(--notice-link-font);
+}
+.notice-link a:hover{
+  color:var(--notice-link-hover-font);
 }
 
 p.notice-link{
