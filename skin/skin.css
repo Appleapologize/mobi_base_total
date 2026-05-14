@@ -58,6 +58,9 @@
     --mobilife-font-color:white;
     --mobilife-icon-color:#fff;
 
+	/*복사 및 붙여넣기*/
+	--btn-copy-hover-back:#ededed;
+
 	/*-----footer 색상-----*/
 	--footer-back-color:#bae6fd;
 
@@ -115,6 +118,9 @@
     --mobilife-hover-back-color: #901480;        
     --mobilife-font-color: #ffffff;
     --mobilife-icon-color: #ffffff;
+
+	/*복사 및 붙여넣기*/
+	--btn-copy-hover-back:#7f7f7f;
 
     /* -----footer 색상----- */
     --footer-back-color: #666b7a;                 
@@ -376,7 +382,6 @@ th {
     border: 1px solid var(--line-color);
     border-radius: var(--btn-border-radius-xs);
 	text-align: right;
-	color:var(--text-color);
 }
 /*모든 칸의 수량 칸*/
 .table-amount{
@@ -416,7 +421,7 @@ th {
     background-color: var(--card-background-color) !important;
     border: 1px solid var(--line-color);
     border-radius: var(--btn-border-radius-m);
-    box-shadow: 0 8px 15px var(--autocomplete-list-shadow-color:); /* 그림자*/
+    box-shadow: 0 8px 15px var(--autocomplete-list-shadow-color); /* 그림자*/
     z-index: 9999; /* 모든 요소보다 위에 뜨게 설정 */
     max-height: 200px;
     overflow-y: auto;
@@ -705,7 +710,30 @@ transition: transform 0.3s ease-in-out;
 transition: transform 0.3s ease-in-out;	
 }
 
+/*-------------복사 및 저장----------*/
+.btn-copy{
+  width:var(--width-100);
+  display: flex;
+  gap: 8px;
+  box-sizing: border-box;
+}
 
+.btn-copy button{
+    cursor: pointer;
+    flex: 1;
+    width: 100%;
+    white-space: nowrap;
+    font-size: 1.2rem;
+    padding: 10px;
+    border: none;
+    border-radius: var(--btn-border-radius-l);
+    background: var(--card-background-color);
+    color: var(--text-color);
+}
+
+.btn-copy button:hover{
+  background: var(--btn-copy-hover-back);
+}
 
 /*-------------footer----------*/
 footer *{
