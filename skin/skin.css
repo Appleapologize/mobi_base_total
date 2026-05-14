@@ -35,6 +35,10 @@
     --remove-btn-hover-back-color:#9e1515;
     --remove-btn-font-color:white;
 
+	/*--업데이트 란 색상--*/
+	/*자세히 보기 글자 색상*/
+	--notice-link-font:rgba(171,171,171,1);
+	
 	/*레시피 추가 요청 및 의견 제출 버튼 색상*/
     --notice-btn-back-color:rgb(103, 58, 183);
     --notice-btn-hover-back-color:rgb(234 91 194);
@@ -400,7 +404,7 @@ width: var(--width-100);
   text-align:center;
 }
 .notice-link a{
-  color:#ababab;
+  color:var(--notice-link-font);
 }
 
 p.notice-link{
