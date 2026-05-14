@@ -164,6 +164,18 @@ a{
         2px 2px 2px var(--title-shadow-color), 
         -1px -1px 2px var(--title-shadow-color);
 }
+
+.head {
+ position: relative;      
+  display: flex;           
+  align-items: center;     
+  justify-content: center; 
+  max-width: 1400px;
+  margin: 30px auto 10px auto;
+  padding: 0 40px;
+  width: var(--width-100);   
+}
+
 /*---------다크모드 버튼----------*/
 .theme-button-wrapper {
     display: flex;
