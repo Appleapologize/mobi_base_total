@@ -9,7 +9,7 @@
 	--btn-border-radius-l:12px;
 	--li-marker:"➤  "; /*띄어쓰기도 그대로 들어감 주의*/
 
-/* -------- -------- -------- -------- 전체 색상 설정 -------- -------- -------- -------- */
+/* -------- -------- -------- -------- 라이트 모드 색상 설정 -------- -------- -------- -------- */
     --background-color: #f0f4f8;
     --title-color:#fff; /*제목 글자 색상*/
 	--title-shadow-color:#ccc;
@@ -56,7 +56,14 @@
     --mobilife-hover-back-color:#d75128;
     --mobilife-font-color:white;
     --mobilife-icon-color:#fff;
+
+	/*footer 색상*/
+	--footer-back-color:#bae6fd;
 }
+/* -------- -------- -------- -------- 다크 모드 색상 설정 -------- -------- -------- -------- */
+[data-theme="dark"] {
+}
+
 
 * {
 	box-sizing: border-box; 
@@ -519,14 +526,10 @@ footer{
 	padding: 20px;
     width: 100%;
     text-align: center;
-    padding: 20px;
-    background: #bae6fd;
-    width: 100%;
-    text-align: center;
     position: sticky;
     bottom: 0;
     z-index: 100;  
-    background: #bae6fd;
+    background: var(--footer-back-color);
 	/*유리 질감
  background: rgba(186, 230, 253, 0.4); 
 
