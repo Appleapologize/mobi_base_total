@@ -7,10 +7,10 @@
 	--btn-border-radius-s:6px;
 	--btn-border-radius-m:8px;
 	--btn-border-radius-l:12px;
-	--li-marker:"➤  ";/*띄어쓰기도 그대로 들어감 주의*/
+	--li-marker:"➤  "; /*띄어쓰기도 그대로 들어감 주의*/
 
 /* -------- -------- -------- -------- 전체 색상 설정 -------- -------- -------- -------- */
-    --background-color:#f0f4f8;
+    --background-color: #f0f4f8;
     --title-color:#fff; /*제목 글자 색상*/
 	--title-shadow-color:#ccc;
     --card-background-color: #fff;  
