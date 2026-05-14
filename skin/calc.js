@@ -215,7 +215,9 @@ function calculateFinal() {
     });
 }
 
-// 7. 다크 모드 버튼
+// ==========================================
+// 7. 원형 단일 버튼 다크 모드 버튼
+// ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const themeToggleBtn = document.getElementById("theme-toggle-btn");
     if (!themeToggleBtn) return;
@@ -238,4 +240,83 @@ window.onload = loadSheetData;
 
 function toggleGuide() {
     document.getElementById('guideSidebar').classList.toggle('collapsed');
+}
+
+//8.결과 영역 이미지 클립보드 복사 완료 후 저장 여부 묻기
+function copyTableToImage() {
+    const finalBody = document.getElementById("final-need");
+    if (!finalBody || finalBody.innerText.trim() === "" || finalBody.innerText.includes("데이터 매칭 실패")) {
+        alert("캡처할 결과 화면이 없습니다. 먼저 계산을 완료해주세요.");
+        return;
+    }
+
+    const targetElement = finalBody.closest('.result-section') || finalBody.parentElement.parentElement;
+
+    html2canvas(targetElement, { 
+        backgroundColor: "#f0f4f8",
+        scale: 2, 
+        logging: false,
+        useCORS: true 
+    }).then(canvas => {
+        // 1. 먼저 이미지 데이터 블롭(Blob) 추출
+        canvas.toBlob(blob => {
+            if (!blob) {
+                alert("이미지 변환에 실패했습니다.");
+                return;
+            }
+            
+            try {
+                const item = new ClipboardItem({ "image/png": blob });
+                
+                // 2. 무조건 클립보드에 이미지 복사부터 실행
+                navigator.clipboard.write([item]).then(() => {
+                    
+                    // 3. 복사 성공 메시지와 함께 이미지 저장(다운로드) 여부를 묻습니다.
+                    const isDownload = confirm("📸 결과 화면이 클립보드에 복사되었습니다!\n\n추가로 이미지 파일(.png)로도 저장하시겠습니까?");
+                    
+                    if (isDownload) {
+                        // 유저가 '확인'을 누르면 파일 다운로드창 실행
+                        const link = document.createElement('a');
+                        link.href = canvas.toDataURL('image/png');
+                        link.download = `마비노기모바일_재료계산결과_${new Date().toISOString().slice(0,10)}.png`;
+                        link.click();
+                    }
+                    
+                }).catch(err => {
+                    console.error("이미지 복사 실패:", err);
+                    alert("브라우저 보안 정책으로 자동 복사가 실패했습니다. 크롬 또는 에지 브라우저를 사용해 주세요.");
+                });
+            } catch (e) {
+                alert("현재 브라우저에서는 이미지 복사 기능을 지원하지 않습니다.");
+            }
+        }, "image/png");
+    });
+}
+
+function copyTableToText() {
+    const finalBody = document.getElementById("final-need");
+    if (!finalBody || finalBody.innerText.trim() === "" || finalBody.innerText.includes("데이터 매칭 실패")) {
+        alert("복사할 결과 데이터가 없습니다. 먼저 계산을 완료해주세요.");
+        return;
+    }
+
+    const rows = finalBody.querySelectorAll("tr");
+    let textResult = "[마비노기 모바일 수급 재료 목록]\n";
+    
+    rows.forEach(row => {
+        const cells = row.querySelectorAll("td");
+        if (cells.length >= 2) {
+            const itemName = cells[0].innerText.trim();
+            const itemQty = cells[1].innerText.trim();
+            textResult += `${itemName}: ${itemQty}개\n`;
+        }
+    });
+
+    // 클립보드에 텍스트 복사 실행
+    navigator.clipboard.writeText(textResult).then(() => {
+        alert("📋 수급할 재료 목록이 텍스트로 복사되었습니다!\n메모장이나 메신저에 바로 붙여넣기(Ctrl+V) 하세요.");
+    }).catch(err => {
+        console.error("텍스트 복사 실패:", err);
+        alert("복사에 실패했습니다. 브라우저의 클립보드 권한을 확인해 주세요.");
+    });
 }
