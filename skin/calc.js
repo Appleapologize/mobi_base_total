@@ -243,55 +243,85 @@ function toggleGuide() {
 }
 
 //8.결과 영역 이미지 클립보드 복사 완료 후 저장 여부 묻기
+// ==========================================
+// 8. 결과 영역 이미지 클립보드 복사 완료 후 저장 여부 묻기 (버그 수정본)
+// ==========================================
 function copyTableToImage() {
+    // 캡처할 최종 대상 컨테이너('.result-section')를 직접 선택합니다.
+    const targetElement = document.querySelector('.result-section');
     const finalBody = document.getElementById("final-need");
-    if (!finalBody || finalBody.innerText.trim() === "" || finalBody.innerText.includes("데이터 매칭 실패")) {
+    
+    // 계산 결과 데이터가 비어있는지 검증
+    if (!finalBody || finalBody.innerText.trim() === "" || finalBody.innerHTML.includes("데이터 매칭 실패")) {
         alert("캡처할 결과 화면이 없습니다. 먼저 계산을 완료해주세요.");
         return;
     }
 
-    const targetElement = finalBody.closest('.result-section') || finalBody.parentElement.parentElement;
+    if (!targetElement) {
+        alert("캡처 영역을 찾을 수 없습니다.");
+        return;
+    }
+
+    // 라이브러리 미설치 및 코드펜/깃허브 환경 예외 처리
+    if (typeof html2canvas === 'undefined') {
+        alert("이미지 변환 라이브러리(html2canvas)를 로드하는 중입니다. 잠시 후 다시 시도해 주세요.");
+        return;
+    }
+
+    // 현재 적용된 테마(라이트/다크)의 배경색을 자동으로 감지하여 캡처 배경으로 지정
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const captureBgColor = currentTheme === "dark" ? "#121212" : "#f0f4f8";
 
     html2canvas(targetElement, { 
-        backgroundColor: "#f0f4f8",
-        scale: 2, 
+        backgroundColor: captureBgColor,
+        scale: 2,               // 고해상도 캡처
         logging: false,
-        useCORS: true 
+        useCORS: true,          // 외부 리소스 제한 해제
+        allowTaint: true
     }).then(canvas => {
-        // 1. 먼저 이미지 데이터 블롭(Blob) 추출
         canvas.toBlob(blob => {
             if (!blob) {
-                alert("이미지 변환에 실패했습니다.");
+                alert("이미지 변환 처리 중 오류가 발생했습니다.");
                 return;
             }
             
             try {
+                // 클립보드 아이템 객체 생성 및 복사 실행
                 const item = new ClipboardItem({ "image/png": blob });
                 
-                // 2. 무조건 클립보드에 이미지 복사부터 실행
                 navigator.clipboard.write([item]).then(() => {
-                    
-                    // 3. 복사 성공 메시지와 함께 이미지 저장(다운로드) 여부를 묻습니다.
-                    const isDownload = confirm("📸 결과 화면이 클립보드에 복사되었습니다!\n\n추가로 이미지 파일(.png)로도 저장하시겠습니까?");
+                    const isDownload = confirm("📸 결과 화면이 클립보드에 복사되었습니다!\n\n추가로 이미지 파일(.png)로 다운로드하시겠습니까?");
                     
                     if (isDownload) {
-                        // 유저가 '확인'을 누르면 파일 다운로드창 실행
                         const link = document.createElement('a');
                         link.href = canvas.toDataURL('image/png');
                         link.download = `마비노기모바일_재료계산결과_${new Date().toISOString().slice(0,10)}.png`;
                         link.click();
                     }
-                    
                 }).catch(err => {
-                    console.error("이미지 복사 실패:", err);
-                    alert("브라우저 보안 정책으로 자동 복사가 실패했습니다. 크롬 또는 에지 브라우저를 사용해 주세요.");
+                    console.error("클립보드 API 거부:", err);
+                    // 모바일 브라우저 및 인앱 브라우저 대응을 위한 강제 다운로드 우회책
+                    alert("보안 정책으로 자동 복사가 제한되어 파일 다운로드 창을 직접 실행합니다.");
+                    const link = document.createElement('a');
+                    link.href = canvas.toDataURL('image/png');
+                    link.download = `마비노기모바일_재료계산결과_${new Date().toISOString().slice(0,10)}.png`;
+                    link.click();
                 });
             } catch (e) {
-                alert("현재 브라우저에서는 이미지 복사 기능을 지원하지 않습니다.");
+                // 구형 웹브라우저 예외 처리
+                alert("현재 브라우저 환경에서는 클립보드 이미지 복사를 지원하지 않아 즉시 파일로 저장합니다.");
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/png');
+                link.download = `마비노기모바일_재료계산결과_${new Date().toISOString().slice(0,10)}.png`;
+                link.click();
             }
         }, "image/png");
+    }).catch(error => {
+        console.error("html2canvas 실행 에러:", error);
+        alert("렌더링 엔진 오류가 발생했습니다. 브라우저를 새로고침 해주세요.");
     });
 }
+
 
 // ==========================================
 // 9. 결과 테이블 텍스트 복사 기능
@@ -323,3 +353,4 @@ function copyTableToText() {
         alert("복사에 실패했습니다. 브라우저의 클립보드 권한을 확인해 주세요.");
     });
 }
+
