@@ -825,7 +825,7 @@ justify-content: center;
 
 .input-row {
 	display: flex; /* 가로로 배치 */
-	gap: 5px; /* 간격을 좁게 조절 */
+	gap: 5px; /* 간격 조절 */
 	width: var(--width-100);
   }
 
@@ -862,14 +862,14 @@ justify-content: center;
         right: -10px;
     }	
   
-  /* 변신 토글 버튼 스타일 및 화면 좌측 상단 고정 */
+  /* 메뉴 토글 버튼 스타일 및 화면 좌측 상단 고정 */
     .menu-toggle-btn {
         display: flex;
         align-items: center;
         justify-content: center;
-        position: fixed !important;
-        top: 15px;
-        left: 15px;
+        position: fixed !important;/*화면 상에서 위치 고정*/
+        top: 15px;/*좌측 상단 고정*/
+        left: 15px;/*좌측 상단 고정*/
         z-index: 9999 !important;
         width: 44px;
         height: 44px;
@@ -882,7 +882,7 @@ justify-content: center;
         padding: 0;
     }
 
-    /* 삼선 상자 크기 정의 */
+    /* 삼선 크기 정의 */
     .hamburger-icon {
         width: 20px;
         height: 12px;
@@ -892,7 +892,7 @@ justify-content: center;
         justify-content: space-between;
     }
 
-    /* 삼선 각각의 선 스타일 및 회전 애니메이션 속도 설정 */
+    /* 삼선 선 스타일 및 회전 애니메이션 속도 설정 */
     .hamburger-icon span {
         display: block;
         width: 100%;
@@ -900,13 +900,9 @@ justify-content: center;
         background-color: var(--text-color);
         border-radius: 2px;
         transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out, top 0.3s ease-in-out;
-        transform-origin: center center !important; /* 💡 회전축을 무조건 정중앙으로 변경 */
+        transform-origin: center center !important; /* 회전축을 무조건 정중앙으로 잡기 */
     }
-
-    /* =======================================================
-       ★ [종결] 오차 0% 완벽 대칭 X자 변환 공식
-       ======================================================= */
-    
+   
     /* 첫 번째 줄: 정중앙 배치 후 오른쪽 아래로 45도 회전 */
     .menu-toggle-btn.active .hamburger-icon span:nth-child(1) {
         position: absolute;
@@ -915,7 +911,7 @@ justify-content: center;
         transform: rotate(45deg);
     }
 
-    /* 두 번째 줄: 가운데 선 숨김 */
+    /* 두 번째 줄: 숨김 */
     .menu-toggle-btn.active .hamburger-icon span:nth-child(2) {
         opacity: 0;
     }
@@ -928,16 +924,17 @@ justify-content: center;
         transform: rotate(-45deg);
     }
 
-    /* 드로어 본체 스타일 (메뉴 오픈 전: 왼쪽 화면 밖 -320px 대기) */
+    /* 모바일에서 메뉴 오픈 전: 왼쪽 화면 밖에서 대기) */
     .mobile-drawer {
         position: fixed;
         top: 0;
-        left: -320px;
+        left: -320px;/*화면 밖으로 빠짐*/
         width: 300px;
+        max-width: 300px;		
         height: 100vh;
         z-index: 101;
         padding: 70px 20px 20px 20px;
-        box-shadow: 4px 0 15px rgba(0,0,0,0.2);
+        box-shadow: 4px 0 15px var(--box-shadow-color);
         transition: left 0.3s ease-in-out;
         overflow-y: auto;
     }
