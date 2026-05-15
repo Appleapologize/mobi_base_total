@@ -382,7 +382,7 @@ th {
 
 /*보관중인 재료 수량 칸*/
 .table-input {
-    width: 80%;
+    width: var(--width-100);
     padding: 5px;
     border: 1px solid var(--line-color);
     border-radius: var(--btn-border-radius-xs);
