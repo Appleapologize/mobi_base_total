@@ -837,7 +837,6 @@ justify-content: center;
   .item-select {
 	flex: 1; 
     min-width: 0; /* flex 박스 안에서 줄어들 수 있게 허용 */
-	color:var(--text-color);
   }
   .amount-input {
 	flex: 1;
