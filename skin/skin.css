@@ -526,6 +526,7 @@ aside{
 .guide-section.collapsed .toggle-btn {
   border-bottom: none;
   padding-bottom: 0;
+  padding-left: 0;	
 }
 
 /* 설명서 토글 버튼 및 화살표 */
@@ -541,6 +542,7 @@ aside{
   color:var(--text-color);
   font-weight: bold;
   padding-bottom: 10px;
+  padding-left: 0;		
   border-bottom: 1px solid var(--line-color);
 }
 .guide-content {
