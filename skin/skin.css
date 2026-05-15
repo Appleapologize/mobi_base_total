@@ -246,9 +246,14 @@ a{
 }
 
 /* -------------------------------라이트 모드------------------------------------------ */
+
 [data-theme="light"] .theme-icon-button,
 :root:not([data-theme="dark"]) .theme-icon-button {
     color: #ff9e00; /* 태양색 */
+}
+
+[data-theme="light"] .theme-icon-button:hover{
+	background-color:#e3e3e3;
 }
 
 [data-theme="light"] .feather-sun-moon {
