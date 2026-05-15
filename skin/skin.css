@@ -24,6 +24,10 @@
     --box-shadow-color:rgba(0,0,0,0.05); /*card 그림자 색상*/
     --line-color:#eee; /*하단 라인 색상*/
 	--text-color:black;
+
+	/*모드 바꾸기 버튼*/
+	--theme-toggle-btn-color:#ff9e00;
+	--theme-toggle-btn-back-color-hover:#e3e3e3;
 	
 	/*계산하기 버튼 색상*/
     --calc-btn-back-color:#4a90e2;
@@ -88,6 +92,10 @@
     --box-shadow-color: rgba(0, 0, 0, 0.3);        
     --line-color:  #696969;       
 	--text-color:white;
+
+		/*모드 바꾸기 버튼*/
+	--theme-toggle-btn-color:#f1f5f9;
+	--theme-toggle-btn-back-color-hover:white;
 	
     /* 계산하기 버튼 색상 (다크 모드에 맞춰 채도 조절) */
     --calc-btn-back-color: #3b82f6;               
@@ -249,11 +257,11 @@ a{
 
 [data-theme="light"] .theme-icon-button,
 :root:not([data-theme="dark"]) .theme-icon-button {
-    color: #ff9e00; /* 태양색 */
+    color: var(--theme-toggle-btn-color)
 }
 
 [data-theme="light"] .theme-icon-button:hover{
-	background-color:#e3e3e3;
+	background-color:var(--theme-toggle-btn-back-color-hover);
 }
 
 [data-theme="light"] .feather-sun-moon {
@@ -277,7 +285,11 @@ a{
 
 /* ------------------------------------------다크 모드------------------------------------------ */
 [data-theme="dark"] .theme-icon-button {
-    color: #f1f5f9; /* 달 색상 */
+    color: var(--theme-toggle-btn-color);
+}
+
+[data-theme="dark"] .theme-icon-button:hover{
+  background-color:var(--theme-toggle-btn-back-color-hover);	
 }
 
 /* 달로 변할 때 전체적으로 살짝 회전interaction */
