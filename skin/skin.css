@@ -787,7 +787,9 @@ footer p.bold{
 
 aside {
 	width:var(--width-100);
-	position:unset;
+  position: static !important;
+  display: block !important;
+  z-index: auto !important;  
 }	
 .guide-section, .guide-section.collapsed {
 	width: var(--width-100);	
@@ -947,9 +949,6 @@ justify-content: center;
     }
 
     aside {
-        position: static !important;
-        display: block !important;
-        width: 100% !important;
-        z-index: auto !important;
+
     }
 }
