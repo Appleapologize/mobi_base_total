@@ -95,7 +95,7 @@
     --calc-btn-font-color: #ffffff;
 
     /* 추가 버튼 색상 */
-    --add-btn-back-color: #475569;                
+    --add-btn-back-color: #3c3939;                
     --add-btn-hover-back-color: #334155;          
     --add-btn-font-color: #ffffff;
 
@@ -121,10 +121,10 @@
     --mabi-icon-color: #ffffff;
 
     /* 모비라이프 바로가기 버튼 색상 */	
-    --mobilife-back-color: #4f46e5;           
-    --mobilife-hover-back-color: #901480;        
-    --mobilife-font-color: #ffffff;
-    --mobilife-icon-color: #ffffff;
+    --mobilife-back-color:#35449c;
+    --mobilife-hover-back-color:#5ca9c7;
+    --mobilife-font-color:white;
+    --mobilife-icon-color:#fff;
 
 	/*수급할 재료 card 테두리 색상*/
 	--highlight-border-color:#a30000;	
