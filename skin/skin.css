@@ -587,8 +587,7 @@ width: var(--width-100);
 .notice{
 	max-width:300px;
 	margin-top: 20px;
-	padding-top: 20px; 
-	border-top: 1px solid var(--line-color);
+	padding-top: 20px;
 }
 
 .notice-table{
@@ -762,7 +761,14 @@ footer p.bold{
 	font-weight: bolder;
 }
 
-/*타블렛 가로*/
+
+/*-------------모바일에서만 보이는 메뉴 버튼----------*/
+/* PC 환경에서는 모바일용 UI 요소를 숨김 */
+.menu-toggle-btn {
+    display: none;
+}
+
+/*-------------타블렛 가로 환경----------*/
 @media (max-width: 1300px) {
   
   .result-section .card.highlight {
@@ -770,7 +776,7 @@ footer p.bold{
    }
 }
 
-/* 6. 모바일 대응 */
+/*-------------모바일 환경----------*/
 @media (max-width: 1024px) {
 
 .main-wrapper { 
@@ -852,4 +858,97 @@ justify-content: center;
 		position: relative;
         right: -10px;
     }	
+  
+  /* 변신 토글 버튼 스타일 및 화면 좌측 상단 고정 */
+    .menu-toggle-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed !important;
+        top: 15px;
+        left: 15px;
+        z-index: 9999 !important;
+        width: 44px;
+        height: 44px;
+        border-radius: var(--btn-border-radius-m);
+        border: 1px solid var(--line-color);
+        background: var(--card-background-color);
+        color: var(--text-color);
+        cursor: pointer;
+        box-shadow: 0 4px 6px var(--box-shadow-color);
+        padding: 0;
+    }
+
+    /* 삼선 상자 크기 정의 */
+    .hamburger-icon {
+        width: 20px;
+        height: 12px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    /* 삼선 각각의 선 스타일 및 회전 애니메이션 속도 설정 */
+    .hamburger-icon span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: var(--text-color);
+        border-radius: 2px;
+        transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out, top 0.3s ease-in-out;
+        transform-origin: center center !important; /* 💡 회전축을 무조건 정중앙으로 변경 */
+    }
+
+    /* =======================================================
+       ★ [종결] 오차 0% 완벽 대칭 X자 변환 공식
+       ======================================================= */
+    
+    /* 첫 번째 줄: 정중앙 배치 후 오른쪽 아래로 45도 회전 */
+    .menu-toggle-btn.active .hamburger-icon span:nth-child(1) {
+        position: absolute;
+        top: 50%;
+        margin-top: -1px;
+        transform: rotate(45deg);
+    }
+
+    /* 두 번째 줄: 가운데 선 숨김 */
+    .menu-toggle-btn.active .hamburger-icon span:nth-child(2) {
+        opacity: 0;
+    }
+
+    /* 세 번째 줄: 정중앙 배치 후 오른쪽 위로 45도 회전 */
+    .menu-toggle-btn.active .hamburger-icon span:nth-child(3) {
+        position: absolute;
+        top: 50%;
+        margin-top: -1px;
+        transform: rotate(-45deg);
+    }
+
+    /* 드로어 본체 스타일 (메뉴 오픈 전: 왼쪽 화면 밖 -320px 대기) */
+    .mobile-drawer {
+        position: fixed;
+        top: 0;
+        left: -320px;
+        width: 300px;
+        height: 100vh;
+        z-index: 101;
+        padding: 70px 20px 20px 20px;
+        box-shadow: 4px 0 15px rgba(0,0,0,0.2);
+        transition: left 0.3s ease-in-out;
+        overflow-y: auto;
+    }
+
+    /* 메뉴 오픈 활성화 상태 */
+    .mobile-drawer.active {
+        left: 0;
+        background: color-mix(in srgb, var(--background-color) 85%, transparent);
+    }
+
+    aside {
+        position: static !important;
+        display: block !important;
+        width: 100% !important;
+        z-index: auto !important;
+    }
 }
