@@ -834,15 +834,11 @@ justify-content: center;
 	width: var(--width-100);
   }
 
-  .item-select {
+  .item-select, .amount-input {
 	flex: 1; 
     min-width: 0; /* flex 박스 안에서 줄어들 수 있게 허용 */
   }
-  .amount-input {
-	flex: 1;
-    min-width: 0;
-	color:var(--text-color);
-  }
+
 .notice{
 	max-width:var(--width-100);
 }
