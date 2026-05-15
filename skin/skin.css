@@ -807,7 +807,7 @@ justify-content: center;
 
 	.link-button-con div{
 		width:auto;
-	    padding: 15px !important;
+	    padding: 10px !important;
 		margin: 0 5PX 0px !important; 		
 		border-radius: var(--btn-border-radius-l);
 	    text-align: center;
