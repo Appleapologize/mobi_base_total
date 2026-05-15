@@ -780,6 +780,14 @@ footer p.bold{
   .result-section .card.highlight {
     grid-column: 1 / -1; /* grid의 첫 번째 줄부터 마지막 줄까지 차지 */
    }
+
+	.result-section{
+margin-bottom:20px;
+}
+
+.result-section .card{
+margin-bottom:0;
+}
 }
 
 /*-------------모바일 환경----------*/
