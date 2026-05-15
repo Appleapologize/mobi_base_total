@@ -354,3 +354,15 @@ function copyTableToText() {
     });
 }
 
+/* 모바일 메뉴 보이기 토글 함수 */
+function toggleMobileMenu() {
+    const btn = document.getElementById('menu-toggle-btn');
+    const drawer = document.getElementById('mobile-drawer');
+    
+    if (btn && drawer) {
+        // 클래스 리스트 토글을 통해 CSS 트랜지션을 동시에 불러오기
+        btn.classList.toggle('active');
+        drawer.classList.toggle('active');
+    }
+}
+
