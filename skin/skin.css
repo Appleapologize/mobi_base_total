@@ -91,7 +91,7 @@
     --arrow-color: #aaa;                       
     --box-shadow-color: rgba(0, 0, 0, 0.3);        
     --line-color:  #696969;       
-	--text-color:white;
+	--text-color:#E0E0E0;
 
 		/*모드 바꾸기 버튼*/
 	--theme-toggle-btn-color:#f1f5f9;
@@ -114,8 +114,8 @@
 
     /* --업데이트 란 색상-- */
     /* 자세히 보기 글자 색상 */
-    --notice-link-font: #94a3b8;                 
-    --notice-link-hover-font: #cbd5e1;	
+    --notice-link-font: #666666;                 
+    --notice-link-hover-font: #A0A0A0;	
 	
     /* 레시피 추가 요청 및 의견 제출 버튼 색상 */
     --notice-btn-back-color: #7c3aed;             
