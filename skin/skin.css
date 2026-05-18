@@ -637,7 +637,6 @@ width: var(--width-100);
 	width:auto;
 	border-top: var(--notice-border-top) var(--th-back-color);
 }
-}
 .notice-table tr td{
 	width:30%;
 	border-top: var(--notice-border-top) var(--line-color);
