@@ -627,6 +627,8 @@ width: var(--width-100);
 }
 .notice-table th{
 	width:auto;
+	border-top: 1px solid var(--th-back-color);
+}
 }
 .notice-table td{
 	width:30%;
