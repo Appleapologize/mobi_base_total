@@ -316,6 +316,7 @@ a{
 
 [data-theme="dark"] .item-select, .amount-input, .table-input{
 background:var(--background-color);
+color:var(--text-color);	
 }
 
 
