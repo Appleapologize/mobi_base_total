@@ -19,6 +19,7 @@
     --title-color:#fff; /*제목 글자 색상*/
 	--title-shadow-color:#ccc;
     --card-background-color: #fff;  
+	--guide-section-hover-background-color: #dcdcdc;  	
     --autocomplete-list-shadow-color: rgba(0,0,0,0.15);
     --th-back-color:#f5f5f5;
     --arrow-color:#666;
@@ -86,7 +87,8 @@
     --background-color: #121212;       
     --title-color:  #ffffff;                       
     --title-shadow-color: #334155;                
-    --card-background-color: #2f2f2f;             
+    --card-background-color: #2f2f2f;     
+	--guide-section-hover-background-color:#666;
     --autocomplete-list-shadow-color: rgba(0,0,0,0.5); 
     --th-back-color: #525252;                    
     --arrow-color: #aaa;                       
@@ -547,6 +549,7 @@ aside{
   display: none;
 }
 
+
 /* 설명서 접혔을 때는 밑줄 제거 및 중앙 정렬 */
 .guide-section.collapsed .toggle-btn {
   border-bottom: none;
@@ -838,6 +841,10 @@ aside {
 	position: static;
 	margin: 0;
   }
+.guide-section:hover, .guide-section.collapsed:hover{
+	background:var(--guide-section-hover-background-color);
+}
+	
 	.link-button-area{
 		margin:0;
 		
