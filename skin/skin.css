@@ -544,6 +544,10 @@ aside{
   display: flex;
 }
 
+.guide-section.collapsed:hover{
+	background:var(--guide-section-hover-background-color);
+}
+
 /* 설명서 접혔을 때 내부 내용 숨기기 */
 .guide-section.collapsed .guide-content{
   display: none;
@@ -841,9 +845,6 @@ aside {
 	position: static;
 	margin: 0;
   }
-.guide-section.collapsed:hover{
-	background:var(--guide-section-hover-background-color);
-}
 	
 	.link-button-area{
 		margin:0;
