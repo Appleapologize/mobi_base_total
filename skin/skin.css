@@ -856,6 +856,10 @@ justify-content: center;
 	    text-align: center;
 	    font-size: 1rem	!important;		
 	}	
+
+	.toggle-btn{
+		font-size:1.6rem;
+	}
 	
 .input-section{
 	width:var(--width-100);
