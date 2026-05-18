@@ -633,12 +633,12 @@ width: var(--width-100);
 	padding:0;
 	margin:0;
 }
-.notice-table th{
+.notice-table tr th{
 	width:auto;
 	border-top: var(--notice-border-top) var(--th-back-color);
 }
 }
-.notice-table td{
+.notice-table tr td{
 	width:30%;
 	border-top: var(--notice-border-top) var(--line-color);
 }
