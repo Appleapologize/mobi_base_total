@@ -841,7 +841,7 @@ aside {
 	position: static;
 	margin: 0;
   }
-.guide-section:hover, .guide-section.collapsed:hover{
+.guide-section.collapsed:hover{
 	background:var(--guide-section-hover-background-color);
 }
 	
