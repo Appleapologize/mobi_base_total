@@ -314,6 +314,10 @@ a{
     cy: 8;
 }
 
+[data-theme="dark"] .item-select, .amount-input, .table-input{
+background:var(--background-color);
+}
+
 
 /*---------개별 카드 영역----------*/
 .card {
