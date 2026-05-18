@@ -56,8 +56,8 @@
     --notice-btn-font-color:white;
 
 	/*마비노기 모바일 공식 사이트 바로가기 버튼 색상*/
-    --mabi-back-color:#ffa340;
-    --mabi-hover-back-color:#d75128;
+    --mabi-back-color:#f97316;
+    --mabi-hover-back-color:#cb4600;
     --mabi-font-color:white;
     --mabi-icon-color:#fff;
 
@@ -124,8 +124,8 @@
     --notice-btn-font-color: #ffffff;
 
     /* 마비노기 모바일 공식 사이트 바로가기 버튼 색상 */
-    --mabi-back-color: #f97316;              
-    --mabi-hover-back-color: #ea580c;             
+    --mabi-back-color:#f97316;
+    --mabi-hover-back-color:#cb4600;            
     --mabi-font-color: #ffffff;
     --mabi-icon-color: #ffffff;
 
