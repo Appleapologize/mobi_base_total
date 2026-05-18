@@ -397,6 +397,10 @@ th {
     font-size: 0.9rem;
 }
 
+th.table-amount{
+	border-left: 1px solid var(--line-color);
+}
+
 /*보관중인 재료 수량 칸*/
 .table-input {
     width: var(--width-100);
