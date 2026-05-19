@@ -320,13 +320,6 @@ a{
 }
 
 
-/*
-[data-theme="dark"] .item-select, .amount-input, .table-input{
-background:var(--background-color);
-color:var(--text-color);	
-}
-*/
-
 /*---------개별 카드 영역----------*/
 .card {
     background: var(--card-background-color);
@@ -381,6 +374,8 @@ h3.flex-center-title{
     border: 1px solid var(--line-color);
     border-radius: var(--btn-border-radius-s);
     flex: 1;
+    bkackground: var(--background-color);
+    color: var(--text-color);	
 }
 
 /*----필요한 수량, 보관중인 수량, 수급할 양 나오는 영역----*/
