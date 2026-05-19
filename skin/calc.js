@@ -52,7 +52,6 @@ function explodeRecipe(item, amount) {
     }
 }
 
-
 // 3. 합산 계산 실행
 function runCalculation() {
     dict = {}; 
@@ -78,10 +77,9 @@ function runCalculation() {
     }
 }
 
-// 4. 추가/삭제 버튼
+// 4. 추가/삭제 버튼 (하나로 깔끔하게 단일 통합 및 커스텀 스핀 이식)
 document.addEventListener('click', function(e) {
     if (e.target.classList.contains('btn-add')) {
-        // 기준점을 '계산하기' 버튼으로 확실히 지정
         const calcBtn = document.querySelector('.btn-calc');
         
         if (calcBtn) {
@@ -89,16 +87,22 @@ document.addEventListener('click', function(e) {
             newRow.className = 'input-row';
             newRow.style.position = 'relative';
             newRow.style.marginBottom = '10px';
+            
+            // 제작 아이템 수량 입력란도 상하 화살표 일체형 wrap 구조로 정상 삽입
             newRow.innerHTML = `
                 <input type="text" class="item-select" placeholder="아이템명 입력" autocomplete="off">
                 <div class="custom-autocomplete-list"></div>
-                <input type="number" class="amount-input" placeholder="수량">
+                <div class="number-spin-wrap" style="width: var(--spin-wrap-width);">
+                    <input type="number" class="amount-input" placeholder="수량" min="0">
+                    <div class="spin-btn-group">
+                        <button type="button" class="spin-btn up" onclick="stepAmountInput(this, 1)">▲</button>
+                        <button type="button" class="spin-btn down" onclick="stepAmountInput(this, -1)">▼</button>
+                    </div>
+                </div>
                 <button class="btn-remove">삭제</button> 
             `;
             
-            // 다른 곳(설명서 등)은 무시하고, '계산하기' 버튼 바로 위에만 삽입
             calcBtn.parentNode.insertBefore(newRow, calcBtn);
-            
             initAutocompleteForRow(newRow);
         }
     }
@@ -107,10 +111,6 @@ document.addEventListener('click', function(e) {
         e.target.parentElement.remove();
     }
 });
-
-
-
-
 
 // 5. 자동완성 기능
 function getChoseong(str) {
@@ -143,10 +143,8 @@ function initAutocompleteForRow(rowElement) {
             const nameLow = name.toLowerCase();
             
             if (isCho) {
-                // 초성만 쳤을 때: "ㄱㄱ" -> "금괴"의 초성인 "ㄱㄱ"와 비교
                 return getChoseong(nameLow).includes(val);
             } else {
-                // 글자를 완성했을 때: "금괴" -> "금괴"가 이름에 들어있는지만 확인
                 return nameLow.includes(val);
             }
         }).sort((a, b) => {
@@ -178,8 +176,7 @@ function initAutocompleteForRow(rowElement) {
     });
 }
 
-
-// 6. 결과 표시
+// 6. 결과 표시 (보관중인 재료 출력부 상하 버튼형 이식)
 function updateAllTables() {
     const totalBody = document.getElementById("total-needed");
     const stockBody = document.getElementById("current-stock");
@@ -195,11 +192,23 @@ function updateAllTables() {
 
     sortedKeys.forEach((key, index) => {
         const totalQty = Math.ceil(dict[key]);
-        //필요한 총 원자재
         totalBody.innerHTML += `<tr><td>${key}</td><td class="table-amount">${totalQty.toLocaleString()}</td></tr>`;
-        // 현재 보유 원자재
-        stockBody.innerHTML += `<tr><td>${key}</td><td class="table-amount"><input type="number" class="table-input" id="have-${index}" value="0" oninput="calculateFinal()"></td></tr>`;
-        // 추가 수급 원자재  
+        
+        // 보관중인 재료 - 우측 상단/하단 분할 버튼 구조 주입
+        stockBody.innerHTML += `
+            <tr>
+                <td>${key}</td>
+                <td class="table-amount">
+                    <div class="number-spin-wrap">
+                        <input type="number" class="table-input" id="have-${index}" value="0" min="0" oninput="calculateFinal()">
+                        <div class="spin-btn-group">
+                            <button type="button" class="spin-btn up" onclick="stepTableInput(${index}, 1)">▲</button>
+                            <button type="button" class="spin-btn down" onclick="stepTableInput(${index}, -1)">▼</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>`;
+            
         finalBody.innerHTML += `<tr><td>${key}</td><td class="table-amount" id="need-${index}">${totalQty.toLocaleString()}</td></tr>`;
     });
 }
@@ -215,18 +224,14 @@ function calculateFinal() {
     });
 }
 
-// ==========================================
 // 7. 원형 단일 버튼 다크 모드 버튼
-// ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const themeToggleBtn = document.getElementById("theme-toggle-btn");
     if (!themeToggleBtn) return;
 
-    // 저장소 확인 후 초기 속성 주입
     const savedTheme = localStorage.getItem("theme") || "light";
     document.documentElement.setAttribute("data-theme", savedTheme);
 
-    // 버튼 클릭 이벤트 처리
     themeToggleBtn.addEventListener("click", () => {
         const currentTheme = document.documentElement.getAttribute("data-theme");
         const newTheme = currentTheme === "dark" ? "light" : "dark";
@@ -242,16 +247,11 @@ function toggleGuide() {
     document.getElementById('guideSidebar').classList.toggle('collapsed');
 }
 
-//8.결과 영역 이미지 클립보드 복사 완료 후 저장 여부 묻기
-// ==========================================
-// 8. 결과 영역 이미지 클립보드 복사 완료 후 저장 여부 묻기 (버그 수정본)
-// ==========================================
+// 8. 결과 영역 이미지 클립보드 복사 완료 후 저장 여부 묻기
 function copyTableToImage() {
-    // 캡처할 최종 대상 컨테이너('.result-section')를 직접 선택합니다.
     const targetElement = document.querySelector('.result-section');
     const finalBody = document.getElementById("final-need");
     
-    // 계산 결과 데이터가 비어있는지 검증
     if (!finalBody || finalBody.innerText.trim() === "" || finalBody.innerHTML.includes("데이터 매칭 실패")) {
         alert("캡처할 결과 화면이 없습니다. 먼저 계산을 완료해주세요.");
         return;
@@ -262,21 +262,19 @@ function copyTableToImage() {
         return;
     }
 
-    // 라이브러리 미설치 및 코드펜/깃허브 환경 예외 처리
     if (typeof html2canvas === 'undefined') {
         alert("이미지 변환 라이브러리(html2canvas)를 로드하는 중입니다. 잠시 후 다시 시도해 주세요.");
         return;
     }
 
-    // 현재 적용된 테마(라이트/다크)의 배경색을 자동으로 감지하여 캡처 배경으로 지정
     const currentTheme = document.documentElement.getAttribute("data-theme");
     const captureBgColor = currentTheme === "dark" ? "#121212" : "#f0f4f8";
 
     html2canvas(targetElement, { 
         backgroundColor: captureBgColor,
-        scale: 2,               // 고해상도 캡처
+        scale: 2,              
         logging: false,
-        useCORS: true,          // 외부 리소스 제한 해제
+        useCORS: true,         
         allowTaint: true
     }).then(canvas => {
         canvas.toBlob(blob => {
@@ -286,7 +284,6 @@ function copyTableToImage() {
             }
             
             try {
-                // 클립보드 아이템 객체 생성 및 복사 실행
                 const item = new ClipboardItem({ "image/png": blob });
                 
                 navigator.clipboard.write([item]).then(() => {
@@ -300,7 +297,6 @@ function copyTableToImage() {
                     }
                 }).catch(err => {
                     console.error("클립보드 API 거부:", err);
-                    // 모바일 브라우저 및 인앱 브라우저 대응을 위한 강제 다운로드 우회책
                     alert("보안 정책으로 자동 복사가 제한되어 파일 다운로드 창을 직접 실행합니다.");
                     const link = document.createElement('a');
                     link.href = canvas.toDataURL('image/png');
@@ -308,7 +304,6 @@ function copyTableToImage() {
                     link.click();
                 });
             } catch (e) {
-                // 구형 웹브라우저 예외 처리
                 alert("현재 브라우저 환경에서는 클립보드 이미지 복사를 지원하지 않아 즉시 파일로 저장합니다.");
                 const link = document.createElement('a');
                 link.href = canvas.toDataURL('image/png');
@@ -322,10 +317,7 @@ function copyTableToImage() {
     });
 }
 
-
-// ==========================================
 // 9. 결과 테이블 텍스트 복사 기능
-// ==========================================
 function copyTableToText() {
     const finalBody = document.getElementById("final-need");
     if (!finalBody || finalBody.innerText.trim() === "" || finalBody.innerText.includes("데이터 매칭 실패")) {
@@ -345,7 +337,6 @@ function copyTableToText() {
         }
     });
 
-    // 클립보드에 텍스트 복사 실행
     navigator.clipboard.writeText(textResult).then(() => {
         alert("📋 수급할 재료 목록이 텍스트로 복사되었습니다!\n메모장이나 메신저에 바로 붙여넣기(Ctrl+V) 하세요.");
     }).catch(err => {
@@ -360,9 +351,32 @@ function toggleMobileMenu() {
     const drawer = document.getElementById('mobile-drawer');
     
     if (btn && drawer) {
-        // 클래스 리스트 토글을 통해 CSS 트랜지션을 동시에 불러오기
         btn.classList.toggle('active');
         drawer.classList.toggle('active');
     }
 }
 
+/* 10. 상하 커스텀 스핀 단추 제어 함수 */
+function stepAmountInput(buttonElement, direction) {
+    const wrap = buttonElement.closest('.number-spin-wrap');
+    const input = wrap.querySelector('.amount-input');
+    if (!input) return;
+
+    let currentValue = parseFloat(input.value) || 0;
+    currentValue += direction;
+    if (currentValue < 0) currentValue = 0;
+
+    input.value = currentValue;
+}
+
+function stepTableInput(index, direction) {
+    const input = document.getElementById(`have-${index}`);
+    if (!input) return;
+
+    let currentValue = parseFloat(input.value) || 0;
+    currentValue += direction;
+    if (currentValue < 0) currentValue = 0;
+
+    input.value = currentValue;
+    calculateFinal();
+}
