@@ -179,19 +179,37 @@
               
 <datalist id="item-datalist"></datalist>
 
-    <input type="number" class="amount-input" placeholder="수량">
+    <div class="number-spin-wrap" style="width: var(--spin-wrap-width);">
+    <input type="number" class="amount-input" placeholder="수량" min="0">
+    <div class="spin-btn-group">
+        <button type="button" class="spin-btn up" onclick="stepAmountInput(this, 1)">▲</button>
+        <button type="button" class="spin-btn down" onclick="stepAmountInput(this, -1)">▼</button>
+    </div>
+</div>
     <button class="btn-add">추가</button>
 </div>
 <div class="input-row" style="position: relative; margin-bottom: 10px;">
                 <input type="text" class="item-select" placeholder="아이템명 입력" autocomplete="off">
                 <div class="custom-autocomplete-list"></div>
-                <input type="number" class="amount-input" placeholder="수량">
+                <div class="number-spin-wrap" style="width: var(--spin-wrap-width);">
+    <input type="number" class="amount-input" placeholder="수량" min="0">
+    <div class="spin-btn-group">
+        <button type="button" class="spin-btn up" onclick="stepAmountInput(this, 1)">▲</button>
+        <button type="button" class="spin-btn down" onclick="stepAmountInput(this, -1)">▼</button>
+    </div>
+</div>
                 <button class="btn-remove">삭제</button> 
             </div>
 <div class="input-row" style="position: relative; margin-bottom: 10px;">
                 <input type="text" class="item-select" placeholder="아이템명 입력" autocomplete="off">
                 <div class="custom-autocomplete-list"></div>
-                <input type="number" class="amount-input" placeholder="수량">
+                <div class="number-spin-wrap" style="width: var(--spin-wrap-width);">
+    <input type="number" class="amount-input" placeholder="수량" min="0">
+    <div class="spin-btn-group">
+        <button type="button" class="spin-btn up" onclick="stepAmountInput(this, 1)">▲</button>
+        <button type="button" class="spin-btn down" onclick="stepAmountInput(this, -1)">▼</button>
+    </div>
+</div>
                 <button class="btn-remove">삭제</button> 
             </div>          
             <button class="btn-calc" onclick="runCalculation()">계산하기</button>
