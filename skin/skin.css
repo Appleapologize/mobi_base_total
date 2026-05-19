@@ -16,6 +16,7 @@
 
 /* -------- -------- -------- -------- 라이트 모드 색상 설정 -------- -------- -------- -------- */
     --background-color: #f0f4f8;
+	--input-background-color:#fff;
     --title-color:#fff; /*제목 글자 색상*/
 	--title-shadow-color:#ccc;
     --card-background-color: #fff;  
@@ -85,7 +86,8 @@
 
 /* -------- -------- -------- -------- 다크 모드 색상 설정 -------- -------- -------- -------- */
 [data-theme="dark"] {
-    --background-color: #13151d;       
+    --background-color: #13151d;    
+	--input-background-color:#13151d;
     --title-color:  #ffffff;                       
     --title-shadow-color: #334155;                
     --card-background-color: #232733;     
@@ -374,7 +376,7 @@ h3.flex-center-title{
     border: 1px solid var(--line-color);
     border-radius: var(--btn-border-radius-s);
     flex: 1;
-    bkackground: var(--background-color);
+    background: var(--input-background-color);
     color: var(--text-color);	
 }
 
