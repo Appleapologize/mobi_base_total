@@ -585,7 +585,6 @@ td .number-spin-wrap input {
     display: flex;
     flex-direction: column;
     width: var(--spin-btn-width);
-    border-left: 1px solid var(--line-color);
     flex-shrink: 0;
 }
 
@@ -611,10 +610,10 @@ td .number-spin-wrap input {
     background: var(--spin-btn-hover-back);
 }
 
-/* 버튼 분할 경계선 */
+/* 버튼 분할 경계선
 .spin-btn.up {
     border-bottom: 1px solid var(--line-color);
-}
+} */
 
 /*--------------왼쪽 영역(데스크탑 기준)---------------*/
 aside{
