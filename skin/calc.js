@@ -380,3 +380,10 @@ function stepTableInput(index, direction) {
     input.value = currentValue;
     calculateFinal();
 }
+
+/*11. 숫자란, 휠 막음*/
+document.addEventListener('wheel', function(e) {
+    if (e.target.tagName === 'INPUT' && e.target.type === 'number') {
+        e.preventDefault();
+    }
+}, { passive: false });
