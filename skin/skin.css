@@ -12,7 +12,11 @@
 	
 		/*수급할 재료 card 테두리*/
 	--highlight-border-px:5px; /*선 두께*/
-	--highlight-border-style:solid; /*선 스타일*/		
+	--highlight-border-style:solid; /*선 스타일*/	
+
+		    /* 수량 칸의 화살표*/
+    --spin-btn-width: 22px;             /* 버튼 가로 너비 */
+    --spin-btn-font-size: 0.65rem;      /* ▲ ▼ 기호 크기 */
 
 /* -------- -------- -------- -------- 라이트 모드 색상 설정 -------- -------- -------- -------- */
     --background-color: #f0f4f8;
@@ -28,6 +32,10 @@
     --box-shadow-color:rgba(0,0,0,0.05); /*card 그림자 색상*/
     --line-color:#eee; /*하단 라인 색상*/
 	--text-color:black;
+
+	    /* 수량 칸의 화살표*/
+    --spin-btn-back-color: #f0f4f8;     /* ▲ ▼ 배경색 */
+    --spin-btn-hover-back: #fff;     /* ▲ ▼ hover시 배경색 */
 
 	/*모드 바꾸기 버튼*/
 	--theme-toggle-btn-color:#ff9e00;
@@ -99,6 +107,10 @@
     --box-shadow-color: rgba(0, 0, 0, 0.3);        
     --line-color:  #475569;       
 	--text-color:#E0E0E0;
+
+		    /* 수량 칸의 화살표*/
+    --spin-btn-back-color: #13151d;    /* ▲ ▼ 배경색 */
+    --spin-btn-hover-back: #475569;   /* ▲ ▼ hover시 배경색 */
 
 		/*모드 바꾸기 버튼*/
 	--theme-toggle-btn-color:#f1f5f9;
@@ -520,6 +532,88 @@ background: var( --add-btn-hover-back-color);
 
 .btn-remove:hover{
 	background:var(--remove-btn-hover-back-color);	
+}
+
+
+/*----수량 칸의 화살표 관련 디자인----*/
+.amount-input::-webkit-outer-spin-button,
+.amount-input::-webkit-inner-spin-button,
+.table-input::-webkit-outer-spin-button,
+.table-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.amount-input, .table-input {
+    -moz-appearance: textfield;
+}
+
+
+/* div로 합침 */
+.number-spin-wrap {
+    flex: 1;
+    display: inline-flex;
+    align-items: stretch; /* 내부 요소들의 높이를 부모와 일치시킴 */
+    border: 1px solid var(--line-color);
+    border-radius: var(--btn-border-radius-s);
+    background: var(--input-background-color);
+    overflow: hidden;
+    position: relative;
+}
+
+
+td .number-spin-wrap {
+    border-radius: var(--btn-border-radius-xs);
+    width: var(--width-100);
+}
+
+
+/* 입력 텍스트창 초기화 */
+.number-spin-wrap input {
+    width: 100% !important;
+    padding: 10px;
+    border: none !important;
+    outline: none;
+    background: transparent;
+}
+td .number-spin-wrap input {
+    padding: 5px 8px;
+    text-align: right;
+}
+
+/* 화살표 버튼 그룹화 */
+.spin-btn-group {
+    display: flex;
+    flex-direction: column;
+    width: var(--spin-btn-width);
+    border-left: 1px solid var(--line-color);
+    flex-shrink: 0;
+}
+
+/*화살표 세부 스타일 정의*/
+.spin-btn {
+    width: 100%;
+    flex: 1; /* 높이가 늘어나도 무조건 절반씩 똑같이 나눠 가짐 */
+    font-size: var(--spin-btn-font-size);
+    background: var(--spin-btn-back-color);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+    user-select: none;
+    transition: background 0.2s;
+}
+
+.spin-btn:hover {
+    background: var(--spin-btn-hover-back);
+}
+
+/* 버튼 분할 경계선 */
+.spin-btn.up {
+    border-bottom: 1px solid var(--line-color);
 }
 
 /*--------------왼쪽 영역(데스크탑 기준)---------------*/
