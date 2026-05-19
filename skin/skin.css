@@ -371,13 +371,16 @@ h3.flex-center-title{
 }
 
 /*아이템 이름 검색 및 수량 작성 영역*/
+input{
+    background: var(--input-background-color);
+    color: var(--text-color);		
+}
+
 .item-select, .amount-input {
     padding: 10px;
     border: 1px solid var(--line-color);
     border-radius: var(--btn-border-radius-s);
     flex: 1;
-    background: var(--input-background-color);
-    color: var(--text-color);	
 }
 
 /*----필요한 수량, 보관중인 수량, 수급할 양 나오는 영역----*/
