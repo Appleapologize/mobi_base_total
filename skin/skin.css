@@ -23,6 +23,7 @@
     --autocomplete-list-shadow-color: rgba(0,0,0,0.15);
     --th-back-color:#f5f5f5;
     --arrow-color:#666;
+	--arrow-hover-color:#d1d1d1;
     --box-shadow-color:rgba(0,0,0,0.05); /*card 그림자 색상*/
     --line-color:#eee; /*하단 라인 색상*/
 	--text-color:black;
@@ -91,7 +92,8 @@
 	--guide-section-hover-background-color:#484d5e;
     --autocomplete-list-shadow-color: rgba(0,0,0,0.5); 
     --th-back-color: #555f7d;                    
-    --arrow-color: #aaa;                       
+    --arrow-color: #aaa;      
+	--arrow-hover-color:#566380;	
     --box-shadow-color: rgba(0, 0, 0, 0.3);        
     --line-color:  #475569;       
 	--text-color:#E0E0E0;
@@ -604,6 +606,10 @@ width: var(--width-100);
   border-right: 2px solid var(--arrow-color);
   transform: rotate(-45deg); /* 기본: 위쪽 화살표 (∧) */
   transition: transform 0.3s ease;
+}
+
+.toggle-btn:hover .arrow {
+    border-color: var(--arrow-hover-color);
 }
 
 /* 설명서 접혔을 때는 아래쪽으로 회전 (∨) */
