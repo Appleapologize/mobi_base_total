@@ -1,263 +1,263 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script async src="https://googletagmanager.com"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-6VCPW1TF60');
-</script>
-    <link rel="stylesheet" href="./skin/skin.css">
-    <title>마비노기 모바일 원재료 수량 계산기</title>
-  <script src="cloudflare.com"></script>
-   <script src="./skin/calc.js" defer></script>
-</head>
-<body>
-<div class="head">
-    <h1 id="head-title">마비노기 모바일 원재료 수량 계산기</h1>
-<!-- 모드 변경 버튼 -->
-    <button id="theme-toggle-btn" class="theme-icon-button" aria-label="테마 변경">
-        <svg xmlns="w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-sun-moon">
-            <!-- 달로 변할 때 파먹는 그림자 마스크 정의 -->
-            <mask id="moon-mask">
-                <rect x="0" y="0" width="100%" height="100%" fill="white" />
-                <circle class="mask-circle" cx="24" cy="4" r="9" fill="black" />
-            </mask>
-            <!-- 메인 중앙 원 (태양 -> 초승달) -->
-            <circle class="main-sun-body" cx="12" cy="12" r="5" fill="currentColor" mask="url(#moon-mask)" />
-            <!-- 태양 광선 8개 라인 -->
-            <g class="sun-beams" stroke="currentColor">
-                <line x1="12" y1="1" x2="12" y2="3" />
-                <line x1="12" y1="21" x2="12" y2="23" />
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                <line x1="1" y1="12" x2="3" y2="12" />
-                <line x1="21" y1="12" x2="23" y2="12" />
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-            </g>
-        </svg>
-    </button>
-</div>
-    
-<div class="main-wrapper">  
-  <aside>
-      <div class="guide-section card collapsed" id="guideSidebar">
-        <button class="toggle-btn" onclick="toggleGuide()">
-          <span class="icon">📖</span>
-          <span class="text">사용 설명서</span>
-           <span class="arrow"></span>
-        </button>
-        
-        <div class="guide-content">
-          <ul>
-            <li>철괴는 철 광석, 광석 두 가지 중 하나로 선택하시면 되십니다</li>     
-            <li>위의 이유로 철괴가 필요한 경우 철 광석과 광석 두가지가 모두 나옵니다. </br>둘 중 하나만 선택해서 채집하시면 되십니다.</li>             
-            <li>아이템 이름을 한글로 입력 후 뜨는 아래의 리스트에서 선택해주세요. </br>초성 검색도 한글로 검색하셔야 합니다.</li> 
-            <li>물품 추가는 우측 <strong>추가</strong> 버튼을 눌러 입력란을 추가하신 뒤 작성하시면 됩니다.</li>
-            <li>제작할 아이템의 총 수량을 입력 후 <strong>계산하기</strong>를 클릭하면 자동으로 필요 수량이 입력 됩니다.</li>
-            <li>이미 보유 중인 수량은 <strong>보관중인 재료</strong> 란에 숫자로만 입력하시면 자동으로 계산이 됩니다.</li>
-            <li>결과값이 나오면 하단의 버튼(텍스트 복사, 이미지 복사)을 누르면 클립보드에 복사 됩니다.</li>
-            <li>결과값 저장되는 곳은 <strong>필요한 수량, 보관중인 재료, 수급할 재료</strong> 란 입니다.</li>              
-            </ul>
-        </div>
-      </div>
-
-  <button id="menu-toggle-btn" class="menu-toggle-btn" onclick="toggleMobileMenu()">
-    <div class="hamburger-icon">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </button>
-  <!-- 모바일에서는 버튼을 누르면 뜨는 메뉴-->
-  <div id="mobile-drawer" class="mobile-drawer">
-    <!-- ⚠️ <button class="drawer-close-btn">... 항목은 삭제되었습니다. -->
-       <!-- 공지 사항 추가-->
-          <div class="notice card">
-            <h3 class="flex-center-title">
-              <span class="icon">📌</span> 
-              <span class="text">업데이트</span>
-              <span></span>
-                </h3>
-              <table class="notice-table">
-                <tbody>
-                    <tr>
-                    <td>
-                        26.06.30
-                    </td>                        
-                    <th>LV.6 레시피 추가 완료</th>
-                    </tr>                        
-                    <tr>
-                    <td>
-                        26.05.14
-                    </td>                        
-                    <th>다크모드, 클립복사(텍스트 및 이미지) 기능 추가</th>
-                    </tr>                    
-                    <tr>
-                    <td>
-                        26.05.12
-                    </td>                        
-                    <th>초성으로 아이템명 검색 기능 추가</th>
-                    </tr> 
-                    <tr>
-                    <td>
-                        26.04.30
-                    </td>                        
-                    <th>LV.5 레시피 추가 완료</th>
-                    </tr>                  
-                </tbody>
-              </table>  
-            <div class="notice-link">
-            <a  href="https://github.com/Appleapologize/mobi_base_total/releases" target="_blank"> 
-                자세히 보기 ▼
-            </a>
-            <p class="notice-link"> 
-               <a href="https://forms.gle/8fpGWskrQyW3AyMb7" target="_blank">
-               레시피 추가 요청 및 의견 제출
-               </a>    
-            </p>                
-         </div>
-        </div>    
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script async src="https://googletagmanager.com"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+                  
+			gtag('config', 'G-6VCPW1TF60');
+		</script>
+		<link rel="stylesheet" href="./skin/skin.css">
+		<title>마비노기 모바일 원재료 수량 계산기</title>
+		<script src="cloudflare.com"></script>
+		<script src="./skin/calc.js" defer></script>
+	</head>
+	<body>
+		<div class="head">
+			<h1 id="head-title">마비노기 모바일 원재료 수량 계산기</h1>
+			<!-- 모드 변경 버튼 -->
+			<button id="theme-toggle-btn" class="theme-icon-button" aria-label="테마 변경">
+				<svg xmlns="w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-sun-moon">
+				<!-- 달로 변할 때 파먹는 그림자 마스크 정의 -->
+					<mask id="moon-mask">
+						<rect x="0" y="0" width="100%" height="100%" fill="white" />
+						<circle class="mask-circle" cx="24" cy="4" r="9" fill="black" />
+					</mask>
+					<!-- 메인 중앙 원 (태양 -> 초승달) -->
+					<circle class="main-sun-body" cx="12" cy="12" r="5" fill="currentColor" mask="url(#moon-mask)" />
+						<!-- 태양 광선 8개 라인 -->
+						<g class="sun-beams" stroke="currentColor">
+						<line x1="12" y1="1" x2="12" y2="3" />
+						<line x1="12" y1="21" x2="12" y2="23" />
+						<line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+						<line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+						<line x1="1" y1="12" x2="3" y2="12" />
+						<line x1="21" y1="12" x2="23" y2="12" />
+						<line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+						<line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+					</g>
+				</svg>
+			</button>
+		</div>
       
-      <div class="guide-section card link-button-area">
-          <div class="title">
-             <h3 class="flex-center-title">
-               <span class="icon">🔗</span>
-                 <span class="text">바로가기</span>
-               <span></span>
-                   </h3>        
-          </div>    
-          <div class="link-button-con">
-      <div class="mabi_official">
-        <a href="https://mabinogimobile.nexon.com/Main" target="_blank" class="site-link-btn" title="마비노기 모바일 공식 홈페이지">
-            <span class="icon">
-                <svg id="mabinogi" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 65" width="65" height="65">
-
-                     <g>
-                      <title>Layer 1</title>
-                      <polygon id="svg_1" fill="currentColor" points="18.6 47.86 22.65 43.81 14.25 35.41 13 34.17 8.95 38.21 10.2 39.45 18.6 47.86" class="cls-1"/>
-                      <path id="svg_2" fill="currentColor" d="m41.79,58.6c-1.2,1.2 -3.15,1.2 -4.36,0l-7.62,-7.62l-4.05,4.05l7.62,7.63c3.43,3.43 9.02,3.43 12.45,0c3.17,-3.17 3.41,-8.17 0.73,-11.62l-4.14,4.14c0.5,1.13 0.29,2.51 -0.63,3.43l0,-0.01z" class="cls-1"/>
-                      <path id="svg_3" fill="currentColor" d="m6.62,23.43c1.2,-1.2 3.16,-1.2 4.36,0l5.6,5.6c3.43,3.43 9.02,3.43 12.45,0c3.17,-3.17 3.41,-8.17 0.73,-11.62l-4.14,4.14c0.5,1.13 0.29,2.51 -0.63,3.43c-1.2,1.2 -3.16,1.2 -4.36,0l-5.6,-5.6c-3.43,-3.43 -9.02,-3.43 -12.45,0c-3.17,3.17 -3.41,8.17 -0.73,11.62l4.14,-4.14c-0.5,-1.13 -0.3,-2.51 0.63,-3.43z" class="cls-1"/>
-                      <path id="svg_4" fill="currentColor" d="m58.59,41.79c-1.2,1.2 -3.16,1.2 -4.36,0l-5.6,-5.6c-3.43,-3.43 -9.02,-3.43 -12.45,0c-3.17,3.17 -3.41,8.17 -0.73,11.62l4.14,-4.14c-0.5,-1.13 -0.29,-2.51 0.63,-3.43c1.2,-1.2 3.15,-1.2 4.36,0l5.6,5.6c3.43,3.43 9.02,3.43 12.45,0c3.17,-3.17 3.41,-8.17 0.73,-11.62l-4.14,4.14c0.5,1.13 0.29,2.51 -0.63,3.43z" class="cls-1"/>
-                      <path id="svg_5" fill="currentColor" d="m23.43,6.62c1.2,-1.2 3.15,-1.2 4.36,0l7.63,7.62l4.04,-4.04l-7.62,-7.63c-3.43,-3.43 -9.02,-3.43 -12.45,0c-3.17,3.17 -3.41,8.17 -0.73,11.62l4.14,-4.14c-0.5,-1.13 -0.3,-2.51 0.63,-3.43z" class="cls-1"/>
-                      <polygon id="svg_6" fill="currentColor" points="52.21 31.05 56.26 27.01 47.86 18.6 46.61 17.36 42.57 21.4 43.81 22.65 52.21 31.05" class="cls-1"/>
-                      <path id="svg_7" fill="currentColor" d="m51.02,18.65l4.14,4.14c1.13,-0.5 2.51,-0.29 3.43,0.63c1.2,1.2 1.2,3.15 0,4.36l-7.62,7.63l4.04,4.04l7.62,-7.62c3.43,-3.43 3.43,-9.02 0,-12.45c-3.17,-3.17 -8.17,-3.41 -11.62,-0.73l0.01,0z" class="cls-1"/>
-                      <polygon id="svg_8" fill="currentColor" points="34.16 52.21 38.21 56.26 46.61 47.86 47.86 46.61 43.81 42.57 42.57 43.81 34.16 52.21" class="cls-1"/>
-                      <path id="svg_9" fill="currentColor" d="m23.43,54.24l5.6,-5.6c3.43,-3.43 3.43,-9.02 0,-12.45c-3.17,-3.17 -8.17,-3.41 -11.62,-0.73l4.14,4.14c1.13,-0.5 2.51,-0.29 3.43,0.63c1.2,1.2 1.2,3.16 0,4.36l-5.6,5.6c-3.43,3.43 -3.43,9.02 0,12.45c3.17,3.17 8.17,3.41 11.62,0.73l-4.14,-4.14c-1.13,0.5 -2.51,0.29 -3.43,-0.63c-1.2,-1.2 -1.2,-3.16 0,-4.36z" class="cls-1"/>
-                      <path id="svg_10" fill="currentColor" d="m41.79,10.98l-5.6,5.6c-3.43,3.43 -3.43,9.02 0,12.45c3.17,3.17 8.17,3.41 11.62,0.73l-4.14,-4.14c-1.13,0.5 -2.51,0.29 -3.43,-0.63c-1.2,-1.2 -1.2,-3.15 0,-4.36l5.6,-5.6c3.43,-3.43 3.43,-9.02 0,-12.45c-3.17,-3.17 -8.17,-3.41 -11.62,-0.73l4.14,4.14c1.13,-0.5 2.51,-0.29 3.43,0.63c1.2,1.2 1.2,3.16 0,4.36z" class="cls-1"/>
-                      <path id="svg_11"fill="currentColor"  d="m14.2,46.56l-4.14,-4.14c-1.13,0.5 -2.51,0.29 -3.43,-0.63c-1.2,-1.2 -1.2,-3.15 0,-4.36l7.62,-7.62l-4.05,-4.05l-7.63,7.62c-3.43,3.43 -3.43,9.02 0,12.45c3.17,3.17 8.17,3.41 11.62,0.73l0.01,0z" class="cls-1"/>
-                      <polygon id="svg_12" fill="currentColor" points="31.05 13 27.01 8.95 25.76 10.2 17.36 18.6 21.4 22.65 29.81 14.25 31.05 13" class="cls-1"/>
-                     </g>
-                    </svg>
-
-</span> 마비노기모바일
-        </a>
-      </div>
-      <div class="mobi_life" >      
-        <a href="https://mabimobi.life/" target="_blank" class="site-link-btn" title="모비라이프">
-            <span class="icon">🔗</span>모비라이프
-        </a>        
-      </div>
-    </div>  
-</div>
-      <!-- 배너
-    <div class="banner-area">
-        <a href="연결할_링크_주소" target="_blank">
-            <img src="이미지_경로.jpg" alt="광고 배너" class="side-banner">
-        </a>
-    </div>      
-      --> 
-  </aside>   
+		<div class="main-wrapper">  
+			<aside>
+				<div class="guide-section card collapsed" id="guideSidebar">
+					<button class="toggle-btn" onclick="toggleGuide()">
+						<span class="icon">📖</span>
+						<span class="text">사용 설명서</span>
+						<span class="arrow"></span>
+					</button>
+			          
+					<div class="guide-content">
+						<ul>
+							<li>철괴는 철 광석, 광석 두 가지 중 하나로 선택하시면 되십니다</li>     
+							<li>위의 이유로 철괴가 필요한 경우 철 광석과 광석 두가지가 모두 나옵니다. </br>둘 중 하나만 선택해서 채집하시면 되십니다.</li>             
+							<li>아이템 이름을 한글로 입력 후 뜨는 아래의 리스트에서 선택해주세요. </br>초성 검색도 한글로 검색하셔야 합니다.</li> 
+							<li>물품 추가는 우측 <strong>추가</strong> 버튼을 눌러 입력란을 추가하신 뒤 작성하시면 됩니다.</li>
+							<li>제작할 아이템의 총 수량을 입력 후 <strong>계산하기</strong>를 클릭하면 자동으로 필요 수량이 입력 됩니다.</li>
+							<li>이미 보유 중인 수량은 <strong>보관중인 재료</strong> 란에 숫자로만 입력하시면 자동으로 계산이 됩니다.</li>
+							<li>결과값이 나오면 하단의 버튼(텍스트 복사, 이미지 복사)을 누르면 클립보드에 복사 됩니다.</li>
+							<li>결과값 저장되는 곳은 <strong>필요한 수량, 보관중인 재료, 수급할 재료</strong> 란 입니다.</li>       
+						</ul>
+					</div>
+				</div>
+		  
+				<button id="menu-toggle-btn" class="menu-toggle-btn" onclick="toggleMobileMenu()">
+					<div class="hamburger-icon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</button>
+				<!-- 모바일에서는 버튼을 누르면 뜨는 메뉴-->
+				<div id="mobile-drawer" class="mobile-drawer">
+				<!-- ⚠️ <button class="drawer-close-btn">... 항목은 삭제되었습니다. -->
+					<!-- 공지 사항 추가-->
+					<div class="notice card">
+						<h3 class="flex-center-title">
+							<span class="icon">📌</span> 
+							<span class="text">업데이트</span>
+							<span></span>
+						</h3>
+						<table class="notice-table">
+							<tbody>
+								<tr>
+									<td>
+										26.06.30
+									</td>                        
+									<th>LV.6 레시피 추가 완료</th>
+								</tr>                        
+								<tr>
+									<td>
+										26.05.14
+									</td>                        
+									<th>다크모드, 클립복사(텍스트 및 이미지) 기능 추가</th>
+								</tr>                    
+								<tr>
+									<td>
+										26.05.12
+									</td>                        
+									<th>초성으로 아이템명 검색 기능 추가</th>
+								</tr> 
+								<tr>
+									<td>
+										26.04.30
+									</td>                        
+									<th>LV.5 레시피 추가 완료</th>
+								</tr>                  
+							</tbody>
+						</table>  
+						<div class="notice-link">
+							<a  href="https://github.com/Appleapologize/mobi_base_total/releases" target="_blank"> 
+								자세히 보기 ▼
+							</a>
+							<p class="notice-link"> 
+							<a href="https://forms.gle/8fpGWskrQyW3AyMb7" target="_blank">
+								레시피 추가 요청 및 의견 제출
+							</a>    
+							</p>                
+						</div>
+					</div>    
+		        
+					<div class="guide-section card link-button-area">
+						<div class="title">
+							<h3 class="flex-center-title">
+								<span class="icon">🔗</span>
+								<span class="text">바로가기</span>
+								<span></span>
+							</h3>        
+						</div>    
+						<div class="link-button-con">
+							<div class="mabi_official">
+								<a href="https://mabinogimobile.nexon.com/Main" target="_blank" class="site-link-btn" title="마비노기 모바일 공식 홈페이지">
+									<span class="icon">
+										<svg id="mabinogi" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 65" width="65" height="65">
+											<g>
+												<title>Layer 1</title>
+												<polygon id="svg_1" fill="currentColor" points="18.6 47.86 22.65 43.81 14.25 35.41 13 34.17 8.95 38.21 10.2 39.45 18.6 47.86" class="cls-1"/>
+												<path id="svg_2" fill="currentColor" d="m41.79,58.6c-1.2,1.2 -3.15,1.2 -4.36,0l-7.62,-7.62l-4.05,4.05l7.62,7.63c3.43,3.43 9.02,3.43 12.45,0c3.17,-3.17 3.41,-8.17 0.73,-11.62l-4.14,4.14c0.5,1.13 0.29,2.51 -0.63,3.43l0,-0.01z" class="cls-1"/>
+												<path id="svg_3" fill="currentColor" d="m6.62,23.43c1.2,-1.2 3.16,-1.2 4.36,0l5.6,5.6c3.43,3.43 9.02,3.43 12.45,0c3.17,-3.17 3.41,-8.17 0.73,-11.62l-4.14,4.14c0.5,1.13 0.29,2.51 -0.63,3.43c-1.2,1.2 -3.16,1.2 -4.36,0l-5.6,-5.6c-3.43,-3.43 -9.02,-3.43 -12.45,0c-3.17,3.17 -3.41,8.17 -0.73,11.62l4.14,-4.14c-0.5,-1.13 -0.3,-2.51 0.63,-3.43z" class="cls-1"/>
+												<path id="svg_4" fill="currentColor" d="m58.59,41.79c-1.2,1.2 -3.16,1.2 -4.36,0l-5.6,-5.6c-3.43,-3.43 -9.02,-3.43 -12.45,0c-3.17,3.17 -3.41,8.17 -0.73,11.62l4.14,-4.14c-0.5,-1.13 -0.29,-2.51 0.63,-3.43c1.2,-1.2 3.15,-1.2 4.36,0l5.6,5.6c3.43,3.43 9.02,3.43 12.45,0c3.17,-3.17 3.41,-8.17 0.73,-11.62l-4.14,4.14c0.5,1.13 0.29,2.51 -0.63,3.43z" class="cls-1"/>
+												<path id="svg_5" fill="currentColor" d="m23.43,6.62c1.2,-1.2 3.15,-1.2 4.36,0l7.63,7.62l4.04,-4.04l-7.62,-7.63c-3.43,-3.43 -9.02,-3.43 -12.45,0c-3.17,3.17 -3.41,8.17 -0.73,11.62l4.14,-4.14c-0.5,-1.13 -0.3,-2.51 0.63,-3.43z" class="cls-1"/>
+												<polygon id="svg_6" fill="currentColor" points="52.21 31.05 56.26 27.01 47.86 18.6 46.61 17.36 42.57 21.4 43.81 22.65 52.21 31.05" class="cls-1"/>
+												<path id="svg_7" fill="currentColor" d="m51.02,18.65l4.14,4.14c1.13,-0.5 2.51,-0.29 3.43,0.63c1.2,1.2 1.2,3.15 0,4.36l-7.62,7.63l4.04,4.04l7.62,-7.62c3.43,-3.43 3.43,-9.02 0,-12.45c-3.17,-3.17 -8.17,-3.41 -11.62,-0.73l0.01,0z" class="cls-1"/>
+												<polygon id="svg_8" fill="currentColor" points="34.16 52.21 38.21 56.26 46.61 47.86 47.86 46.61 43.81 42.57 42.57 43.81 34.16 52.21" class="cls-1"/>
+												<path id="svg_9" fill="currentColor" d="m23.43,54.24l5.6,-5.6c3.43,-3.43 3.43,-9.02 0,-12.45c-3.17,-3.17 -8.17,-3.41 -11.62,-0.73l4.14,4.14c1.13,-0.5 2.51,-0.29 3.43,0.63c1.2,1.2 1.2,3.16 0,4.36l-5.6,5.6c-3.43,3.43 -3.43,9.02 0,12.45c3.17,3.17 8.17,3.41 11.62,0.73l-4.14,-4.14c-1.13,0.5 -2.51,0.29 -3.43,-0.63c-1.2,-1.2 -1.2,-3.16 0,-4.36z" class="cls-1"/>
+												<path id="svg_10" fill="currentColor" d="m41.79,10.98l-5.6,5.6c-3.43,3.43 -3.43,9.02 0,12.45c3.17,3.17 8.17,3.41 11.62,0.73l-4.14,-4.14c-1.13,0.5 -2.51,0.29 -3.43,-0.63c-1.2,-1.2 -1.2,-3.15 0,-4.36l5.6,-5.6c3.43,-3.43 3.43,-9.02 0,-12.45c-3.17,-3.17 -8.17,-3.41 -11.62,-0.73l4.14,4.14c1.13,-0.5 2.51,-0.29 3.43,0.63c1.2,1.2 1.2,3.16 0,4.36z" class="cls-1"/>
+												<path id="svg_11"fill="currentColor"  d="m14.2,46.56l-4.14,-4.14c-1.13,0.5 -2.51,0.29 -3.43,-0.63c-1.2,-1.2 -1.2,-3.15 0,-4.36l7.62,-7.62l-4.05,-4.05l-7.63,7.62c-3.43,3.43 -3.43,9.02 0,12.45c3.17,3.17 8.17,3.41 11.62,0.73l0.01,0z" class="cls-1"/>
+												<polygon id="svg_12" fill="currentColor" points="31.05 13 27.01 8.95 25.76 10.2 17.36 18.6 21.4 22.65 29.81 14.25 31.05 13" class="cls-1"/>
+											</g>
+										</svg>
+			  
+									</span> 마비노기모바일
+								</a>
+							</div>
+							<div class="mobi_life" >      
+								<a href="https://mabimobi.life/" target="_blank" class="site-link-btn" title="모비라이프">
+									<span class="icon">🔗</span>모비라이프
+								</a>        
+							</div>
+						</div>  
+					</div>
+				</div>					
+				<!-- 배너
+				<div class="banner-area">
+					<a href="연결할_링크_주소" target="_blank">
+						<img src="이미지_경로.jpg" alt="광고 배너" class="side-banner">
+					</a>
+				</div>      
+				--> 
+			</aside>   
+     
+  
+			<div class="container">
+				<section class="input-section card">
+					<h2>제작 아이템</h2>
+					<div class="input-row">
+						<!-- 1. 타자를 칠 수 있는 입력창 -->
+						<input type="text" class="item-select" id="item-input" placeholder="아이템명 입력" autocomplete="off">
+						<div id="custom-list" class="custom-autocomplete-list"></div>
+	                
+						<datalist id="item-datalist"></datalist>
+	  
+						<div class="number-spin-wrap" style="width: var(--spin-wrap-width);">
+							<input type="number" class="amount-input" placeholder="수량" min="0">
+							<div class="spin-btn-group">
+								<button type="button" class="spin-btn up" onclick="stepAmountInput(this, 1)">▲</button>
+								<button type="button" class="spin-btn down" onclick="stepAmountInput(this, -1)">▼</button>
+							</div>
+						</div>
+						<button class="btn-add">추가</button>
+					</div>
+					<div class="input-row" style="position: relative; margin-bottom: 10px;">
+						<input type="text" class="item-select" placeholder="아이템명 입력" autocomplete="off">
+						<div class="custom-autocomplete-list"></div>
+						<div class="number-spin-wrap" style="width: var(--spin-wrap-width);">
+							<input type="number" class="amount-input" placeholder="수량" min="0">
+							<div class="spin-btn-group">
+								<button type="button" class="spin-btn up" onclick="stepAmountInput(this, 1)">▲</button>
+								<button type="button" class="spin-btn down" onclick="stepAmountInput(this, -1)">▼</button>
+							</div>
+						</div>
+						<button class="btn-remove">삭제</button> 
+					</div>
+					<div class="input-row" style="position: relative; margin-bottom: 10px;">
+						<input type="text" class="item-select" placeholder="아이템명 입력" autocomplete="off">
+						<div class="custom-autocomplete-list"></div>
+						<div class="number-spin-wrap" style="width: var(--spin-wrap-width);">
+							<input type="number" class="amount-input" placeholder="수량" min="0">
+							<div class="spin-btn-group">
+								<button type="button" class="spin-btn up" onclick="stepAmountInput(this, 1)">▲</button>
+								<button type="button" class="spin-btn down" onclick="stepAmountInput(this, -1)">▼</button>
+							</div>
+						</div>
+						<button class="btn-remove">삭제</button> 
+					</div>          
+					<button class="btn-calc" onclick="runCalculation()">계산하기</button>
+				</section>
+	  
+				<section class="result-section">
+					<div class="result-card card">
+					<h3>필요한 수량</h3>
+						<table>
+							<thead><tr><th>원자재 명</th><th class="table-amount">수량</th></tr></thead>
+							<tbody id="total-needed"></tbody>
+						</table>
+					</div>
+	  
+					<div class="result-card card">
+						<h3>보관중인 재료</h3>
+						<table>
+							<thead><tr><th>원자재 명</th><th class="table-amount">수량</th></tr></thead>
+							<tbody id="current-stock"></tbody>
+						</table>
+					</div>
+	  
+					<div class="result-card card highlight">
+						<h3>수급할 재료</h3>
+						<table>
+							<thead><tr><th>원자재 명</th><th class="table-amount">수량</th></tr></thead>
+							<tbody id="final-need"></tbody>
+						</table>
+					</div>
+				</section>
+				<div class="btn-copy">
+					<button class="copy-text-btn" onclick="copyTableToText()">📋 텍스트 복사</button>
+					<button class="copy-img-btn" onclick="copyTableToImage()">📷 이미지 복사</button>
+				</div>          
+			</div>
+		</div>    
    
-
-    <div class="container">
-        <section class="input-section card">
-            <h2>제작 아이템</h2>
-            <div class="input-row">
-    <!-- 1. 타자를 칠 수 있는 입력창 -->
-     <input type="text" class="item-select" id="item-input" placeholder="아이템명 입력" autocomplete="off">
-<div id="custom-list" class="custom-autocomplete-list"></div>
-              
-<datalist id="item-datalist"></datalist>
-
-    <div class="number-spin-wrap" style="width: var(--spin-wrap-width);">
-    <input type="number" class="amount-input" placeholder="수량" min="0">
-    <div class="spin-btn-group">
-        <button type="button" class="spin-btn up" onclick="stepAmountInput(this, 1)">▲</button>
-        <button type="button" class="spin-btn down" onclick="stepAmountInput(this, -1)">▼</button>
-    </div>
-</div>
-    <button class="btn-add">추가</button>
-</div>
-<div class="input-row" style="position: relative; margin-bottom: 10px;">
-                <input type="text" class="item-select" placeholder="아이템명 입력" autocomplete="off">
-                <div class="custom-autocomplete-list"></div>
-                <div class="number-spin-wrap" style="width: var(--spin-wrap-width);">
-    <input type="number" class="amount-input" placeholder="수량" min="0">
-    <div class="spin-btn-group">
-        <button type="button" class="spin-btn up" onclick="stepAmountInput(this, 1)">▲</button>
-        <button type="button" class="spin-btn down" onclick="stepAmountInput(this, -1)">▼</button>
-    </div>
-</div>
-                <button class="btn-remove">삭제</button> 
-            </div>
-<div class="input-row" style="position: relative; margin-bottom: 10px;">
-                <input type="text" class="item-select" placeholder="아이템명 입력" autocomplete="off">
-                <div class="custom-autocomplete-list"></div>
-                <div class="number-spin-wrap" style="width: var(--spin-wrap-width);">
-    <input type="number" class="amount-input" placeholder="수량" min="0">
-    <div class="spin-btn-group">
-        <button type="button" class="spin-btn up" onclick="stepAmountInput(this, 1)">▲</button>
-        <button type="button" class="spin-btn down" onclick="stepAmountInput(this, -1)">▼</button>
-    </div>
-</div>
-                <button class="btn-remove">삭제</button> 
-            </div>          
-            <button class="btn-calc" onclick="runCalculation()">계산하기</button>
-        </section>
-
-        <section class="result-section">
-            <div class="result-card card">
-                <h3>필요한 수량</h3>
-                <table>
-                    <thead><tr><th>원자재 명</th><th class="table-amount">수량</th></tr></thead>
-                    <tbody id="total-needed"></tbody>
-                </table>
-            </div>
-
-            <div class="result-card card">
-                <h3>보관중인 재료</h3>
-                <table>
-                    <thead><tr><th>원자재 명</th><th class="table-amount">수량</th></tr></thead>
-                    <tbody id="current-stock"></tbody>
-                </table>
-            </div>
-
-            <div class="result-card card highlight">
-                <h3>수급할 재료</h3>
-                <table>
-                    <thead><tr><th>원자재 명</th><th class="table-amount">수량</th></tr></thead>
-                    <tbody id="final-need"></tbody>
-                </table>
-            </div>
-        </section>
-   <div class="btn-copy">
-        <button class="copy-text-btn" onclick="copyTableToText()">📋 텍스트 복사</button>
-        <button class="copy-img-btn" onclick="copyTableToImage()">📷 이미지 복사</button>
-    </div>          
-    </div>
-   </div>    
- 
-    
-    <footer>
-        <p class="bold">이 사이트에 사용된 일부 컨텐츠의 저작권은 (주)넥슨코리아에 있습니다</p>
-        <p>이 사이트는 비영리 개인 웹사이트 입니다.</p>      
-        <p>© 2026 모바일 마비노기 원재료 수량 계산기. All rights reserved.</p>
-    </footer>
-</body>
+      
+		<footer>
+			<p class="bold">이 사이트에 사용된 일부 컨텐츠의 저작권은 (주)넥슨코리아에 있습니다</p>
+			<p>이 사이트는 비영리 개인 웹사이트 입니다.</p>      
+			<p>© 2026 모바일 마비노기 원재료 수량 계산기. All rights reserved.</p>
+		</footer>
+	</body>
 </html>
