@@ -169,7 +169,9 @@
     --footer-border-color-glass: rgba(255, 255, 255, 0.1);
 }
 
-
+ion-icon{
+	visibility: visible;
+}
 
 * {
 	box-sizing: border-box; 
@@ -871,7 +873,12 @@ transition: transform 0.3s ease-in-out;
 }
 
 .btn-copy button:hover{
-  background: var(--btn-copy-hover-back);
+	background: var(--btn-copy-hover-back);
+}
+
+ion-icon.image{
+	font-size: x-large;
+	vertical-align: middle;
 }
 
 /*-------------footer----------*/
