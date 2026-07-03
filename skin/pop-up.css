@@ -1,16 +1,37 @@
+/* [CSS 파일 내용] */
 
-#notice-popup{
-	display: block;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 500px;
-	max-width: 90%;
-	background: #ffffff;
-	border: 1px solid #dddddd;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-	z-index: 100000;
-	border-radius: 10px;
-	overflow: hidden ;
+/* 1. 팝업창 뒤를 완전히 덮어버리는 어두운 반투명 막 (배경 한 겹) */
+#notice-popup {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.5) !important; /* 까만색 50% 투명도 */
+    z-index: 100000 !important;
+    display: none;
+}
+
+/* 2. 실제 유저가 보고 움직일 공지사항 하얀색 상자 */
+.popup-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    max-width: 90%;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* 3. 마우스로 잡고 움직일 상단 제목 영역 (드래그 핸들) */
+.popup-header {
+    background: #f5f5f5;
+    padding: 12px 20px;
+    cursor: move; /* 마우스 커서를 이동 모양으로 변경 */
+    border-bottom: 1px solid #eee;
+    user-select: none; /* 드래그할 때 텍스트 블록 지정 방지 */
 }
