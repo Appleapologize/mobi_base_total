@@ -1,7 +1,7 @@
 let recipeData = []; 
 let dict = {}; 
 
-// 1. 지정된 구글 스프레드 시트
+// 레시피가 모여있는 지정된 구글 스프레드 시트
 async function loadSheetData() {
     const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT5aKPoEd4EegNLKMnC4B5PBXGmDyIgwoOAKlwr4vsflm3ZL3B9etAfKywqZAlUF3gbYRad38Q2hbHi/pub?output=csv";
     try {
@@ -287,12 +287,12 @@ function copyTableToImage() {
                 const item = new ClipboardItem({ "image/png": blob });
                 
                 navigator.clipboard.write([item]).then(() => {
-                    const isDownload = confirm("📸 결과 화면이 클립보드에 복사되었습니다!\n\n추가로 이미지 파일(.png)로 다운로드하시겠습니까?");
+                    const isDownload = confirm("결과 화면이 클립보드에 복사되었습니다!\n\n추가로 이미지 파일(.png)로 다운로드하시겠습니까?");
                     
                     if (isDownload) {
                         const link = document.createElement('a');
                         link.href = canvas.toDataURL('image/png');
-                        link.download = `마비노기모바일_재료계산결과_${new Date().toISOString().slice(0,10)}.png`;
+                        link.download = `마비노기모바일_원재료계산결과_${new Date().toISOString().slice(0,10)}.png`;
                         link.click();
                     }
                 }).catch(err => {
@@ -300,14 +300,14 @@ function copyTableToImage() {
                     alert("보안 정책으로 자동 복사가 제한되어 파일 다운로드 창을 직접 실행합니다.");
                     const link = document.createElement('a');
                     link.href = canvas.toDataURL('image/png');
-                    link.download = `마비노기모바일_재료계산결과_${new Date().toISOString().slice(0,10)}.png`;
+                    link.download = `마비노기모바일_원재료계산결과_${new Date().toISOString().slice(0,10)}.png`;
                     link.click();
                 });
             } catch (e) {
                 alert("현재 브라우저 환경에서는 클립보드 이미지 복사를 지원하지 않아 즉시 파일로 저장합니다.");
                 const link = document.createElement('a');
                 link.href = canvas.toDataURL('image/png');
-                link.download = `마비노기모바일_재료계산결과_${new Date().toISOString().slice(0,10)}.png`;
+                link.download = `마비노기모바일_원재료계산결과_${new Date().toISOString().slice(0,10)}.png`;
                 link.click();
             }
         }, "image/png");
