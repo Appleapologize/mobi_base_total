@@ -7,9 +7,8 @@
     left: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    background: rgba(0, 0, 0, 0.5) !important; /* 까만색 50% 투명도 */
+    background: rgba(0, 0, 0, 0.4) !important; /* 어두운 한 겹 레이어막 */
     z-index: 100000 !important;
-    display: none;
 }
 
 /* 2. 실제 유저가 보고 움직일 공지사항 하얀색 상자 */
@@ -21,7 +20,7 @@
     width: 500px;
     max-width: 90%;
     background: #ffffff;
-    border: 1px solid #dddddd;
+    border: 1px solid #ccc;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     overflow: hidden;
