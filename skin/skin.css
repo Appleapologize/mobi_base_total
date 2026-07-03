@@ -928,73 +928,81 @@ margin-bottom:0;
 /*-------------모바일 환경----------*/
 @media (max-width: 1024px) {
 
-.main-wrapper { 
-	flex-direction: column;
-	width:var(--width-100);
- }
-
-aside {
-	width:var(--width-100);
-  position: static !important;
-  display: block !important;
-  z-index: auto !important;  
-}	
-.guide-section, .guide-section.collapsed {
-	width: var(--width-100);	
-	position: static;
-	margin: 0;
-  }
+	body{
+	-ms-overflow-style: none;
+	}
 	
-	.link-button-area{
-		margin:0;
+	::-webkit-scrollbar {
+		display: none;
+	}
+	
+	.main-wrapper { 
+		flex-direction: column;
+		width:var(--width-100);
+	 }
+	
+	aside {
+		width:var(--width-100);
+	  position: static !important;
+	  display: block !important;
+	  z-index: auto !important;  
+	}	
+	.guide-section, .guide-section.collapsed {
+		width: var(--width-100);	
+		position: static;
+		margin: 0;
+	  }
 		
-	}
-.link-button-area div{
-	width:var(--width-100);
-justify-content: center;	
-}	
-
-	.link-button-con{
-		display:flex;
+		.link-button-area{
+			margin:0;
+			
+		}
+	.link-button-area div{
+		width:var(--width-100);
+	justify-content: center;	
 	}	
-
-	.link-button-con div{
-		width:auto;
-	    padding: 10px !important;
-		margin: 0 5PX 0px !important; 		
-		border-radius: var(--btn-border-radius-l);
-	    text-align: center;
-	    font-size: 1rem	!important;		
-	}	
-
+	
+		.link-button-con{
+			display:flex;
+		}	
+	
+		.link-button-con div{
+			width:auto;
+		    padding: 10px !important;
+			margin: 0 5PX 0px !important; 		
+			border-radius: var(--btn-border-radius-l);
+		    text-align: center;
+		    font-size: 1rem	!important;		
+		}	
+	
 	.toggle-btn{
-		font-size:1.6rem;
+	font-size:1.6rem;
+	}
+		
+	.input-section{
+		width:var(--width-100);
+		flex: 2; 
+		min-width: 0;
 	}
 	
-.input-section{
-	width:var(--width-100);
-	flex: 2; 
-	min-width: 0;
-}
-
-.input-row {
-	display: flex; /* 가로로 배치 */
-	gap: 5px; /* 간격 조절 */
-	width: var(--width-100);
-  }
-
-  .item-select, .amount-input {
-	flex: 1; 
-    min-width: 0; /* flex 박스 안에서 줄어들 수 있게 허용 */
-  }
-
-.notice{
-	max-width:var(--width-100);
-}
-
-.result-section .card.highlight {
-    grid-column: 1 / -1; /* grid의 첫 번째 줄부터 마지막 줄까지 차지 */
-   }
+	.input-row {
+		display: flex; /* 가로로 배치 */
+		gap: 5px; /* 간격 조절 */
+		width: var(--width-100);
+	  }
+	
+	  .item-select, .amount-input {
+		flex: 1; 
+	    min-width: 0; /* flex 박스 안에서 줄어들 수 있게 허용 */
+	  }
+	
+	.notice{
+		max-width:var(--width-100);
+	}
+	
+	.result-section .card.highlight {
+	    grid-column: 1 / -1; /* grid의 첫 번째 줄부터 마지막 줄까지 차지 */
+	}
 
 
       .head {
