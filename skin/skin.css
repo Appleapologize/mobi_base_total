@@ -876,7 +876,8 @@ transition: transform 0.3s ease-in-out;
 	background: var(--btn-copy-hover-back);
 }
 
-ion-icon.image{
+ion-icon.image,
+ion-icon.newspaper{
 	font-size: x-large;
 	vertical-align: middle;
 }
