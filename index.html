@@ -265,59 +265,27 @@
 		<div id="notice-popup" style="display: none;"></div>
 		
 		<script>
-		    // 팝업을 닫는 함수
-		    function closeNotice() {
-		        document.getElementById('notice-popup').style.display = 'none';
-		    }
-		
 		    document.addEventListener("DOMContentLoaded", async function() {
 		        // 깃허브 캐시 방지용 타임스탬프 추가
 		        const noticeUrl = 'pop-up.html?v=' + new Date().getTime(); 
 		
 		        try {
+		            // 1. 실제로 pop-up.html 파일이 있는지 서버에 먼저 물어봅니다.
 		            const response = await fetch(noticeUrl);
 		            
 		            if (response.ok) {
-		                const htmlText = await response.text();
-		                
-		                // 임시 그릇을 만들어 가져온 pop-up.html 소스를 넣고 <body> 안의 내용만 추출합니다.
-		                // 이렇게 해야 <!DOCTYPE html> 이나 <html> 태그가 중복되어 디자인이 깨지는 것을 막습니다.
-		                const parser = new DOMParser();
-		                const doc = parser.parseFromString(htmlText, 'text/html');
-		                const popupBodyContent = doc.body ? doc.body.innerHTML : htmlText;
-		                
-		                // 닫기 버튼 레이아웃 구조 생성
-		                const closeButtonHtml = `
-		                    <div style="text-align: right; padding: 12px; background: #f9f9f9; border-top: 1px solid #eee;">
-		                        <button onclick="closeNotice()" style="padding: 6px 16px; background: #333; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 14px;">닫기</button>
-		                    </div>`;
-		                
-		                const popupContainer = document.getElementById('notice-popup');
-		                
-		                // 추출한 내용물과 닫기 버튼을 메인 화면 그릇에 결합하여 주입
-		                popupContainer.innerHTML = `<div style="padding: 25px; max-height: 400px; overflow-y: auto; font-family: sans-serif; line-height: 1.7; color: #444444; background: #fff; white-space: pre-wrap;">${popupBodyContent}</div>` + closeButtonHtml;
-		                
-		                // 외부 CSS가 먹히지 않더라도 무조건 화면 중앙 정중앙에 고정되도록 스타일 강제 주입
-		                popupContainer.style.cssText = `
-		                    display: block !important;
-		                    position: fixed !important;
-		                    top: 50% !important;
-		                    left: 50% !important;
-		                    transform: translate(-50%, -50%) !important;
-		                    width: 500px !important;
-		                    max-width: 90% !important;
-		                    background: #ffffff !important;
-		                    border: 1px solid #dddddd !important;
-		                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
-		                    z-index: 100000 !important;
-		                    border-radius: 10px !important;
-		                    overflow: hidden !important;
-		                `;
+		                // 2. 파일이 진짜로 존재할 때만 브라우저 새 창(팝업)을 강제로 엽니다.
+		                // 크기는 가로 500px, 세로 550px로 지정했습니다.
+		                window.open(
+		                    'pop-up.html', 
+		                    'MabinogiMobileNotice', 
+		                    'width=500, height=550, top=100, left=100, scrollbars=yes, resizable=no'
+		                );
 		            } else {
-		                console.log("pop-up.html 파일을 서버에서 찾지 못했습니다. (팝업 미출력)");
+		                console.log("pop-up.html 파일이 없어 팝업창을 열지 않습니다.");
 		            }
 		        } catch (error) {
-		            console.error("팝업 통신 중 오류가 발생했습니다:", error);
+		            console.error("팝업 체크 중 오류 발생:", error);
 		        }
 		    });
 		</script>
