@@ -9,6 +9,9 @@
 	--btn-border-radius-l:12px;
 	--li-marker:"➤  "; /*띄어쓰기도 그대로 들어감 주의*/
 	--notice-border-top:1px solid;
+
+	--card-border-radius:var(--btn-border-radius-l);
+	--card-padding:20px;
 	
 		/*수급할 재료 card 테두리*/
 	--highlight-border-px:5px; /*선 두께*/
@@ -189,10 +192,10 @@ body {
 /* 전체 레이아웃 정렬 */
 .main-wrapper {
   display: flex;
-  gap: 20px;
+  gap: var(--card-padding);
   max-width: 1400px;
   margin: 20px auto;
-  padding: 0 40px;
+  padding: 0 calc(var(--card-padding) * 2);
   align-items: flex-start; /* 자식 요소들이 각자 높이에 맞게 정렬 */
 }
 
@@ -224,8 +227,8 @@ a{
     display: flex;
     justify-content: flex-end;
     max-width: 1400px;
-    margin: 20px auto 0 auto;
-    padding: 0 40px;
+    margin: var(--card-padding) auto 0 auto;
+    padding: 0 calc(var(--card-padding) * 2);
     width: var(--width-100);
 }
 
@@ -337,8 +340,8 @@ a{
 /*---------개별 카드 영역----------*/
 .card {
     background: var(--card-background-color);
-    border-radius: var(--btn-border-radius-l);
-    padding: 20px;
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
     box-shadow: 0 4px 6px var(--box-shadow-color);
     margin-bottom: 20px;
 }
