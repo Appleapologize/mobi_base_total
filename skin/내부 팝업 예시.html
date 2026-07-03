@@ -32,8 +32,7 @@
                 const popupContainer = document.getElementById('notice-popup');
                 
                 // 추출한 내용물과 닫기 버튼을 메인 화면 그릇에 결합하여 주입
-                popupContainer.innerHTML = `<div style="padding: 25px; max-height: 400px; overflow-y: auto; font-family: sans-serif; line-height: 1.7; color: #444444; background: #fff; white-space: pre-wrap;">${popupBodyContent}</div>` + closeButtonHtml;
-                
+                popupContainer.innerHTML = `<div style="max-height: 450px; overflow-y: auto; background: #fff;">${popupBodyContent}</div>` + closeButtonHtml;
                 // 외부 CSS가 먹히지 않더라도 무조건 화면 중앙 정중앙에 고정되도록 스타일 강제 주입
                 popupContainer.style.cssText = `
                     display: block !important;
