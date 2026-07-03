@@ -10,7 +10,7 @@
 	z-index: 100000 !important;
 }
 
-/* 2. 실제 유저가 보고 움직일 공지사항 하얀색 상자 */
+/* 유저가 보고 움직일 공지사항 하얀색 상자 */
 .popup-box {
 	position: absolute;
 	top: 50%;
@@ -25,7 +25,7 @@
 	overflow: hidden;
 }
 
-/* 3. 마우스로 잡고 움직일 상단 제목 영역 (드래그 핸들) */
+/* 마우스로 잡고 움직일 상단 제목 영역 (드래그 핸들) */
 #drag-handle{
 	background: var(--th-back-color);
 	padding: 12px 20px;
