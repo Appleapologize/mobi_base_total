@@ -39,7 +39,8 @@
 }
 
 #drag-handle p,
-.content-body p{
+.content-body p,
+.footer p{
 	margin: 0;
 }
 
