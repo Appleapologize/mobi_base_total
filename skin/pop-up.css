@@ -1,16 +1,20 @@
+:root{
+	--popup-back:color-mix(srgb, var(--background-color) 60%, transparent);
+}
 
-/* 팝업창 뒤를 완전히 덮어버리는 어두운 반투명 막 (배경 한 겹) */
+
+/* 팝업창 뒤 배경 한 겹 */
 #notice-popup {
 	position: fixed !important;
 	top: 0 !important;
 	left: 0 !important;
 	width: 100% !important;
 	height: 100% !important;
-	background: rgba(0, 0, 0, 0.4) !important; /* 어두운 한 겹 레이어막 */
+	background: var(--popup-back) !important;
 	z-index: 100000 !important;
 }
 
-/* 유저가 보고 움직일 공지사항 하얀색 상자 */
+/* 유저가 보고 움직일 하얀색 상자 */
 .popup-box {
 	position: absolute;
 	top: 50%;
