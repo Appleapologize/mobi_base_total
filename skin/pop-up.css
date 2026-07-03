@@ -30,7 +30,6 @@
 	background: var(--th-back-color);
 	padding: 12px 20px;
 	cursor: move; /* 마우스 커서를 이동 모양으로 변경 */
-	border-bottom: 1px solid #eee;
 	user-select: none; /* 드래그할 때 텍스트 블록 지정 방지 */
 	display: flex;
 	position: relative;
@@ -43,4 +42,12 @@
 #drag-handle button{
 	position: absolute;
 	right: 0;
+	background: none;
+	border: none;
+	font-size: x-large;
+	color: var(--text-color);
+}
+
+#drag-handle button:hover{
+	color: var(--line-color);
 }
