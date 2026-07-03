@@ -52,6 +52,7 @@
 	border: none;
 	font-size: x-large;
 	color: var(--text-color);
+	padding: 0 20px;
 }
 
 #drag-handle button:hover{
