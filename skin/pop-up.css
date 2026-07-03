@@ -65,4 +65,5 @@
 .popup-box .footer{
 	background: var(--th-back-color);
 	padding: 12px 20px;
+	cursor: pointer;
 }
