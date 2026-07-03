@@ -263,47 +263,106 @@
 
 		<!-- 공지 팝업 창 영역 -->
 		<div id="notice-popup" style="display: none;"></div>
-		
-		<script>
-			document.addEventListener("DOMContentLoaded", async function() {
-			    const noticeUrl = 'pop-up.html?v=' + new Date().getTime(); 
-			
-			    try {
-			        const response = await fetch(noticeUrl);
-/*이걸로 바꾸면, 새 창으로 열림
-if (response.ok) {
-    // 파일이 서버에 있는 것을 확인했으니, 진짜 브라우저 독립 새 창으로 pop-up.html을 강제로 엽니다.
-    // 가로 500픽셀, 세로 550픽셀 크기이며, 화면 왼쪽 위(top 100, left 100) 구역에 생성됩니다.
-    window.open('pop-up.html', 'MabinogiNoticeWindow', 'width=500, height=550, top=100, left=100, scrollbars=yes, resizable=no');
-}*/
-			        
-			        if (response.ok) {
-			            const htmlText = await response.text();
-			            
-			            const parser = new DOMParser();
-			            const doc = parser.parseFromString(htmlText, 'text/html');
-			            const popupBodyContent = doc.body ? doc.body.innerHTML : htmlText;
-			            
-			            const popupContainer = document.getElementById('notice-popup');
-			            
-			            // 변경: 메인에서 버튼을 따로 조립하지 않고, pop-up.html 내용물만 그대로 집어넣습니다.
-			            popupContainer.innerHTML = popupBodyContent;
-			            
-			            // CSS 파일에 정의한 #notice-popup 스타일이 켜지도록 디스플레이를 바꿉니다.
-			            popupContainer.style.display = 'block';
-			        } else {
-			            console.log("pop-up.html 파일을 서버에서 찾지 못했습니다.");
-			        }
-			    } catch (error) {
-			        console.error("팝업 통신 중 오류가 발생했습니다:", error);
-			    }
-			});
-			
-			// 이 전역 함수는 아래 2번 항목에서 호출하기 위해 반드시 메인 페이지에 남겨두어야 합니다.
-			function closeNotice() {
-			    document.getElementById('notice-popup').style.display = 'none';
-			}
-		</script>
+
+<script>
+    function closeNotice() {
+        document.getElementById('notice-popup').style.display = 'none';
+    }
+
+    document.addEventListener("DOMContentLoaded", async function() {
+        const noticeUrl = 'pop-up.html?v=' + new Date().getTime(); 
+
+        try {
+            const response = await fetch(noticeUrl);
+            
+            if (response.ok) {
+                const htmlText = await response.text();
+                
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(htmlText, 'text/html');
+                const popupBodyContent = doc.body ? doc.body.innerHTML : htmlText;
+                
+                // 닫기 버튼 구조
+                const closeButtonHtml = `
+                    <div style="text-align: right; padding: 12px; background: #f9f9f9; border-top: 1px solid #eee;">
+                        <button onclick="closeNotice()" style="padding: 6px 16px; background: #333; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 14px;">닫기</button>
+                    </div>`;
+                
+                // [구조 변경] 움직일 수 있는 .popup-box 상자를 만들고, 상단에 마우스로 잡을 헤더(제목 구역)를 배치합니다.
+                const popupContainer = document.getElementById('notice-popup');
+                popupContainer.innerHTML = `
+                    <div class="popup-box" id="draggable-box">
+                        <div class="popup-header" id="drag-handle"><strong>📌 마우스로 잡고 움직일 수 있습니다</strong></div>
+                        <div style="padding: 25px; max-height: 400px; overflow-y: auto; font-family: sans-serif; line-height: 1.7; color: #444444; background: #fff; white-space: pre-wrap;">${popupBodyContent}</div>
+                        ${closeButtonHtml}
+                    </div>
+                `;
+                
+                // 반투명 배경과 함께 팝업 활성화
+                popupContainer.style.display = 'block';
+                
+                // 드래그 기능 실행 활성화
+                makeElementDraggable(document.getElementById("draggable-box"), document.getElementById("drag-handle"));
+                
+            } else {
+                console.log("pop-up.html 파일을 찾지 못했습니다.");
+            }
+        } catch (error) {
+            console.error("팝업 통신 중 오류가 발생했습니다:", error);
+        }
+    });
+
+    // 마우스 드래그 이동을 담당하는 자바스크립트 함수
+    function makeElementDraggable(elmnt, dragHandle) {
+        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        
+        // 드래그 핸들이 있으면 핸들을 잡았을 때만 이동, 없으면 상자 전체를 잡았을 때 이동
+        if (dragHandle) {
+            dragHandle.onmousedown = dragMouseDown;
+        } else {
+            elmnt.onmousedown = dragMouseDown;
+        }
+
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // 마우스 커서 위치 가져오기
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            // 마우스를 움직일 때마다 요소 이동 함수 실행
+            document.onmousemove = elementDrag;
+            
+            // 드래그가 시작되면 최초 중앙정렬(transform) 효과를 지우고 고정 픽셀 좌표로 환산합니다.
+            if(elmnt.style.transform !== 'none') {
+                const rect = elmnt.getBoundingClientRect();
+                elmnt.style.left = rect.left + (rect.width / 2) + 'px';
+                elmnt.style.top = rect.top + (rect.height / 2) + 'px';
+                elmnt.style.transform = 'translate(-50%, -50%)';
+            }
+        }
+
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // 마우스 이동 거리에 따른 새로운 좌표 계산
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            // 상자 위치 실시간 변경
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+            // 마우스를 떼면 드래그 이벤트 종료
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
+</script>
+
 
 	</body>
 </html>
