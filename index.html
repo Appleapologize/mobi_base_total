@@ -274,7 +274,17 @@
 		
 		        try {
 		            const response = await fetch(noticeUrl);
-		            
+					/*           
+					 if (response.ok) {
+					                // 파일이 존재하는 것을 확인했으므로, 브라우저 자체 새 창(윈도우 팝업)을 강제로 엽니다.
+					                // 크기는 가로 500px, 세로 550px이며 화면 상단 좌측 근처에 배치됩니다.
+					                window.open(
+					                    'pop-up.html', 
+					                    'MabinogiNoticeWindow', 
+					                    'width=500, height=550, top=100, left=100, scrollbars=yes, resizable=no'
+					                );
+					            }
+					*/		            
 		            if (response.ok) {
 		                const htmlText = await response.text();
 		                
@@ -286,6 +296,12 @@
 		                
 		                // 메인 페이지에는 아무런 데코레이션 없이, 가져온 pop-up.html 본문을 그대로 감싸서 넣습니다.
 		                popupContainer.innerHTML = `<div class="popup-box" id="draggable-box">${popupBodyContent}</div>`;
+
+						/*
+						// index.html 내부의 해당 라인을 이렇게 수정해 줍니다.
+						// 외부에서 닫기 버튼을 강제로 조립하던 구문을 싹 빼고 본문만 깨끗하게 주입합니다.
+						popupContainer.innerHTML = `<div class="popup-box" id="draggable-box">${popupBodyContent}</div>`;
+						*/
 		                
 		                // 팝업창 레이어 노출
 		                popupContainer.style.display = 'block';
