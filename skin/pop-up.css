@@ -1,5 +1,5 @@
 :root{
-	--popup-back:color-mix(in srgb, var(--background-color) 60%, transparent);
+	--popup-back: color-mix(in srgb, var(--background-color) 60%, transparent);
 }
 
 
