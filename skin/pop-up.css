@@ -15,25 +15,24 @@
 	z-index: 100000;
 }
 
-/* 유저가 보고 움직일 하얀색 상자 */
+/* 유저가 보고 움직일 상자 */
 .popup-box {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 500px;
-	max-width: 90%;
+	width: 900px;
 	background: var(--card-background-color);
-	border: 1px solid var(--line-color);
+	border: 1px solid var(--th-back-color);
 	box-shadow: 0 10px 30px var(--box-shadow-color);
-	border-radius: 10px;
+	border-radius: var(--card-border-radius);
 	overflow: hidden;
 }
 
 /* 마우스로 잡고 움직일 상단 제목 영역 (드래그 핸들) */
 #drag-handle{
 	background: var(--th-back-color);
-	padding: 12px 20px;
+	padding: calc(var(--card-padding) / 2) var(--card-padding);
 	cursor: move; /* 마우스 커서를 이동 모양으로 변경 */
 	user-select: none; /* 드래그할 때 텍스트 블록 지정 방지 */
 	display: flex;
@@ -52,7 +51,7 @@
 	border: none;
 	font-size: x-large;
 	color: var(--text-color);
-	padding: 0 20px;
+	padding: 0 var(--card-padding);
 }
 
 #drag-handle button:hover{
@@ -60,11 +59,19 @@
 }
 
 .content-body{
-	padding:20px;
+	padding:var(--card-padding);
 }
 
 .popup-box .footer{
 	background: var(--th-back-color);
-	padding: 12px 20px;
+	padding: calc(var(--card-padding) / 2) var(--card-padding);
 	cursor: pointer;
+}
+
+
+@media (max-width: 1024px) {
+	.popup-box {
+		width: 500px;
+		max-width: 90%;
+	}
 }
