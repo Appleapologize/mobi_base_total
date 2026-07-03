@@ -1,5 +1,6 @@
 :root{
 	--popup-back: color-mix(in srgb, var(--background-color) 60%, transparent);
+	--close-button-hover:#7f89b2;
 }
 
 
@@ -39,7 +40,8 @@
 	position: relative;
 }
 
-#drag-handle p{
+#drag-handle p,
+.content-body p{
 	margin: 0;
 }
 
@@ -53,5 +55,9 @@
 }
 
 #drag-handle button:hover{
-	color: var(--line-color);
+	color: var(--close-button-hover);
+}
+
+.content-body{
+	padding:20px;
 }
