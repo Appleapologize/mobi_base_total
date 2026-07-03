@@ -272,31 +272,40 @@
 		</div>
 	
 		<script>
-	        function closeNotice() {
-	            document.getElementById('notice-popup').style.display = 'none';
-	        }
-	
-	        async function loadNotice() {
-	            const noticeUrl = 'pop-up.html'; 
-	
-	            try {
-	                const response = await fetch(noticeUrl);
-	                
-	                if (response.ok) {
-	                    // HTML 파일의 글자 내용을 그대로 가져옴
-	                    const htmlText = await response.text();
-	                    // 팝업 안의 콘텐츠 영역에 그대로 주입
-	                    document.getElementById('notice-popup').innerHTML = htmlText;
-	                    // 팝업 창 열기
-	                    document.getElementById('notice-popup').style.display = 'block';
-	                }
-	            } catch (error) {
-	                console.log("공지 파일이 없거나 불러오지 못했습니다.");
-	            }
-	        }
-	
-	        // 페이지 로드시 실행
-	        window.onload = loadNotice;
+	        // 팝업을 닫는 함수
+		    function closeNotice() {
+		        document.getElementById('notice-popup').style.display = 'none';
+		    }
+		
+		    async function loadNotice() {
+		        // 이미지로 확인된 정확한 파일명
+		        const noticeUrl = 'pop-up.html'; 
+		
+		        try {
+		            const response = await fetch(noticeUrl);
+		            if (response.ok) {
+		                let htmlText = await response.text();
+		                
+		                //가져온 내용 아래에 '닫기 버튼'을 강제로 합쳐서 그릇에 집어넣습니다.
+		                const closeButtonHtml = `<div style="text-align: right; padding: 10px; background: #f5f5f5; border-top: 1px solid #eee;">
+		                                            <button onclick="closeNotice()" style="padding: 6px 12px; background: #222; color: #fff; border: none; border-radius: 4px; cursor: pointer;">닫기</button>
+		                                         </div>`;
+		                
+		                // 팝업 틀안에 콘텐츠와 닫기 버튼을 함께 주입
+		                document.getElementById('notice-popup').innerHTML = htmlText + closeButtonHtml;
+		                
+		                // 팝업창 최종 표시
+		                document.getElementById('notice-popup').style.display = 'block';
+		            } else {
+		                console.log("pop-up.html 파일을 찾을 수 없습니다. (Status: " + response.status + ")");
+		            }
+		        } catch (error) {
+		            console.error("팝업 로드 중 에러 발생:", error);
+		        }
+		    }
+		
+		    // 페이지 로드 시 실행
+		    window.onload = loadNotice;
 		</script>
 	</body>
 </html>
