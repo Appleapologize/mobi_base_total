@@ -1,6 +1,5 @@
-/* [CSS 파일 내용] */
 
-/* 1. 팝업창 뒤를 완전히 덮어버리는 어두운 반투명 막 (배경 한 겹) */
+/* 팝업창 뒤를 완전히 덮어버리는 어두운 반투명 막 (배경 한 겹) */
 #notice-popup {
     position: fixed !important;
     top: 0 !important;
