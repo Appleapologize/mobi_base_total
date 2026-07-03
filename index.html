@@ -264,104 +264,87 @@
 		<!-- 공지 팝업 창 영역 -->
 		<div id="notice-popup" style="display: none;"></div>
 
-<script>
-    function closeNotice() {
-        document.getElementById('notice-popup').style.display = 'none';
-    }
-
-    document.addEventListener("DOMContentLoaded", async function() {
-        const noticeUrl = 'pop-up.html?v=' + new Date().getTime(); 
-
-        try {
-            const response = await fetch(noticeUrl);
-            
-            if (response.ok) {
-                const htmlText = await response.text();
-                
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(htmlText, 'text/html');
-                const popupBodyContent = doc.body ? doc.body.innerHTML : htmlText;
-                
-                // 닫기 버튼 구조
-                const closeButtonHtml = `
-                    <div style="text-align: right; padding: 12px; background: #f9f9f9; border-top: 1px solid #eee;">
-                        <button onclick="closeNotice()" style="padding: 6px 16px; background: #333; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 14px;">닫기</button>
-                    </div>`;
-                
-                // [구조 변경] 움직일 수 있는 .popup-box 상자를 만들고, 상단에 마우스로 잡을 헤더(제목 구역)를 배치합니다.
-                const popupContainer = document.getElementById('notice-popup');
-                popupContainer.innerHTML = `
-                    <div class="popup-box" id="draggable-box">
-                        <div class="popup-header" id="drag-handle"><strong>📌 마우스로 잡고 움직일 수 있습니다</strong></div>
-                        <div style="padding: 25px; max-height: 400px; overflow-y: auto; font-family: sans-serif; line-height: 1.7; color: #444444; background: #fff; white-space: pre-wrap;">${popupBodyContent}</div>
-                        ${closeButtonHtml}
-                    </div>
-                `;
-                
-                // 반투명 배경과 함께 팝업 활성화
-                popupContainer.style.display = 'block';
-                
-                // 드래그 기능 실행 활성화
-                makeElementDraggable(document.getElementById("draggable-box"), document.getElementById("drag-handle"));
-                
-            } else {
-                console.log("pop-up.html 파일을 찾지 못했습니다.");
-            }
-        } catch (error) {
-            console.error("팝업 통신 중 오류가 발생했습니다:", error);
-        }
-    });
-
-    // 마우스 드래그 이동을 담당하는 자바스크립트 함수
-    function makeElementDraggable(elmnt, dragHandle) {
-        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-        
-        // 드래그 핸들이 있으면 핸들을 잡았을 때만 이동, 없으면 상자 전체를 잡았을 때 이동
-        if (dragHandle) {
-            dragHandle.onmousedown = dragMouseDown;
-        } else {
-            elmnt.onmousedown = dragMouseDown;
-        }
-
-        function dragMouseDown(e) {
-            e = e || window.event;
-            e.preventDefault();
-            // 마우스 커서 위치 가져오기
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            document.onmouseup = closeDragElement;
-            // 마우스를 움직일 때마다 요소 이동 함수 실행
-            document.onmousemove = elementDrag;
-            
-            // 드래그가 시작되면 최초 중앙정렬(transform) 효과를 지우고 고정 픽셀 좌표로 환산합니다.
-            if(elmnt.style.transform !== 'none') {
-                const rect = elmnt.getBoundingClientRect();
-                elmnt.style.left = rect.left + (rect.width / 2) + 'px';
-                elmnt.style.top = rect.top + (rect.height / 2) + 'px';
-                elmnt.style.transform = 'translate(-50%, -50%)';
-            }
-        }
-
-        function elementDrag(e) {
-            e = e || window.event;
-            e.preventDefault();
-            // 마우스 이동 거리에 따른 새로운 좌표 계산
-            pos1 = pos3 - e.clientX;
-            pos2 = pos4 - e.clientY;
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            // 상자 위치 실시간 변경
-            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-        }
-
-        function closeDragElement() {
-            // 마우스를 떼면 드래그 이벤트 종료
-            document.onmouseup = null;
-            document.onmousemove = null;
-        }
-    }
-</script>
+		<script>
+		function closeNotice() {
+		        document.getElementById('notice-popup').style.display = 'none';
+		    }
+		
+		    document.addEventListener("DOMContentLoaded", async function() {
+		        const noticeUrl = 'pop-up.html?v=' + new Date().getTime(); 
+		
+		        try {
+		            const response = await fetch(noticeUrl);
+		            
+		            if (response.ok) {
+		                const htmlText = await response.text();
+		                
+		                const parser = new DOMParser();
+		                const doc = parser.parseFromString(htmlText, 'text/html');
+		                const popupBodyContent = doc.body ? doc.body.innerHTML : htmlText;
+		                
+		                const popupContainer = document.getElementById('notice-popup');
+		                
+		                // 메인 페이지에는 아무런 데코레이션 없이, 가져온 pop-up.html 본문을 그대로 감싸서 넣습니다.
+		                popupContainer.innerHTML = `<div class="popup-box" id="draggable-box">${popupBodyContent}</div>`;
+		                
+		                // 팝업창 레이어 노출
+		                popupContainer.style.display = 'block';
+		                
+		                // pop-up.html 내부에 들어있는 #drag-handle 요소를 찾아서 드래그 기능 실행
+		                const dragBox = document.getElementById("draggable-box");
+		                const dragHandle = document.getElementById("drag-handle");
+		                makeElementDraggable(dragBox, dragHandle);
+		                
+		            } else {
+		                console.log("pop-up.html 파일을 찾지 못했습니다.");
+		            }
+		        } catch (error) {
+		            console.error("팝업 통신 중 오류가 발생했습니다:", error);
+		        }
+		    });
+		
+		    // 마우스 드래그 이동 제어 함수
+		    function makeElementDraggable(elmnt, dragHandle) {
+		        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+		        if (dragHandle) {
+		            dragHandle.onmousedown = dragMouseDown;
+		        } else {
+		            elmnt.onmousedown = dragMouseDown;
+		        }
+		
+		        function dragMouseDown(e) {
+		            e = e || window.event;
+		            e.preventDefault();
+		            pos3 = e.clientX;
+		            pos4 = e.clientY;
+		            document.onmouseup = closeDragElement;
+		            document.onmousemove = elementDrag;
+		
+		            if(elmnt.style.transform !== 'none') {
+		                const rect = elmnt.getBoundingClientRect();
+		                elmnt.style.left = rect.left + 'px';
+		                elmnt.style.top = rect.top + 'px';
+		                elmnt.style.transform = 'none';
+		            }
+		        }
+		
+		        function elementDrag(e) {
+		            e = e || window.event;
+		            e.preventDefault();
+		            pos1 = pos3 - e.clientX;
+		            pos2 = pos4 - e.clientY;
+		            pos3 = e.clientX;
+		            pos4 = e.clientY;
+		            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+		            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+		        }
+		
+		        function closeDragElement() {
+		            document.onmouseup = null;
+		            document.onmousemove = null;
+		        }
+		    }
+		</script>
 
 
 	</body>
