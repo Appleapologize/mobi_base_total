@@ -269,6 +269,12 @@
 			
 			    try {
 			        const response = await fetch(noticeUrl);
+/*이걸로 바꾸면, 새 창으로 열림
+if (response.ok) {
+    // 파일이 서버에 있는 것을 확인했으니, 진짜 브라우저 독립 새 창으로 pop-up.html을 강제로 엽니다.
+    // 가로 500픽셀, 세로 550픽셀 크기이며, 화면 왼쪽 위(top 100, left 100) 구역에 생성됩니다.
+    window.open('pop-up.html', 'MabinogiNoticeWindow', 'width=500, height=550, top=100, left=100, scrollbars=yes, resizable=no');
+}*/
 			        
 			        if (response.ok) {
 			            const htmlText = await response.text();
