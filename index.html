@@ -259,5 +259,44 @@
 			<p>이 사이트는 비영리 개인 웹사이트 입니다.</p>      
 			<p>© 2026 모바일 마비노기 원재료 수량 계산기. All rights reserved.</p>
 		</footer>
+
+
+		<!-- 공지 팝업 창 영역 -->
+		<div id="notice-popup">
+			<div id="notice-content">
+			<!-- notice.html의 내용이 이 안으로 들어옵니다 -->
+			</div>
+			<div class="popup-footer">
+				<button id="close-btn" onclick="closeNotice()">닫기</button>
+			</div>
+		</div>
+	
+		<script>
+	        function closeNotice() {
+	            document.getElementById('notice-popup').style.display = 'none';
+	        }
+	
+	        async function loadNotice() {
+	            const noticeUrl = 'notice.html'; 
+	
+	            try {
+	                const response = await fetch(noticeUrl);
+	                
+	                if (response.ok) {
+	                    // HTML 파일의 글자 내용을 그대로 가져옴
+	                    const htmlText = await response.text();
+	                    // 팝업 안의 콘텐츠 영역에 그대로 주입
+	                    document.getElementById('notice-content').innerHTML = htmlText;
+	                    // 팝업 창 열기
+	                    document.getElementById('notice-popup').style.display = 'block';
+	                }
+	            } catch (error) {
+	                console.log("공지 파일이 없거나 불러오지 못했습니다.");
+	            }
+	        }
+	
+	        // 페이지 로드시 실행
+	        window.onload = loadNotice;
+		</script>
 	</body>
 </html>
