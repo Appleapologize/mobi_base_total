@@ -203,6 +203,10 @@ a{
 	text-decoration:none;
 }
 
+button{
+	cursor: pointer;
+}
+
 #head-title{
     text-align: center;
     color:var(--title-color);
@@ -243,7 +247,6 @@ a{
     border: 1px solid var(--line-color);
     background-color: var(--card-background-color);
     color: var(--text-color);
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -498,7 +501,6 @@ th {
     border: none;
     border-radius: var(--btn-border-radius-s);
     padding: 0 15px;
-    cursor: pointer;
 }
 
 .btn-add:hover{
@@ -516,7 +518,6 @@ background: var( --add-btn-hover-back-color);
     padding: 15px;
     font-size: var(--text-size);
     font-weight: bold;
-    cursor: pointer;
 }
 
 .btn-calc:hover{
@@ -529,7 +530,6 @@ background: var( --add-btn-hover-back-color);
     color: var(--remove-btn-font-color);
     border: none;
     border-radius: var(--btn-border-radius-s);
-    cursor: pointer;
     padding: 0 15px;
 }
 
@@ -599,7 +599,6 @@ td .number-spin-wrap input {
     background: var(--spin-btn-back-color);
     color: var(--text-color);
     border: none;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -861,7 +860,6 @@ transition: transform 0.3s ease-in-out;
 }
 
 .btn-copy button{
-    cursor: pointer;
     flex: 1;
     width: 100%;
     white-space: nowrap;
@@ -1028,7 +1026,6 @@ justify-content: center;
         border: 1px solid var(--line-color);
         background: var(--card-background-color);
         color: var(--text-color);
-        cursor: pointer;
         box-shadow: 0 4px 6px var(--box-shadow-color);
         padding: 0;
     }
